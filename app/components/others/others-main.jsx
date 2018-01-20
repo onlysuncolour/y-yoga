@@ -1,6 +1,6 @@
 import React from 'react';
 
-class othersPage extends React.Component{
+class OthersPage extends React.Component{
   constructor() {
     super();
   }
@@ -15,4 +15,4 @@ class othersPage extends React.Component{
   }
 };
 
-module.exports = {othersPage}
+module.exports = {OthersPage}

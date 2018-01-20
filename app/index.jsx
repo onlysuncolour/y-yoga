@@ -1,4 +1,5 @@
 // import '../node_modules/bootstrap/scss/bootstrap.scss';
+import './styles/normalize.css'
 import './styles/main.less'
 import React from 'react';
 import ReactDOM from 'react-dom';

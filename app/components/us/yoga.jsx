@@ -1,6 +1,6 @@
 import React from 'react';
 
-class yoga extends React.Component{
+class Yoga extends React.Component{
   constructor() {
     super();
   }
@@ -15,4 +15,4 @@ class yoga extends React.Component{
   }
 };
 
-module.exports = {yoga}
+module.exports = {Yoga}

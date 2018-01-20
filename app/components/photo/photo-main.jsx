@@ -1,6 +1,6 @@
 import React from 'react';
 
-class photoPage extends React.Component{
+class PhotoPage extends React.Component{
   constructor() {
     super();
   }
@@ -15,4 +15,4 @@ class photoPage extends React.Component{
   }
 };
 
-module.exports = {photoPage}
+module.exports = {PhotoPage}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class young extends React.Component{
+class Young extends React.Component{
   constructor() {
     super();
   }
@@ -15,4 +15,4 @@ class young extends React.Component{
   }
 };
 
-module.exports = {young}
+module.exports = {Young}

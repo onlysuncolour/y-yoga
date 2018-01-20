@@ -2,13 +2,13 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from "react-router-dom"
 import {Header} from './app/header'
 
-import Blog from './blog/blog-main'
-import {usPage} from './us/us-main'
-import {yoga} from './us/yoga'
-import {young} from './us/young'
-import {photoPage} from './photo/photo-main'
-import {othersPage} from './others/others-main'
-import {login} from './app/login'
+import {BlogPage} from './blog/blog-main'
+import {UsPage} from './us/us-main'
+import {PhotoPage} from './photo/photo-main'
+import {OthersPage} from './others/others-main'
+import {LoginPage} from './app/login'
+import {Yoga} from './us/yoga'
+import {Young} from './us/young'
 
 class Main extends React.Component{
   constructor() {
@@ -23,12 +23,12 @@ class Main extends React.Component{
           <Header />
             <div className="music-view">
               <Switch>
-                <Route exact path="/" component = {usPage} />
-                <Route path="/yoga" component = {yoga} />
-                <Route path="/young" component = {young} />
-                <Route path="/photo" component = {photoPage} />
-                <Route path="/blog" component = {Blog} />
-                <Route path="/others" component = {othersPage} />
+                <Route exact path="/" component = {UsPage} />
+                <Route path="/yoga" component = {Yoga} />
+                <Route path="/young" component = {Young} />
+                <Route path="/photo" component = {PhotoPage} />
+                <Route path="/blog" component = {BlogPage} />
+                <Route path="/others" component = {OthersPage} />
               </Switch>
             </div>
           </div>

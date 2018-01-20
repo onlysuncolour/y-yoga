@@ -1,18 +1,28 @@
 import React from 'react';
 
-class usPage extends React.Component{
+import {Yoga} from './yoga'
+import {Young} from './young'
+
+class UsPage extends React.Component{
   constructor() {
     super();
   }
   componentDidMount() {
+    utils.sayHello();
   }
   render() {
     return (
       <div>
         us-page
+        <div>
+          <Young> </Young>
+        </div>
+        <div>
+          <Yoga> </Yoga>
+        </div>
       </div>
     )
   }
 };
 
-module.exports = {usPage}
+module.exports = {UsPage}
