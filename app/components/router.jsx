@@ -5,6 +5,7 @@ import createHashHistory from 'history/createHashHistory';
 import React from 'react';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { Router, Route, Switch } from 'react-router'
 
 import {reducers} from '../common/redux/reducers'
 
@@ -30,21 +31,21 @@ const MyApp = () => (
     </Router>
 );
 
-// var urlRouter = (
-//   <Provider store={store}>
-//   <BrowserRouter>
-//     <div>
-//       <Route path="/" component={Main}>
-//         <Route path="/yoga" component = {yoga} />
-//         <Route path="/young" component = {young} />
-//         <Route path="/photo" component = {photoPage} />
-//         <Route path="/blog" component = {blogPage} />
-//         <Route path="/others" component = {othersPage} />
-//       </Route>
-//       <Route path="/login" component = {login} />
-//     </div>
-//   </BrowserRouter>
-//   </Provider>
-// )
+var urlRouter = (
+  <Provider store={store}>
+  <BrowserRouter>
+    <div>
+      <Route path="/" component={Main}>
+        <Route path="/yoga" component = {yoga} />
+        <Route path="/young" component = {young} />
+        <Route path="/photo" component = {photoPage} />
+        <Route path="/blog" component = {blogPage} />
+        <Route path="/others" component = {othersPage} />
+      </Route>
+      <Route path="/login" component = {login} />
+    </div>
+  </BrowserRouter>
+  </Provider>
+)
 
 module.exports = {urlRouter}
