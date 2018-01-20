@@ -13,6 +13,7 @@ class Main extends React.Component{
     return (
       <div>
         <Header> </Header>
+        <div> 我爱你 </div>
         {this.props.children}
       </div>
     )
