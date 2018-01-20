@@ -15,4 +15,5 @@ class blogPage extends React.Component{
   }
 };
 
-module.exports = {blogPage}
+// module.exports = {blogPage}
+export default blogPage

@@ -1,7 +1,11 @@
-import {Router, Route, Link, browserHistory, IndexRoute} from 'react-router'
+// import {Router, Route, Link, browserHistory, IndexRoute, BrowserRouter} from 'react-router'
+import {BrowserRouter, Route, Redirect, HashRouter } from 'react-router-dom';
+import createHashHistory from 'history/createHashHistory';
+
 import React from 'react';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { Router, Route, Switch } from 'react-router'
 
 import {reducers} from '../common/redux/reducers'
 
@@ -20,11 +24,18 @@ let store = createStore(reducers, {
   }
 });
 
+const history = createHashHistory();
+const MyApp = () => (
+    <Router history={history}>
+    
+    </Router>
+);
+
 var urlRouter = (
   <Provider store={store}>
-    <Router history={browserHistory}>
+  <BrowserRouter>
+    <div>
       <Route path="/" component={Main}>
-        <IndexRoute component={usPage} />
         <Route path="/yoga" component = {yoga} />
         <Route path="/young" component = {young} />
         <Route path="/photo" component = {photoPage} />
@@ -32,7 +43,8 @@ var urlRouter = (
         <Route path="/others" component = {othersPage} />
       </Route>
       <Route path="/login" component = {login} />
-    </Router>
+    </div>
+  </BrowserRouter>
   </Provider>
 )
 
