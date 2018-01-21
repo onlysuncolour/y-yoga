@@ -21,7 +21,7 @@ class Main extends React.Component{
       <Router>
           <div className="app">
           <Header />
-            <div className="music-view">
+            <div className="router-view">
               <Switch>
                 <Route exact path="/" component = {UsPage} />
                 <Route path="/yoga" component = {Yoga} />

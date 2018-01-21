@@ -1,17 +1,28 @@
-html, body {
-   height: 100%;
-}
-
-@red-color {
-  color: red;
-}
-
 .app-header {
+  position: fixed;
+  height: 30px;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  .header-icon {
 
-  .header-menu-item {
-    display: inline-block;
-    a {
-      color: red;
+  }
+  .header-menu-list {
+    margin-left: 50px;
+    .header-menu-item {
+      a {
+        color: red;
+      }
     }
   }
+  .header-login-tab {
+    margin-right: 50px;
+    button {
+      margin: 0 10px;
+    }
+  }
+}
+
+.router-view {
+  padding-top: 30px;
 }
