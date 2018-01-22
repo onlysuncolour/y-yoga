@@ -31,6 +31,7 @@ module.exports = {
     alias: {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
+      'Dict': path.resolve(APP_PATH, './common/config/dict.js'),
     }
   },
   module: {
@@ -49,6 +50,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       'Utils': 'Utils',
       'Request': 'Request',
+      'Dict': 'Dict',
     })
   ]
 }

@@ -30,7 +30,7 @@ class Header extends React.Component{
           {
             this.state.menus.map(i => (
               <div className="header-menu-item inline-block margin-left-10" key={i.link}>
-                <Link to={i.link}> {i.title} </Link>
+                <Link className="link" to={i.link}> {i.title} </Link>
               </div>
             ))
           }
