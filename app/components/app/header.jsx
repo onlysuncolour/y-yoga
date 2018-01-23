@@ -16,16 +16,11 @@ class Header extends React.Component{
     }
   }
   render() {
-
-    // let menus = )
-
     return (
       <div className="app-header">
-
         <div className="header-icon inline-block">
           <span> YOUNG & YOGA </span>
         </div>
-
         <div className="header-menu-list inline-block">
           {
             this.state.menus.map(i => (
@@ -35,8 +30,6 @@ class Header extends React.Component{
             ))
           }
         </div>
-
-
         <div className="header-login-tab float-right">
           <button> 登陆</button>
           <button> 注册</button>
