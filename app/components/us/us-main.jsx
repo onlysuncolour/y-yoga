@@ -6,9 +6,6 @@ import {Young} from './young'
 
 import  {default as styled} from 'styled-components'
 
-let Button = styled.button`
-  margin: 20px
-`
 
 class UsPage extends React.Component{
   constructor() {
@@ -21,14 +18,49 @@ class UsPage extends React.Component{
     return Date()
   }
   render() {
+    let HeaderTab = styled.div`
+      height: 80px;
+      text-align: center;
+      background-color: antiquewhite;
+    `
+    let UserTab = styled.div`
+    `
+    let PhotoTab = styled.div`
+      height: 80px;
+      text-align: center;
+      background-color: beige;
+    `
+    let BlogTab = styled.div`
+      height: 80px;
+      text-align: center;
+      background-color: lightcyan;
+    `
+    let BottomTab = styled.div`
+      height: 80px;
+      text-align: center;
+      background-color: lavender;
+    `
     return (
       <div>
         us-page
-        <Button>hello</Button>
-        <div>
+        <HeaderTab>
+          顶部图片
+        </HeaderTab>
+        <UserTab>
           <UsOne oneName="young"> </UsOne>
           <UsOne oneName="yoga"> </UsOne>
-        </div>
+        </UserTab>
+        <PhotoTab>
+          各种图片
+        </PhotoTab>
+        <BlogTab>
+          各种Blog
+        </BlogTab>
+        <BottomTab>
+          底部
+          <br />
+          快来联系我
+        </BottomTab>
       </div>
     )
   }
