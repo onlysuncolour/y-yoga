@@ -10,6 +10,9 @@ import {LoginPage} from './app/login'
 import {Yoga} from './us/yoga'
 import {Young} from './us/young'
 
+import {BlogEdit} from './blog/blog-edit'
+
+
 class Main extends React.Component{
   constructor() {
     super();
@@ -29,6 +32,8 @@ class Main extends React.Component{
                 <Route path="/photo" component = {PhotoPage} />
                 <Route path="/blog" component = {BlogPage} />
                 <Route path="/others" component = {OthersPage} />
+
+                <Route path="/blog-edit" component = {BlogEdit} />
               </Switch>
             </div>
           </div>
