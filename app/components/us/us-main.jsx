@@ -6,7 +6,6 @@ import {Young} from './young'
 
 import  {default as styled} from 'styled-components'
 
-
 class UsPage extends React.Component{
   constructor() {
     super();

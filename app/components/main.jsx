@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Switch, Redirect, NavLink} from "react-router-dom"
 import { Provider } from 'react-redux'
-import createHistory from 'history/createBrowserHistory'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { ConnectedRouter as Router, routerReducer, routerMiddleware, push } from 'react-router-redux'
-import reducers from '../common/redux/reducers'
+import { ConnectedRouter as Router } from 'react-router-redux'
+
+import { store, history } from '../common/redux/store'
 
 import {Header} from './app/header'
 import {BlogPage} from './blog/blog-main'
@@ -16,15 +15,6 @@ import {Yoga} from './us/yoga'
 import {Young} from './us/young'
 import {BlogEdit} from './blog/blog-edit'
 
-const history = createHistory()
-const middleware = routerMiddleware(history)
-const store = createStore(
-  combineReducers({
-    reducers,
-    router: routerReducer
-  }),
-  applyMiddleware(middleware)
-)
 
 class Main extends React.Component{
   constructor() {
