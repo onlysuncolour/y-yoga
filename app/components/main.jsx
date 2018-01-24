@@ -9,6 +9,7 @@ import {Header} from './app/header'
 import {BlogPage} from './blog/blog-main'
 import {UsPage} from './us/us-main'
 import {PhotoPage} from './photo/photo-main'
+import {TodoPage} from './todo/todo-main'
 import {OthersPage} from './others/others-main'
 import {LoginPage} from './app/login'
 import {Yoga} from './us/yoga'
@@ -34,6 +35,7 @@ class Main extends React.Component{
               <Route exact path="/" component = {UsPage} />
               <Route path="/yoga" component = {Yoga} />
               <Route path="/young" component = {Young} />
+              <Route path="/todo" component = {TodoPage} />
               <Route path="/photo" component = {PhotoPage} />
               <Route path="/blog" component = {BlogPage} />
               <Route path="/others" component = {OthersPage} />
