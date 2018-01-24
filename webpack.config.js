@@ -32,6 +32,7 @@ module.exports = {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
       'Dict': path.resolve(APP_PATH, './common/config/dict.js'),
+      'images': path.resolve(ROOT_PATH, './images')
     }
   },
   module: {
@@ -51,6 +52,7 @@ module.exports = {
       'Utils': 'Utils',
       'Request': 'Request',
       'Dict': 'Dict',
+      'images': 'images',
     })
   ]
 }

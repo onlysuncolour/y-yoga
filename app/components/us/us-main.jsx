@@ -5,6 +5,7 @@ import {Yoga} from './yoga'
 import {Young} from './young'
 
 import  {default as styled} from 'styled-components'
+import './us-main.less'
 
 class UsPage extends React.Component{
   constructor() {
@@ -20,7 +21,7 @@ class UsPage extends React.Component{
     let HeaderTab = styled.div`
       height: 80px;
       text-align: center;
-      background-color: antiquewhite;
+      background: antiquewhite url(/images/home-bg.jpeg) no-repeat;
     `
     let UserTab = styled.div`
     `
@@ -41,9 +42,7 @@ class UsPage extends React.Component{
     `
     return (
       <div>
-        us-page
-        <HeaderTab>
-          顶部图片
+        <HeaderTab className="aa">
         </HeaderTab>
         <UserTab>
           <UsOne oneName="young"> </UsOne>
