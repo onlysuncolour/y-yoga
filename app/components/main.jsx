@@ -15,6 +15,7 @@ import {Yoga} from './us/yoga'
 import {Young} from './us/young'
 import {BlogEdit} from './blog/blog-edit'
 
+import './main.less'
 
 class Main extends React.Component{
   constructor() {
@@ -27,8 +28,8 @@ class Main extends React.Component{
     <Provider store={store}>
       <Router history={history}>
         <div className="app">
-        <Header />
           <div className="router-view">
+            <Header />
             <Switch>
               <Route exact path="/" component = {UsPage} />
               <Route path="/yoga" component = {Yoga} />

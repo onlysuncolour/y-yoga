@@ -18,47 +18,25 @@ class UsPage extends React.Component{
     return Date()
   }
   render() {
-    let HeaderTab = styled.div`
-      height: 80px;
-      text-align: center;
-      background: antiquewhite url(./app/images/home-bg.jpeg) no-repeat;
-    `
-    let UserTab = styled.div`
-    `
-    let PhotoTab = styled.div`
-      height: 80px;
-      text-align: center;
-      background-color: beige;
-    `
-    let BlogTab = styled.div`
-      height: 80px;
-      text-align: center;
-      background-color: lightcyan;
-    `
-    let BottomTab = styled.div`
-      height: 80px;
-      text-align: center;
-      background-color: lavender;
-    `
     return (
-      <div>
-        <HeaderTab className="aa">
-        </HeaderTab>
-        <UserTab>
+      <div className="us-main-page">
+        <header className="header">
+        </header>
+        <div className="user-tab">
           <UsOne oneName="young"> </UsOne>
           <UsOne oneName="yoga"> </UsOne>
-        </UserTab>
-        <PhotoTab>
+        </div>
+        <div className="photo-tab">
           各种图片
-        </PhotoTab>
-        <BlogTab>
+        </div>
+        <div className="blog-tab">
           各种Blog
-        </BlogTab>
-        <BottomTab>
+        </div>
+        <footer className="bottom">
           底部
           <br />
           快来联系我
-        </BottomTab>
+        </footer>
       </div>
     )
   }

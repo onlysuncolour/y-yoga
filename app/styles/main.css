@@ -1,0 +1,25 @@
+.app-header {
+  position: fixed;
+  height: 30px;
+  top: 0;
+  width: 100%;
+}
+.app-header .header-menu-list {
+  margin-left: 50px;
+}
+.app-header .header-login-tab {
+  margin-right: 50px;
+}
+.app-header .header-login-tab button {
+  margin: 0 10px;
+}
+.router-view {
+  padding-top: 30px;
+}
+.us-one-page {
+  display: inline-block;
+  width: 50%;
+}
+.us-one-page .page-content {
+  padding: 20px;
+}
