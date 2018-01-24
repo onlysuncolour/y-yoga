@@ -21,7 +21,6 @@ class UsPage extends React.Component{
     let HeaderTab = styled.div`
       height: 80px;
       text-align: center;
-      background: antiquewhite url(./app/images/home-bg.jpeg) no-repeat;
     `
     let UserTab = styled.div`
     `
