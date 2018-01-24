@@ -7,6 +7,9 @@
 .app-header .header-menu-list {
   margin-left: 50px;
 }
+.app-header .header-menu-list .selecetd-menu .link {
+  color: darkcyan !important;
+}
 .app-header .header-login-tab {
   margin-right: 50px;
 }

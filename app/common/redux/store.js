@@ -6,7 +6,7 @@ import {reducers} from './reducers/reducers.js'
 const history = createHistory()
 const middleware = routerMiddleware(history)
 const store = createStore(
-  // reducers,
+  reducers,
   applyMiddleware(middleware)
 )
 
