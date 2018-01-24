@@ -8,7 +8,7 @@ class OthersPage extends React.Component{
   }
   render() {
     return (
-      <div>
+      <div className="others-main-page">
         others-page
       </div>
     )

@@ -10,7 +10,7 @@ class BlogPage extends React.Component{
   }
   render() {
     return (
-      <div>
+      <div className="blog-main-page">
         blog-page
         <Link className='link-test' to="/blog-edit"> 新建 </Link>
       </div>

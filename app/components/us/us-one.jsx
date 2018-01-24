@@ -14,19 +14,19 @@ class UsOne extends React.Component{
     return (
       <div className="us-one-page">
         <div className="page-content">
-          <div className="phono">
+          <div className="photo">
             PHOTO
           </div>
           <div className="name">
             <Link className="link" to={'/'+this.props.oneName}>{Dict.USER[this.props.oneName]}</Link>
           </div>
-          <div className="content-list">
+          <ul className="content-list">
             {
               this.state.contents.map(i => (
-                <div className="content" key={i}>{ i }</div>
+                <li className="content-item" key={i}>{ i }</li>
               ))
             }
-          </div>
+          </ul>
         </div>
       </div>
     )

@@ -8,7 +8,7 @@ class PhotoPage extends React.Component{
   }
   render() {
     return (
-      <div>
+      <div className="photo-main-page">
         photo-page
       </div>
     )

@@ -23,24 +23,24 @@ class Header extends React.Component{
   }
   render() {
     return (
-      <div className="app-header">
+      <nav className="app-header">
         <div className="header-icon inline-block">
           <span> YOUNG & YOGA </span>
         </div>
-        <div className="header-menu-list inline-block">
+        <ul className="header-menu-list inline-block">
           {
             this.state.menus.map(i => (
-              <div className={"header-menu-item inline-block margin-left-10 "+{true: 'selecetd-menu', false: 'unselected-menu'}[i.link==this.props.router.location.pathname]} key={i.link}>
+              <li className={"header-menu-item "+{true: 'selecetd-menu', false: 'unselected-menu'}[i.link==this.props.router.location.pathname]} key={i.link}>
                 <Link className="link" to={i.link}> {i.title} </Link>
-              </div>
+              </li>
             ))
           }
-        </div>
-        <div className="header-login-tab float-right">
-          <button> 登陆</button>
+        </ul>
+        <div className="header-login-tab fr">
+          <button> 登录</button>
           <button> 注册</button>
         </div>
-      </div>
+      </nav>
     )
   }
 };

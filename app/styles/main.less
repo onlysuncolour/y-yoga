@@ -2,35 +2,71 @@
   position: fixed;
   height: 30px;
   top: 0;
+  z-index: 1;
   width: 100%;
-  .header-icon{}
+  height: 80px;
+  line-height: 80px;
+  color: #fff;
+  background: rgba(255, 255, 255, .2);
+  .header-icon{
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
   .header-menu-list {
     margin-left: 50px;
     .header-menu-item{
-      .link{}
+      display: inline-block;
+      margin-left: 40px;
+      .link, .link:visited{
+        color: #FFF;
+        opacity: .8;
+        transition: all .2s;
+        &:hover{
+          opacity: 1;
+        }
+      }
     }
     .selecetd-menu {
       .link {
-        color: darkcyan !important;
+        opacity: 1
       }
     }
   }
   .header-login-tab {
-    margin-right: 50px;
+    margin-right: 20px;
     button {
       margin: 0 10px;
+      font-size: 14px;
+      color: #FFF
     }
   }
 }
 
 .router-view {
-  padding-top: 30px;
+  
 }
 
 .us-one-page {
   display: inline-block;
   width: 50%;
   .page-content {
+    text-align: center;
     padding: 20px;
+    .photo{
+      width: 180px;
+      height: 180px;
+      display: inline-block;
+      border: 1px solid;
+      border-radius: 50%;
+    }
+    .name{
+      padding: 10px;
+    }
+    .content-list{
+      .content-item{
+        padding: 10px;
+      }
+    }
   }
 }

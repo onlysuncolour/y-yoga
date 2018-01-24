@@ -11,7 +11,7 @@ class BlogEdit extends React.Component {
   render () {
     const input = '# This is a header\n\nAnd this is a paragraph'
     return (
-      <div>
+      <div className="blog-edit-page">
         <Markdown source={input} />
       </div>
     )

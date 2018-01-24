@@ -8,7 +8,7 @@ class Young extends React.Component{
   }
   render() {
     return (
-      <div>
+      <div className="young-page">
         young
       </div>
     )
