@@ -1,31 +1,31 @@
-import {
-         SET_TODO,
-         ADD_TODO,
-         REMOVE_TODO,
-         ADD_DONE } from './actionTypes';
+// action types
+export const actionTypes = {
+  // todo
+  SET_TODO : 'SET_TODO',
+  ADD_TODO : 'ADD_TODO',
+  REMOVE_TODO : 'REMOVE_TODO',
+  ADD_DONE : 'ADD_DONE',
+}
 
+// actions
+// todo
 export const setTodo = data => ({
-    type: SET_TODO,
+    type: actionTypes.SET_TODO,
     data
 })
-
 export const addTodo = todo => ({
-    type: ADD_TODO,
+    type: actionTypes.ADD_TODO,
     todo
 })
-
 export const removeTodo = todo => ({
-    type: REMOVE_TODO,
+    type: actionTypes.REMOVE_TODO,
     todo
 })
-
 export const addDone = todo => ({
-    type: ADD_DONE,
+    type: actionTypes.ADD_DONE,
     todo
 })
-
 export const getTodoList = () => {
-  // console.log(1);
   let data = {
     todos: [
       {id: 1, type: 'todo', title: '第1条todo'},

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {store} from "app/common/redux/store";
-import { getTodoList, addTodo, addDone} from 'actions/todoActions';
+import { getTodoList, addTodo, addDone} from 'actions';
 
 class TodoPage extends React.Component{
   constructor() {
@@ -23,12 +23,11 @@ class TodoPage extends React.Component{
     this.setState(newState);
   }
 
-  setDone(event) {
-    store.dispatch(addDone( {id:event.target.value} ));
+  setDone(id) {
+    store.dispatch(addDone( {id} ));
   }
 
   addNewTodo() {
-    // console.log(123)
     store.dispatch(addTodo(this.state.newTodo));
     this.setState({
       newTodo: ""
@@ -45,7 +44,7 @@ class TodoPage extends React.Component{
             {
               this.props.todo.todos.filter(i => i.type=="todo").map( i => (
                 <li key={i.id}> {i.title}
-                  <button onClick={this.setDone} value={i.id}> done</button>
+                  <button onClick={this.setDone.bind(this, i.id)} value={i.id}> done</button>
                 </li>
               ))
             }

@@ -1,7 +1,4 @@
-import {SET_TODO,
-        ADD_TODO,
-        REMOVE_TODO,
-        ADD_DONE } from '../actions/actionTypes';
+import { actionTypes } from 'actions';
 
 const initialState = {
   todos: [],
@@ -43,10 +40,10 @@ const addDone = (state, action) => {
 
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_TODO: return setTodo(state, action);
-    case ADD_TODO: return addTodo(state, action);
-    case REMOVE_TODO: return removeTodo(state, action);
-    case ADD_DONE: return addDone(state, action);
+    case actionTypes.SET_TODO: return setTodo(state, action);
+    case actionTypes.ADD_TODO: return addTodo(state, action);
+    case actionTypes.REMOVE_TODO: return removeTodo(state, action);
+    case actionTypes.ADD_DONE: return addDone(state, action);
     default: return state;
   }
 };
