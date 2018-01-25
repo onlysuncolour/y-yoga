@@ -28,11 +28,11 @@ export const addDone = todo => ({
 export const getTodoList = () => {
   let data = {
     todos: [
+      {id: 0, type: 'done', title: '第1条done'},
       {id: 1, type: 'todo', title: '第1条todo'},
       {id: 2, type: 'todo', title: '第2条todo'},
       {id: 3, type: 'todo', title: '第3条todo'},
-      {id: 4, type: 'done', title: '第1条done'},
-      {id: 5, type: 'done', title: '第2条done'},
+      {id: 4, type: 'done', title: '第2条done'},
     ],
   }
   return dispatch => {
