@@ -14,7 +14,7 @@ class UsOne extends React.Component{
     return (
       <div className="us-one-page">
         <div className="page-content">
-          <div className={ "photo "+ this.props.oneName+"Photo" }>
+          <div className={ "photo mb20"+" "+ this.props.oneName+"Photo" }>
           </div>
           <div className="name">
             <Link className="link" to={'/'+this.props.oneName}>{Dict.USER[this.props.oneName]}</Link>
