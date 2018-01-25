@@ -1,4 +1,3 @@
-// import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './styles/normalize.css'
 import './styles/common.less'
 import './styles/main.less'

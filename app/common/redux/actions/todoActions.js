@@ -4,9 +4,9 @@ import {
          REMOVE_TODO,
          ADD_DONE } from './actionTypes';
 
-export const setTodo = todos => ({
+export const setTodo = data => ({
     type: SET_TODO,
-    todos
+    data
 })
 
 export const addTodo = todo => ({
@@ -25,7 +25,8 @@ export const addDone = todo => ({
 })
 
 export const getTodoList = () => {
-  let todos = {
+  // console.log(1);
+  let data = {
     todos: [
       {id: 1, type: 'todo', title: '第1条todo'},
       {id: 2, type: 'todo', title: '第2条todo'},
@@ -35,6 +36,6 @@ export const getTodoList = () => {
     ],
   }
   return dispatch => {
-    dispatch(setTodo(todos));
+    dispatch(setTodo(data));
   }
 }

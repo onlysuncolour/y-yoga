@@ -8,15 +8,15 @@ const initialState = {
 };
 
 const setTodo = (state, action) => {
-  let todos = action.todos;
-  return todos
+  let todos = action.data.todos;
+  return {todos}
 }
 
 const addTodo = (state, action) => {
   let todos = state.todos;
   let id = todos.length;
   todos.push({id, type: 'todo', title: action.todo})
-  return todos
+  return {todos}
 }
 
 const removeTodo = (state, action) => {
@@ -27,7 +27,7 @@ const removeTodo = (state, action) => {
       break
     }
   }
-  return todos
+  return {todos}
 }
 
 const addDone = (state, action) => {
@@ -38,7 +38,7 @@ const addDone = (state, action) => {
       break
     }
   }
-  return todos
+  return {todos}
 }
 
 const todoReducer = (state = initialState, action) => {
