@@ -16,11 +16,25 @@ class TodoPage extends React.Component{
       <div>
         todo-page
         <div>
-          {
-            this.props.todo.todos.map( i => (
-              <span> {i.title} </span>
-            ))
-          }
+          <ul>
+            <span> todos: </span>
+            {
+              this.props.todo.todos.filter(i => i.type=="todo").map( i => (
+                <li> {i.title} </li>
+              ))
+            }
+            <li></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <span> dones: </span>
+            {
+              this.props.todo.todos.filter(i => i.type=="done").map( i => (
+                <li> {i.title} </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     )
