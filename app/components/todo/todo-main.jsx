@@ -36,9 +36,9 @@ class TodoPage extends React.Component{
 
   render() {
     return (
-      <div style={ {'marginTop': '100px'} }>
+      <div classNamw="todo-main-page" style={ {'marginTop': '100px'} }>
         todo-page
-        <div>
+        <div className="container">
           <ul>
             <span> todos: </span>
             {
