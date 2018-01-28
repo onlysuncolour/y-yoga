@@ -1,5 +1,7 @@
+import Ajax from './ajax'
 module.exports = {
-  sayHello () {
-    console.log('hello')
+  getTodoList () {
+    return Ajax.GET('/todo/getlist');
+    // console.log('hello')
   }
 }

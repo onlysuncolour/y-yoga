@@ -50,6 +50,10 @@ export const getTodoList = () => {
     ],
   }
   return dispatch => {
-    dispatch(setTodo(data));
+    Request.getTodoList().then(resp => {
+      dispatch(setTodo(resp.data));
+    }, error => {
+      dispatch(setTodo(data));
+    })
   }
 }

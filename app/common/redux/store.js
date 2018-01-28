@@ -1,8 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import createHistory from 'history/createBrowserHistory'
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk';
-import { reducers } from './reducers.js'
+// import { reducers } from './reducers.js'
+// import { combineReducers } from 'redux'
+// import { routerReducer } from 'react-router-redux'
+import {todoReducer} from './reducers/todoReducer.js'
+
+const reducers = combineReducers({
+  todo: todoReducer,
+  router: routerReducer
+})
 
 const history = createHistory()
 const middleware = routerMiddleware(history)
