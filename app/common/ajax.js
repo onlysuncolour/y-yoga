@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const GET = function (url, params) {
   let promise = new Promise(function(resolve, reject) {
-    axios.get(server['dev']+url, params).then(resp => {
+    axios.get(server['dev']+'/api'+url, params).then(resp => {
       resolve(resp)
     }, err => {
       reject(err)
@@ -14,7 +14,7 @@ const GET = function (url, params) {
 
 const POST = function(url, params) {
   let promise = new Promise(function(resolve, reject) {
-    axios.post(server['dev']+url, params).then(resp => {
+    axios.post(server['dev']+'/api'+url, params).then(resp => {
       resolve(resp)
     }, err => {
       reject(err)
