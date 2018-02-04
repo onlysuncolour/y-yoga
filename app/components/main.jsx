@@ -23,6 +23,7 @@ class Main extends React.Component{
     super();
   }
   componentWillMount() {
+    Socket.connect()
   }
   render() {
     return (

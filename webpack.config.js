@@ -34,6 +34,7 @@ module.exports = {
       'Dict': path.resolve(APP_PATH, './common/config/dict.js'),
       'app': APP_PATH,
       'actions': path.resolve(APP_PATH, 'common/redux/actions.js'),
+      'Socket': path.resolve(APP_PATH, 'common/socket.js'),
     }
   },
   module: {
@@ -54,6 +55,7 @@ module.exports = {
       'Request': 'Request',
       'Dict': 'Dict',
       'actions': 'actions',
+      'Socket': 'Socket',
     })
   ]
 }

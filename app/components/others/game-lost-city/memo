@@ -1,0 +1,31 @@
+六十五张卡牌
+五种颜色
+red green blue yellow white
+数字： 2-10 + 投资卡*3
+Card:
+{
+  color: '', // red green blue yellow white
+  content: 0, // 0, 2, 3, 4, 5, 6, 7, 8, 9, 10
+}
+弃牌堆
+discardPile
+{
+  red: [Card],
+  green: [Card],
+  blue: [Card],
+  yellow: [Card],
+  white: [Card],
+}
+牌堆
+pile: [Card]
+手牌
+hand: [Card]
+放置牌堆
+myPile
+{
+  red: [Card],
+  green: [Card],
+  blue: [Card],
+  yellow: [Card],
+  white: [Card],
+}
