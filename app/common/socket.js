@@ -20,6 +20,9 @@ let SOCKETIO = {
   joinGame(name, room) {
     socket.emit('joinGameRoom', {room: name+'_'+room})
   },
+  sendGameMessage(message) {
+    socket.emit('game-message', message)
+  }
 }
 
 module.exports = SOCKETIO
