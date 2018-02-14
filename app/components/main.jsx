@@ -11,6 +11,7 @@ import {UsPage} from './us/us-main'
 import {PhotoPage} from './photo/photo-main'
 import {TodoPage} from './todo/todo-main'
 import {OthersPage} from './others/others-main'
+import {LostCity} from './others/game-lost-city/game-page'
 import {LoginPage} from './app/login'
 import {Yoga} from './us/yoga'
 import {Young} from './us/young'
@@ -39,8 +40,10 @@ class Main extends React.Component{
               <Route path="/todo" component = {TodoPage} />
               <Route path="/photo" component = {PhotoPage} />
               <Route path="/blog" component = {BlogPage} />
-              <Route path="/others" component = {OthersPage} />
+              <Route exact path="/others" component = {OthersPage} />
+              <Route path="/others/lost-city" component = {LostCity} />
               <Route path="/blog-edit" component = {BlogEdit} />
+              <Redirect to="/"/>
             </Switch>
           </div>
         </div>
