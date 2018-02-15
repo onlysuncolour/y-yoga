@@ -12,13 +12,15 @@ let SOCKETIO = {
       console.log('socket connected!');
       console.log(resp);
     })
-    socket.on()
+    socket.on('message', resp => {
+      console.log(resp);
+    })
   },
   emit(eventName, eventData) {
     socket.emit(eventName, eventData);
   },
-  joinGame(name, room) {
-    socket.emit('joinGameRoom', {room: name+'_'+room})
+  joinGame(room) {
+    socket.emit('joinGameRoom', {room: room})
   },
   sendGameMessage(message) {
     socket.emit('game-message', message)

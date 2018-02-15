@@ -11,8 +11,15 @@ class LostCity extends React.Component{
     }
   }
   playGame() {
-    this.setState({
-      waiting: false
+    Request.Game.LostCity.joinGame().then(resp => {
+      if (resp.ok) {
+        Socket.joinGame(resp.data.roomName)
+        this.setState({
+          waiting: false
+        })
+      }
+    }, error => {
+
     })
   }
   componentDidMount() {
@@ -23,7 +30,7 @@ class LostCity extends React.Component{
     if (this.state.waiting) {
       GamePage = <GameWaitingPage playGame={this.playGame.bind(this)}> </GameWaitingPage>;
     } else {
-      GamePage = <GamePlayingPage> </GamePlayingPage>;
+      GamePage = <GamePlayingPage > </GamePlayingPage>;
     }
     return (
       <div className="lost-city-game-page">

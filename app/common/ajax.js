@@ -1,26 +1,28 @@
 import server from './server.config'
 import axios from 'axios'
 
-const GET = function (url, params) {
-  let promise = new Promise(function(resolve, reject) {
-    axios.get(server['dev']+'/api'+url, params).then(resp => {
-      resolve(resp)
-    }, err => {
-      reject(err)
+const Ajax = {
+  get(url, params) {
+    return this.ajax('get', url, params)
+  },
+  post(url, params) {
+    return this.ajax('post', url, params)
+  },
+  ajax(request, url, params) {
+    let promise = new Promise(function(resolve, reject) {
+      axios[request](server['dev']+'/api'+url, params).then(resp => {
+        resolve({
+          ok: true,
+          data: resp.data
+        })
+      }, err => {
+        resolve({
+          ok: false
+        })
+      })
     })
-  })
-  return promise
+    return promise
+  }
 }
 
-const POST = function(url, params) {
-  let promise = new Promise(function(resolve, reject) {
-    axios.post(server['dev']+'/api'+url, params).then(resp => {
-      resolve(resp)
-    }, err => {
-      reject(err)
-    })
-  })
-  return promise
-}
-
-module.exports = {GET, POST}
+module.exports = Ajax
