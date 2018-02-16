@@ -26,11 +26,17 @@
     align-items: stretch;
     .lost-city-card {
       display: block;
-      height: 50px;
+      height: 60px;
       margin-bottom: 10px;
+      max-width: 140px;
       width: 80%;
       border: solid 1px #999;
       border-radius: 10px;
+    }
+    .card-back {
+      background-image: url(/app/images/card-back.jpeg);
+      background-size: 100% 100%;
+      background-position: center;
     }
     .area-title {
       margin: 10px 0;
@@ -54,12 +60,8 @@
       flex: 1;
       order: 3;
       .discard-pile {
-        // flex: 1;
-        // order: 3;
       }
       .pile {
-        // flex: 1;
-        // order: 4;
       }
     }
     .my-pile {

@@ -5,11 +5,23 @@ class GameCard extends React.Component {
     super()
   }
   render() {
-    return (
-      <div className="lost-city-card">
-        卡牌
-      </div>
-    )
+    // let card;
+    if (this.props.card.back) {
+      return (
+        <div className="lost-city-card card-back">
+
+        </div>
+      )
+    } else {
+      return (
+        <div className="lost-city-card">
+
+        </div>
+      )
+    }
+    // return (
+    //
+    // )
   }
 }
 
