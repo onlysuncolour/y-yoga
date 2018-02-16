@@ -5,7 +5,7 @@ class UsOne extends React.Component{
   constructor() {
     super();
     this.state = {
-      contents: ["聪明", "好看", "精通Vue，React，NodeJs等", "自学NodeJs"]
+      contents: ["聪明", "好看", "精通 Vue，React，NodeJs 等", "自学 NodeJs"]
     }
   }
   componentDidMount() {

@@ -21,10 +21,24 @@ export const removeTodo = todo => ({
     type: actionTypes.REMOVE_TODO,
     todo
 })
+
 export const addDone = todo => ({
-    type: actionTypes.ADD_DONE,
-    todo
+  type: actionTypes.ADD_DONE,
+  todo
 })
+
+// export const addDone = todo => {
+//   return dispatch =>{
+//     Request.Todo.create(todo).then(resp => {
+//       if(resp.ok) {
+//         dispatch(setTodo(resp.data));
+//       } else {
+//         dispatch(setTodo(data));
+//       }
+//     })
+//   }
+// }
+
 export const getTodoList = () => {
   let data = {
     todos: [

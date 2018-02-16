@@ -3,6 +3,9 @@ module.exports = {
   Todo: {
     getTodoList () {
       return Ajax.get('/todo/getlist');
+    },
+    create() {
+      return Ajax.post('todo/create')
     }
   },
   Game: {
