@@ -1,0 +1,75 @@
+.lost-city-game-page {
+  padding-top: 80px;
+}
+
+.lost-city-game-playing-page {
+  .game-info {
+    .game-title {
+      display: inline-block;
+    }
+    .players {
+      display: inline-block;
+    }
+    .buttons {
+      display: inline-block;
+    }
+  }
+  .playing-table {
+    margin: 0 20px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+	  -webkit-flex-direction: row;
+    flex-wrap: nowrap;
+	  -webkit-flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    .lost-city-card {
+      display: block;
+      height: 50px;
+      margin-bottom: 10px;
+      width: 80%;
+      border: solid 1px #999;
+      border-radius: 10px;
+    }
+    .area-title {
+      margin: 10px 0;
+      height: 20px;
+      font-size: 20px;
+    }
+    .enemy-hand {
+      flex: 1;
+      order: 1;
+      // flex-grow: 0; // 放大比例
+      // flex-shrink: 1; // 缩小比例
+      // flex-basis: auto; // 基础占据大小 px
+      // align-self: auto; // 同 align-items
+    }
+    .enemy-pile {
+      flex: 1;
+      order: 2;
+      margin-top: 95px;
+    }
+    .public-pile {
+      flex: 1;
+      order: 3;
+      .discard-pile {
+        // flex: 1;
+        // order: 3;
+      }
+      .pile {
+        // flex: 1;
+        // order: 4;
+      }
+    }
+    .my-pile {
+      margin-top: 95px;
+      flex: 1;
+      order: 4;
+    }
+    .my-hand {
+      flex: 1;
+      order: 5;
+    }
+  }
+}

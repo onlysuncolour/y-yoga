@@ -2,12 +2,12 @@ import React from 'react';
 
 import {GameWaitingPage} from './game-waiting-page'
 import {GamePlayingPage} from './game-playing-page'
-
+require('./game-lost-city.less')
 class LostCity extends React.Component{
   constructor() {
     super();
     this.state = {
-      waiting: true
+      waiting: false
     }
   }
   playGame() {
