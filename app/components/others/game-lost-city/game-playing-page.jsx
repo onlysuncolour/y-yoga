@@ -6,7 +6,7 @@ class GamePlayingPage extends React.Component{
     super();
     this.state = {
       pileCounts: 22,
-      status: 0,
+      status: 1,
       enemyHand: [
         {id: -1, back: true},
         {id: -2, back: true},
@@ -48,11 +48,63 @@ class GamePlayingPage extends React.Component{
         {id: 20, color: 'blue', content: 7, mine: true},
         {id: 21, color: 'white', content: 5, mine: true},
         {id: 22, color: 'white', content: 8, mine: true},
-      ]
+      ],
+      eventListeners: []
     }
+    this.setCards = this.setCards.bind(this);
+    this.pickCard = this.pickCard.bind(this);
+    this.discardCard = this.discardCard.bind(this);
+    this.playCard = this.playCard.bind(this);
+    this.doGameAction = this.doGameAction.bind(this);
+
+    this.state.eventListeners.push(
+      G.addlistener('lost-city-game-action', data => {
+        this.doGameAction(data)
+      })
+    )
+
   }
   componentDidMount() {
 
+  }
+  doGameAction(data) {
+
+  }
+  setCards(cardList) {
+    // if (cardList.enemyHand) {
+    //   cardList.enemyHand.forEach((i, n) => {i.id = -n-1} )
+    //   this.setState({
+    //     enemyHand: cardList.enemyHand
+    //   })
+    // } else if (!this.state.enemyHand || this.state.enemyHand.length == 0) {
+    //   this.setState({
+    //     enemyHand: [
+    //       {id: -1, back: true},
+    //       {id: -2, back: true},
+    //       {id: -3, back: true},
+    //       {id: -4, back: true},
+    //       {id: -5, back: true},
+    //       {id: -6, back: true},
+    //       {id: -7, back: true},
+    //       {id: -8, back: true},
+    //     ]
+    //   })
+    // }
+    // if (cardList.enemyPile) {
+    //   this.setState({
+    //     enemyPile: cardList.enemyPile
+    //   })
+    // } else if (!this.state.enemyPile || this.state.enemyPile.length == 0) {
+    //   this.setState({
+    //     enemyHand: [
+    //       {id: -1, color: 'red', empty: true},
+    //       {id: -2, color: 'green', empty: true},
+    //       {id: -3, color: 'blue', empty: true},
+    //       {id: -4, color: 'yellow', empty: true},
+    //       {id: -5, color: 'white', empty: true},
+    //     ]
+    //   })
+    // }
   }
   pickCard(card) {
     console.log('pickCard', card);
@@ -66,8 +118,8 @@ class GamePlayingPage extends React.Component{
   render() {
     let getGameCard = (card, area) => {
       return (
-        <GameCard card={card} key={card.id} area={area} status={this.state.status} pickCard={this.pickCard.bind(this)}
-          discardCard={this.discardCard.bind(this)} playCard={this.playCard.bind(this)} />
+        <GameCard card={card} key={card.id} area={area} status={this.state.status} pickCard={this.pickCard}
+          discardCard={this.discardCard} playCard={this.playCard} />
       )
     }
     return (

@@ -25,6 +25,12 @@ class Main extends React.Component{
   }
   componentWillMount() {
     Socket.connect()
+    G.addlistener('game-message', data => this.dealGameMessage(data))
+  }
+  dealGameMessage(data) {
+    if (data.gameType == 'lostCity') {
+      G.triger('lost-city-game-action', data)
+    }
   }
   render() {
     return (

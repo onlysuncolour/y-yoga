@@ -15,6 +15,9 @@ let SOCKETIO = {
     socket.on('message', resp => {
       console.log(resp);
     })
+    socket.on('game-message', data => {
+      G.trigger('game-message', data)
+    })
   },
   emit(eventName, eventData) {
     socket.emit(eventName, eventData);
