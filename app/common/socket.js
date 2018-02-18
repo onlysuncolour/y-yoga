@@ -3,14 +3,19 @@ import io from 'socket.io-client'
 let socket;
 
 let SOCKETIO = {
-  connect() {
-    socket = io.connect('http://localhost:9521')
+  connect(token) {
+    let socketUrl = `http://localhost:9521?token=${token}`
+    socket = io(socketUrl)
     this.setSocket();
   },
   setSocket() {
+    socket.on('connect', () => {
+      console.log('connect', socket.id);
+    })
     socket.on('open', (resp) => {
-      console.log('socket connected!');
-      console.log(resp);
+      // console.log(socket.id);
+      // console.log('socket connected!');
+      // console.log(resp);
     })
     socket.on('message', resp => {
       console.log(resp);

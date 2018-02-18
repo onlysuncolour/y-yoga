@@ -26,11 +26,11 @@ class GamePlayingPage extends React.Component{
       ],
       pile: [{id: -9, back: true, public: true}],
       discardPile: [
-        {id: 5, color: 'red', content: 2, public: true},
-        {id: 6, color: 'green', content: 7, public: true},
-        {id: 7, color: 'blue', content: 5, public: true},
-        {id: 8, color: 'yellow', content: 6, public: true},
-        {id: 9, color: 'white', content: 0, public: true},
+        {id: -1, color: 'red', empty: true, public: true},
+        {id: -2, color: 'green', empty: true, public: true},
+        {id: -3, color: 'blue', empty: true, public: true},
+        {id: -4, color: 'yellow', empty: true, public: true},
+        {id: -5, color: 'white', empty: true, public: true},
       ],
       myPile: [
         {id: 10, color: 'red', content: 3},
