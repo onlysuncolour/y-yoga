@@ -14,5 +14,20 @@ module.exports = {
         return Ajax.post('/game/lostCity/joinGame')
       }
     }
+  },
+  Blog: {
+    getBlogCategory (param) {
+      return Ajax.post('/blog/category', param)
+    },
+    getBlogList(param) {
+      return Ajax.post('/blog/list', param)
+    },
+    getBlog(id) {
+      return Ajax.get(`/blog/blog/${id}`)
+    },
+    saveBlog(param) {
+      return Ajax.post('/blog/save', param)
+    }
+
   }
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const Ajax = {
   get(url, params) {
-    return this.ajax('get', url, params)
+    return this.ajax('get', url, {params})
   },
   post(url, params) {
     return this.ajax('post', url, params)

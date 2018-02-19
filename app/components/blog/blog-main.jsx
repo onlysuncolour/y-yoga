@@ -23,27 +23,36 @@ class BlogPage extends React.Component{
 
   }
   getCategory() {
-    let category = [{id: 1, name: "category-a"}, {id: 2, name: "category-b"}, {id: 3, name: "category-c"}]
-    this.setState({
-      category: category,
-      currentCategory: category[0] || {}
+    Request.Blog.getBlogCategory().then(resp => {
+      if (resp.ok) {
+        let category = resp.data
+        this.setState({
+          category: category,
+          currentCategory: category[0] || {}
+        })
+        this.getBlogList(category[0] || {})
+      }
     })
-    this.getBlogList()
   }
-  getBlogList() {
-    let blogList = [
-      {id: 1, title: "blog-aaaa", content: "hello world 123", updatedAt: "2018-1-1"},
-      {id: 2, title: "blog-bbbb", content: "aldsjfl hello world 123", updatedAt: "2018-1-1"},
-      {id: 3, title: "blog-cccc", content: "salvjxzl laldsjfl hello world 123", updatedAt: "2018-1-1"},
-    ]
-    this.setState({
-      blogList: blogList
+  getBlogList(currentCategory) {
+    let params = {}
+    if (currentCategory && currentCategory.id) {
+      params.categoryId = currentCategory.id
+    }
+    Request.Blog.getBlogList(params).then(resp => {
+      if (resp.ok) {
+        let blogList = resp.data
+        this.setState({
+          blogList: blogList
+        })
+      }
     })
   }
   changeCategory(data) {
     this.setState({
       currentCategory: data || {}
     })
+    this.getBlogList(data || {})
   }
   render() {
     return (
