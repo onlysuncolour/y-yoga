@@ -38,13 +38,24 @@ class BlogRead extends React.Component{
   render() {
     return (
       <div className="blog-read-page">
-        blog-read
-        <br />
-        id: {this.state.blog.id}
-        <br />
-        title: {this.state.blog.title}
-        <br />
-        content: {this.state.blog.content}
+        <div className="blog">
+          id: {this.state.blog.id}
+          <br />
+          title: {this.state.blog.title}
+          <br />
+          content: {this.state.blog.content}
+        </div>
+        <div className="hot-blog-list">
+          <span>热门博文</span>
+          { this.state.hotBlogList.map(i => {
+              return (
+                <div key={i.id}>
+                  {i.title}
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     )
   }
