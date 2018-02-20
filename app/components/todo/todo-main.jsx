@@ -71,8 +71,9 @@ class TodoPage extends React.Component{
     this.setState(newState);
   }
 
-  setDone(id) {
-    store.dispatch(addDone( {id} ));
+  setDone(data) {
+    this.state
+    store.dispatch(addDone( data ));
   }
 
   addNewTodo() {
@@ -91,9 +92,9 @@ class TodoPage extends React.Component{
             <span> TODOs: </span>
             {
               this.props.todo.todos.filter(i => i.type=="todo").map( i => (
-                <Todo key={i.id}>
+                <Todo key={i._id}>
                 <span className="title"> {i.title} </span>
-                  <button onClick={this.setDone.bind(this, i.id)} value={i.id}> done</button>
+                  <button onClick={this.setDone.bind(this, i)} value={i._id}> done</button>
                 </Todo>
               ))
             }
@@ -109,7 +110,7 @@ class TodoPage extends React.Component{
             <span> DONEs: </span>
             {
               this.props.todo.todos.filter(i => i.type=="done").map( i => (
-                <Done key={i.id}> <span className="title">{i.title}</span> </Done>
+                <Done key={i._id}> <span className="title">{i.title}</span> </Done>
               ))
             }
           </ul>

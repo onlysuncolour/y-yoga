@@ -4,8 +4,11 @@ module.exports = {
     getTodoList () {
       return Ajax.get('/todo/getlist');
     },
-    create() {
-      return Ajax.post('todo/create')
+    create(param) {
+      return Ajax.post('/todo/create', param)
+    },
+    update(param) {
+      return Ajax.post('/todo/update', param)
     }
   },
   Game: {
