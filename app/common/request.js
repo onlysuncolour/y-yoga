@@ -22,12 +22,14 @@ module.exports = {
     getBlogList(param) {
       return Ajax.post('/blog/list', param)
     },
+    getHotBlogList() {
+      return Ajax.get('/blog/hotlist')
+    },
     getBlog(id) {
       return Ajax.get(`/blog/blog/${id}`)
     },
     saveBlog(param) {
       return Ajax.post('/blog/save', param)
-    }
-
+    },
   }
 }
