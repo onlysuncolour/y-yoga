@@ -1,25 +1,46 @@
 .blog-edit-page {
+  height: 100%;
   padding-top: 80px;
-  .blog {
-    display: inline-block;
-    width: 45%;
-    height: 100%;
-    padding: 40px;
+  position: relative;
+  .blog-title {
+    padding: 20px 50px;
     input {
-      display: block;
-      margin-bottom: 20px;
-    }
-    textarea {
-      display: block;
-      // min-width: 100%;
-      // max-width: 100%;
-      min-height: 120px;
+      line-height: 32px;
+      font-size: 26px;
+      width: 100%;
     }
   }
-  .preview {
-    // display: inline-block;
-    float: right;
-    width: 45%;
-    height: 100%;
+  .blog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    position: absolute;
+    top: 155px;
+    bottom: 10px;
+    width: 100%;
+    padding: 0 20px;
+    .content {
+      flex: 1;
+      order: 1;
+      height: 100%;
+      margin: 0 20px;
+      padding-top: 40px;
+      .content-config {
+        margin-top: -40px;
+        height: 30px;
+      }
+      textarea {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .preview {
+      flex: 1;
+      order: 1;
+      height: 100%;
+    }
   }
 }
