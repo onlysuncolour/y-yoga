@@ -1,16 +1,18 @@
+div {
+  box-sizing: border-box;
+}
 .app-header {
-  position: fixed;
-  height: 30px;
+  position: absolute;
   top: 0;
   z-index: 1;
   width: 100%;
   height: 80px;
   line-height: 80px;
-  color: #fff;
   background: rgba(94, 158, 159, 0.4);
   .header-icon{
-    font-size: 20px;
     margin-left: 20px;
+    font-size: 20px;
+    color: #fff;
     cursor: pointer;
   }
   .header-menu-list {
@@ -45,6 +47,11 @@
 }
 
 .router-view {
+  position: absolute;
+  top: 0px;;
+  bottom: 0px;
+  width: 100%;
+  overflow: auto;
 }
 
 .us-one-page {
@@ -81,20 +88,38 @@
   }
 }
 
-#main {
-  height: 100%;
-  width: 100%;
-  .app {
-    height: 100%;
-    width: 100%;
-    min-width: 1024px;
+.popup {
+  .popup-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 0.2s;
+    background: rgba(0, 0, 0, 0.16);
+    z-index: 1000;
+    opacity: 1;
   }
-  .router-view {
-    height: 100%;
-    width: 100%;
+  .popup-body {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    .popup-container {
+      position: absolute;
+      top: 100px;
+      opacity: 1;
+      left: 50%;
+      min-width: 400px;
+      -ms-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      background-color: #ffffff;
+      border-radius: 3px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.2s;
+    }
   }
-}
-
-div {
-  box-sizing: border-box;
 }

@@ -9,7 +9,8 @@ class LoginPage extends React.Component{
   render() {
     return (
       <div className="login-page">
-        login
+        登陆
+        
       </div>
     )
   }

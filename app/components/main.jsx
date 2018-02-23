@@ -38,8 +38,8 @@ class Main extends React.Component{
     <Provider store={store}>
       <Router history={history}>
         <div className="app">
+          <Header />
           <div className="router-view">
-            <Header />
             <Switch>
               <Route exact path="/" component = {UsPage} />
               <Route path="/yoga" component = {Yoga} />
