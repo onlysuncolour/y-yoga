@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import {store} from "app/common/redux/store";
+import { addPopup } from 'actions';
 
-import {Popup} from '../common/popup'
 import {LoginPage} from '../app/login'
+
 
 class Header extends React.Component{
   constructor() {
@@ -17,7 +18,6 @@ class Header extends React.Component{
         {title: '照片墙', link: '/photo', name: 'photo'},
         {title: '其他', link: '/others', name: 'others'},
       ],
-      login: false
     }
     this.showLogin = this.showLogin.bind(this)
   }
@@ -25,21 +25,18 @@ class Header extends React.Component{
     // store.dispatch(getRouter());
   }
   showLogin(state) {
-    this.setState({
-      login: state
-    })
-  }
-  render() {
-    const login = () => {
-      if (this.state.login) {
+    let loginPopup = {
+      render: () => {
         return (
-          <Popup>
-            <LoginPage>
-            </LoginPage>
-          </Popup>
+          <LoginPage>
+          </LoginPage>
         )
       }
     }
+    console.log(1);
+    store.dispatch(addPopup(loginPopup))
+  }
+  render() {
     return (
       <nav className="app-header">
         <div className="header-icon inline-block">
@@ -58,7 +55,6 @@ class Header extends React.Component{
           <button onClick={this.showLogin.bind(this, true)}> 登录</button>
           <button> 注册</button>
         </div>
-        {login()}
       </nav>
     )
   }

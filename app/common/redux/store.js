@@ -6,10 +6,12 @@ import thunk from 'redux-thunk';
 // import { combineReducers } from 'redux'
 // import { routerReducer } from 'react-router-redux'
 import {todoReducer} from './reducers/todoReducer.js'
+import {popupReducer} from './reducers/popupReducer.js'
 
 const reducers = combineReducers({
   todo: todoReducer,
-  router: routerReducer
+  popup: popupReducer,
+  router: routerReducer,
 })
 
 const history = createHistory()

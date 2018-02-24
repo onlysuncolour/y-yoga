@@ -5,6 +5,9 @@ export const actionTypes = {
   ADD_TODO : 'todo',
   REMOVE_TODO : 'REMOVE_TODO',
   ADD_DONE : 'done',
+  // popup
+  ADD_POPUP : 'ADD_POPUP',
+  REMOVE_POPUP : 'REMOVE_POPUP',
 }
 
 // actions
@@ -67,5 +70,18 @@ export const getTodoList = () => {
         dispatch(setTodo(data))
       }
     })
+  }
+}
+
+export const addPopup = (popup) => {
+  return {
+    type: actionTypes.ADD_POPUP,
+    popup,
+  }
+}
+
+export const removePopup = () => {
+  return {
+    type: actionTypes.REMOVE_POPUP
   }
 }

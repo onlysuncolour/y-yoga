@@ -18,6 +18,7 @@ import {Young} from './us/young'
 import {BlogEdit} from './blog/blog-edit'
 import {BlogRead} from './blog/blog-read'
 
+import {Popup} from './common/popup'
 import './main.less'
 
 class Main extends React.Component{
@@ -54,6 +55,7 @@ class Main extends React.Component{
               <Redirect to="/"/>
             </Switch>
           </div>
+          <Popup></Popup>
         </div>
       </Router>
     </Provider>

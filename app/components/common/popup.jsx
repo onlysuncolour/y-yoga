@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { store } from "app/common/redux/store";
+import { removePopup } from 'actions';
 
 class Popup extends React.Component{
   constructor() {
@@ -7,19 +10,38 @@ class Popup extends React.Component{
   componentDidMount() {
 
   }
+  removePopup() {
+    store.dispatch(removePopup());
+  }
+  stopPropagation(e) {
+    e.stopPropagation()
+  }
   render() {
     return (
       <div className="popup">
-        <div className="popup-mask"></div>
-        <div className="popup-body">
-          <div className="popup-container">
-            asdfasd
-            {this.props.children}
-          </div>
-        </div>
+        {
+          this.props.popup.popups.map(i => {
+            return (
+              <div key={i.key}>
+                <div className="popup-mask"></div>
+                <div onClick={this.removePopup} className="popup-body">
+                  <div onClick={this.stopPropagation} className="popup-container">
+                    {i.render()}
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
     )
   }
 };
 
-module.exports = {Popup}
+const mapStateToProps = (store) => {
+  return {
+    popup: store.popup
+  }
+}
+
+module.exports = {Popup: connect(mapStateToProps)(Popup)}
