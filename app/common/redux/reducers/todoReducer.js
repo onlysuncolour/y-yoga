@@ -41,6 +41,7 @@ const addDone = (state, action) => {
 }
 
 const todoReducer = (state = initialState, action) => {
+  console.log('action.type='+action.type)
   switch (action.type) {
     case actionTypes.SET_TODO: return setTodo(state, action);
     case actionTypes.ADD_TODO: return addTodo(state, action);

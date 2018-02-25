@@ -27,7 +27,10 @@ export const addTodo = data => {
   return dispatch => {
     Request.Todo.create(todo).then(resp => {
       if(resp.ok) {
-        return resp.data;
+        // dispatch({
+        //   type: actionTypes.ADD_TODO,
+        //   todo: resp.data
+        // });
       }
     })
   }
@@ -46,11 +49,10 @@ export const addDone = (todo) => {
   todo.type = 'done'
   return dispatch =>{
     Request.Todo.update(todo).then(resp => {
-      debugger
       if(resp.ok) {
-        dispatch(setTodo(resp.data));
+        // dispatch(setTodo(resp.data));
       } else {
-        dispatch(setTodo(data));
+        // dispatch(setTodo(data));
       }
     })
   }

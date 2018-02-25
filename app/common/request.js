@@ -5,10 +5,10 @@ module.exports = {
       return Ajax.get('/todo/getlist');
     },
     create(param) {
-      return Ajax.post('/todo/create', param)
+      return Ajax.post('/todo/save', param)
     },
     update(param) {
-      return Ajax.post('/todo/update', param)
+      return Ajax.post('/todo/save', param)
     }
   },
   Game: {
