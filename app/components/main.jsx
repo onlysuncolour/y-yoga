@@ -33,7 +33,7 @@ class Main extends React.Component{
     // Socket.connect()
     Request.User.me().then(resp => {
       if (resp.ok && resp.data && resp.data._id) {
-        store.dispatch(setMe( resp.data ));
+        store.dispatch(setMe(resp.data));
       }
       this.setState({
         loading: false

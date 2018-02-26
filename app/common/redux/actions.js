@@ -22,7 +22,6 @@ export const setTodo = data => {
 }}
 
 export const addTodo = data => {
-  console.log('actions.addTodo()')
   let todo = {type: actionTypes.ADD_TODO, title: data}
   return dispatch => {
     Request.Todo.create(todo).then(resp => {

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import {store} from "app/common/redux/store";
+import { removePopup, setMe } from 'actions';
+
 class LoginPage extends React.Component{
   constructor() {
     super();
@@ -26,6 +29,11 @@ class LoginPage extends React.Component{
     Request.User.login({
       username: this.state.username,
       password: this.state.password,
+    }).then(resp => {
+      if (resp.ok) {
+        store.dispatch(setMe(resp.data))
+        store.dispatch(removePopup())
+      }
     })
   }
   render() {

@@ -8,14 +8,16 @@ let SOCKETIO = {
     socket = io(socketUrl)
     this.setSocket();
   },
+  disconnect() {
+    socket.disconnect();
+    socket = undefined;
+  },
   setSocket() {
     socket.on('connect', () => {
       console.log('connect', socket.id);
     })
     socket.on('open', (resp) => {
-      // console.log(socket.id);
-      // console.log('socket connected!');
-      // console.log(resp);
+
     })
     socket.on('message', resp => {
       console.log(resp);

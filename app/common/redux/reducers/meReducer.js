@@ -6,9 +6,11 @@ const initialState = {
 
 const setMe = (state, action) => {
   let me = action.me
+  Socket.connect(me.userId)
   return {me}
 }
 const removeMe = (state) => {
+  Socket.disconnect()
   return {me: {}}
 }
 

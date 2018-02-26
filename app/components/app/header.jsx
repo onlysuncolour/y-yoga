@@ -43,6 +43,23 @@ class Header extends React.Component{
     })
   }
   render() {
+    const loginTab = () => {
+      if (this.props.me && this.props.me._id) {
+        return (
+          <div className="header-user-tab fr">
+            {this.props.me.userName}
+            <button onClick={this.logout}> 退出</button>
+          </div>
+        )
+      } else {
+        return (
+          <div className="header-login-tab fr">
+            <button onClick={this.showLogin.bind(this, true)}> 登录</button>
+            <button> 注册</button>
+          </div>
+        )
+      }
+    }
     return (
       <nav className="app-header">
         <div className="header-icon inline-block">
@@ -57,12 +74,7 @@ class Header extends React.Component{
             ))
           }
         </ul>
-        <div className="header-login-tab fr">
-          {this.props.me.me.userName}
-          <button onClick={this.showLogin.bind(this, true)}> 登录</button>
-          <button onClick={this.logout}> 退出</button>
-          <button> 注册</button>
-        </div>
+        { loginTab() }
       </nav>
     )
   }
@@ -71,7 +83,7 @@ class Header extends React.Component{
 const mapStateToProps = (store) => {
   return {
     router: store.router,
-    me: store.me,
+    me: store.me.me,
   }
 }
 

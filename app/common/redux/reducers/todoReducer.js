@@ -10,7 +10,6 @@ const setTodo = (state, action) => {
 }
 
 const addTodo = (state, action) => {
-  console.log('todoReducer.addTodo()')
   let todos = state.todos;
   todos.push(action.todo)
   return {todos}
@@ -40,7 +39,6 @@ const addDone = (state, action) => {
 }
 
 const todoReducer = (state = initialState, action) => {
-  console.log('action.type='+action.type)
   switch (action.type) {
     case actionTypes.SET_TODO: return setTodo(state, action);
     case actionTypes.ADD_TODO: return addTodo(state, action);
