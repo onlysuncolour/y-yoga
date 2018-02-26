@@ -3,14 +3,14 @@ import axios from 'axios'
 
 const Ajax = {
   get(url, params) {
-    return this.ajax('get', url, {params})
+    return this.ajax('get', url, {params, withCredentials: true})
   },
   post(url, params) {
     return this.ajax('post', url, params)
   },
   ajax(request, url, params) {
     let promise = new Promise(function(resolve, reject) {
-      axios[request](server['dev']+'/api'+url, params).then(resp => {
+      axios[request](server['dev']+'/api'+url, params, {withCredentials: true}).then(resp => {
         resolve({
           ok: true,
           data: resp.data

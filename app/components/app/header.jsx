@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import {store} from "app/common/redux/store";
-import { addPopup } from 'actions';
+import { addPopup, removeMe } from 'actions';
 
 import {LoginPage} from '../app/login'
 
@@ -33,8 +33,14 @@ class Header extends React.Component{
         )
       }
     }
-    console.log(1);
     store.dispatch(addPopup(loginPopup))
+  }
+  logout() {
+    Request.User.logout().then(resp => {
+      if (resp.ok) {
+        store.dispatch(removeMe())
+      }
+    })
   }
   render() {
     return (
@@ -52,7 +58,9 @@ class Header extends React.Component{
           }
         </ul>
         <div className="header-login-tab fr">
+          {this.props.me.me.userName}
           <button onClick={this.showLogin.bind(this, true)}> 登录</button>
+          <button onClick={this.logout}> 退出</button>
           <button> 注册</button>
         </div>
       </nav>
@@ -62,7 +70,8 @@ class Header extends React.Component{
 
 const mapStateToProps = (store) => {
   return {
-    router: store.router
+    router: store.router,
+    me: store.me,
   }
 }
 

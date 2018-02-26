@@ -18,6 +18,20 @@ module.exports = {
       }
     }
   },
+  User: {
+    login(param) {
+      return Ajax.post('/user/login', param)
+    },
+    me() {
+      return Ajax.get('/user/me')
+    },
+    register(param) {
+      return Ajax.post('/user/register', param)
+    },
+    logout() {
+      return Ajax.get('/user/logout')
+    },
+  },
   Blog: {
     getBlogCategory (param) {
       return Ajax.post('/blog/category', param)

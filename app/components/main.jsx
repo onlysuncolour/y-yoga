@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter as Router } from 'react-router-redux'
 
 import { store, history } from '../common/redux/store'
+import { setMe } from 'actions';
 
 import {Header} from './app/header'
 import {BlogPage} from './blog/blog-main'
@@ -24,9 +25,20 @@ import './main.less'
 class Main extends React.Component{
   constructor() {
     super();
+    this.state = {
+      loading: true,
+    }
   }
   componentWillMount() {
-    Socket.connect()
+    // Socket.connect()
+    Request.User.me().then(resp => {
+      if (resp.ok && resp.data && resp.data._id) {
+        store.dispatch(setMe( resp.data ));
+      }
+      this.setState({
+        loading: false
+      })
+    })
     G.addlistener('game-message', data => this.dealGameMessage(data))
   }
   dealGameMessage(data) {
@@ -35,25 +47,38 @@ class Main extends React.Component{
     }
   }
   render() {
+    const RouterView = () => {
+      if (this.state.loading) {
+        return (
+          <div>LOADING</div>
+        )
+      } else {
+        return (
+          <Switch>
+            <Route exact path="/" component = {UsPage} />
+            <Route path="/yoga" component = {Yoga} />
+            <Route path="/young" component = {Young} />
+            <Route path="/todo" component = {TodoPage} />
+            <Route path="/photo" component = {PhotoPage} />
+            <Route path="/blog" component = {BlogPage} />
+            <Route exact path="/others" component = {OthersPage} />
+            <Route path="/others/lost-city" component = {LostCity} />
+            <Route path="/blog-edit" component = {BlogEdit} />
+            <Route path="/blog-read/:id" component = {BlogRead} />
+            <Redirect to="/"/>
+          </Switch>
+        )
+      }
+    }
     return (
     <Provider store={store}>
       <Router history={history}>
         <div className="app">
           <Header />
           <div className="router-view">
-            <Switch>
-              <Route exact path="/" component = {UsPage} />
-              <Route path="/yoga" component = {Yoga} />
-              <Route path="/young" component = {Young} />
-              <Route path="/todo" component = {TodoPage} />
-              <Route path="/photo" component = {PhotoPage} />
-              <Route path="/blog" component = {BlogPage} />
-              <Route exact path="/others" component = {OthersPage} />
-              <Route path="/others/lost-city" component = {LostCity} />
-              <Route path="/blog-edit" component = {BlogEdit} />
-              <Route path="/blog-read/:id" component = {BlogRead} />
-              <Redirect to="/"/>
-            </Switch>
+            {
+              RouterView()
+            }
           </div>
           <Popup></Popup>
         </div>

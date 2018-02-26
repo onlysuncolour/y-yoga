@@ -8,6 +8,9 @@ export const actionTypes = {
   // popup
   ADD_POPUP : 'ADD_POPUP',
   REMOVE_POPUP : 'REMOVE_POPUP',
+  // me
+  SET_ME : 'SET_ME',
+  REMOVE_ME : 'REMOVE_ME',
 }
 
 // actions
@@ -85,5 +88,17 @@ export const addPopup = (popup) => {
 export const removePopup = () => {
   return {
     type: actionTypes.REMOVE_POPUP
+  }
+}
+
+export const setMe = (me) => {
+  return {
+    type: actionTypes.SET_ME,
+    me,
+  }
+}
+export const removeMe = () => {
+  return {
+    type: actionTypes.REMOVE_ME,
   }
 }
