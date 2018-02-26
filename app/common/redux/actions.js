@@ -20,20 +20,17 @@ export const setTodo = data => {
     type: actionTypes.SET_TODO,
     data
 }}
-// export const addTodo = todo => ({
-//     type: actionTypes.ADD_TODO,
-//     todo
-// })
+
 export const addTodo = data => {
   console.log('actions.addTodo()')
   let todo = {type: actionTypes.ADD_TODO, title: data}
   return dispatch => {
     Request.Todo.create(todo).then(resp => {
       if(resp.ok) {
-        // dispatch({
-        //   type: actionTypes.ADD_TODO,
-        //   todo: resp.data
-        // });
+        dispatch({
+          type: actionTypes.ADD_TODO,
+          todo: resp.data
+        });
       }
     })
   }
@@ -43,19 +40,15 @@ export const removeTodo = todo => ({
     todo
 })
 
-// export const addDone = todo => ({
-//   type: actionTypes.ADD_DONE,
-//   todo
-// })
-
 export const addDone = (todo) => {
-  todo.type = 'done'
+  todo.type = "done"
   return dispatch =>{
     Request.Todo.update(todo).then(resp => {
       if(resp.ok) {
-        // dispatch(setTodo(resp.data));
-      } else {
-        // dispatch(setTodo(data));
+        dispatch({
+          type: actionTypes.ADD_DONE,
+          done: resp.data
+        });
       }
     })
   }

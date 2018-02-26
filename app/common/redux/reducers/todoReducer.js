@@ -12,9 +12,7 @@ const setTodo = (state, action) => {
 const addTodo = (state, action) => {
   console.log('todoReducer.addTodo()')
   let todos = state.todos;
-  // let id = todos.length;
-  // todos.push({id, type: 'todo', title: action.todo})
-  todos.push({type: 'todo', title: action.todo})
+  todos.push(action.todo)
   return {todos}
 }
 
@@ -30,13 +28,14 @@ const removeTodo = (state, action) => {
 }
 
 const addDone = (state, action) => {
-  let todos = state.todos;
+  let todos = state.todos, done = action.done;
   for (var i = 0; i < todos.length; i++) {
-    if (todos[i]._id == action.todo._id) {
-      todos[i].type = 'done'
+    if (todos[i]._id == done._id) {
+      todos.splice(i, 1);
       break
     }
   }
+  todos.push(done)
   return {todos}
 }
 
