@@ -2,9 +2,9 @@
 export const actionTypes = {
   // todo
   SET_TODO : 'SET_TODO',
-  ADD_TODO : 'todo',
+  ADD_TODO : 'ADD_TODO',
   REMOVE_TODO : 'REMOVE_TODO',
-  ADD_DONE : 'done',
+  ADD_DONE : 'ADD_DONE',
   // popup
   ADD_POPUP : 'ADD_POPUP',
   REMOVE_POPUP : 'REMOVE_POPUP',
@@ -22,7 +22,7 @@ export const setTodo = data => {
 }}
 
 export const addTodo = data => {
-  let todo = {type: actionTypes.ADD_TODO, title: data}
+  let todo = {type: 'todo', title: data}
   return dispatch => {
     Request.Todo.create(todo).then(resp => {
       if(resp.ok) {
