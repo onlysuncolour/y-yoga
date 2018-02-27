@@ -39,7 +39,7 @@ class BlogRead extends React.Component{
     return (
       <div className="blog-read-page">
         <div className="blog">
-          id: {this.state.blog.id}
+          id: {this.state.blog._id}
           <br />
           title: {this.state.blog.title}
           <br />

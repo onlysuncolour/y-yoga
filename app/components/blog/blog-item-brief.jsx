@@ -13,7 +13,7 @@ class ItemBrief extends React.Component{
       <div className="blog-item-brief">
         blog-item-brief
         <div className="top">
-          <Link className="link" to={'/blog-read/'+this.props.item.id}>title: {this.props.item.title}</Link>
+          <Link className="link" to={'/blog-read/'+this.props.item._id}>title: {this.props.item.title}</Link>
         </div>
         <div className="brief">
           content: {this.props.item.content}

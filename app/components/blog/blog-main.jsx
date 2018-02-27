@@ -36,8 +36,8 @@ class BlogPage extends React.Component{
   }
   getBlogList(currentCategory) {
     let params = {}
-    if (currentCategory && currentCategory.id) {
-      params.categoryId = currentCategory.id
+    if (currentCategory && currentCategory._id) {
+      params.key = currentCategory.key
     }
     Request.Blog.getBlogList(params).then(resp => {
       if (resp.ok) {
@@ -66,7 +66,7 @@ class BlogPage extends React.Component{
           {
             this.state.blogList.map(i => {
               return (
-                <ItemBrief key={i.id} item={i}></ItemBrief>
+                <ItemBrief key={i._id} item={i}></ItemBrief>
               )
             })
           }

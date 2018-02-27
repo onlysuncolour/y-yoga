@@ -9,14 +9,14 @@ module.exports = {
     },
     update(param) {
       return Ajax.post('/todo/save', param)
-    }
+    },
   },
   Game: {
     LostCity: {
       joinGame() {
         return Ajax.post('/game/lostCity/joinGame')
-      }
-    }
+      },
+    },
   },
   User: {
     login(param) {
@@ -48,5 +48,5 @@ module.exports = {
     saveBlog(param) {
       return Ajax.post('/blog/save', param)
     },
-  }
+  },
 }

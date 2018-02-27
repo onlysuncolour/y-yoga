@@ -8,7 +8,7 @@ class BlogCategory extends React.Component{
 
   }
   changeCategory(c) {
-    if (this.props.currentCategory.id == c.id) {
+    if (this.props.currentCategory._id == c._id) {
       return;
     }
     this.props.changeCategory(c)
@@ -18,12 +18,12 @@ class BlogCategory extends React.Component{
       <div className="blog-category">
         {this.props.category.map(i => {
           return (
-            <div key={i.id}
+            <div key={i._id}
               className={`category-item ${
-                {true: 'selected-category-item'}[this.props.currentCategory.id == i.id]
+                {true: 'selected-category-item'}[this.props.currentCategory._id == i._id]
               }`}
             >
-            <span onClick={this.changeCategory.bind(this, i)}>{i.name}</span>
+            <span onClick={this.changeCategory.bind(this, i)}>{i.title}</span>
             </div>
           )
         })}

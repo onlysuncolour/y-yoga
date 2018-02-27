@@ -24,7 +24,7 @@ class Header extends React.Component{
   componentDidMount() {
     // store.dispatch(getRouter());
   }
-  showLogin(state) {
+  showLogin() {
     let loginPopup = {
       render: () => {
         return (
@@ -34,6 +34,9 @@ class Header extends React.Component{
       }
     }
     store.dispatch(addPopup(loginPopup))
+  }
+  showRegister() {
+    Request.User.register()
   }
   logout() {
     Request.User.logout().then(resp => {
@@ -54,8 +57,8 @@ class Header extends React.Component{
       } else {
         return (
           <div className="header-login-tab fr">
-            <button onClick={this.showLogin.bind(this, true)}> 登录</button>
-            <button> 注册</button>
+            <button onClick={this.showLogin}> 登录</button>
+            <button onClick={this.showRegister}> 注册</button>
           </div>
         )
       }
