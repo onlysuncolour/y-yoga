@@ -14,6 +14,7 @@ class ItemBrief extends React.Component{
         blog-item-brief
         <div className="top">
           <Link className="link" to={'/blog-read/'+this.props.item._id}>title: {this.props.item.title}</Link>
+          <Link className="link" to={'/blog-edit/'+this.props.item._id}>编辑</Link>
         </div>
         <div className="brief">
           content: {this.props.item.content}

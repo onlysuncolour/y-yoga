@@ -37,7 +37,9 @@ class BlogPage extends React.Component{
   getBlogList(currentCategory) {
     let params = {}
     if (currentCategory && currentCategory._id) {
-      params.key = currentCategory.key
+      if (currentCategory.key) {
+        params.tags = currentCategory.key
+      }
     }
     Request.Blog.getBlogList(params).then(resp => {
       if (resp.ok) {

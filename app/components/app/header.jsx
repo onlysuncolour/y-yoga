@@ -47,7 +47,7 @@ class Header extends React.Component{
   }
   render() {
     const loginTab = () => {
-      if (this.props.me && this.props.me._id) {
+      if (this.props.me && this.props.me.userId) {
         return (
           <div className="header-user-tab fr">
             {this.props.me.userName}
