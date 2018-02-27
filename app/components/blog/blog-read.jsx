@@ -49,7 +49,7 @@ class BlogRead extends React.Component{
           <span>热门博文</span>
           { this.state.hotBlogList.map(i => {
               return (
-                <div key={i.id}>
+                <div key={i._id}>
                   {i.title}
                 </div>
               )
