@@ -1,19 +1,20 @@
 import React from 'react';
-import Markdown from 'react-markdown'
 import {store} from "app/common/redux/store";
 import { connect } from 'react-redux';
-
+import Editor from 'tui-editor';
 import './blog-edit.less'
 
 class BlogEdit extends React.Component {
   constructor() {
     super();
     this.state = {
-      blogContent: '# This is a header\n\nAnd this is a paragraph',
-      blogTitle: "",
-      blogObj: {},
+      blog: {
+        content: "",
+        title: "",
+        tags: [],
+      },
       taglist: [],
-      selectedTags: [],
+      editor: null,
       loading: false,
     }
     this.handleBlogChange = this.handleBlogChange.bind(this)
@@ -22,9 +23,9 @@ class BlogEdit extends React.Component {
     this.getBlog = this.getBlog.bind(this)
   }
   handleBlogChange(event) {
-    let newState = {};
-    newState[event.target.name] = event.target.value
-    this.setState(newState);
+    let blog = this.state.blog
+    blog[event.target.name] = event.target.value
+    this.setState({blog: blog});
   }
   getTags() {
     Request.Blog.getBlogCategory().then(resp => {
@@ -37,7 +38,8 @@ class BlogEdit extends React.Component {
     })
   }
   selectTag(tagKey) {
-    let selectedTags = this.state.selectedTags
+    let blog = this.state.blog;
+    let selectedTags = blog.tags
     if (selectedTags.indexOf(tagKey) == -1) {
       selectedTags.push(tagKey)
     } else {
@@ -45,49 +47,58 @@ class BlogEdit extends React.Component {
       selectedTags.splice(index, 1)
     }
     this.setState({
-      selectedTags
+      blog: blog
     })
   }
   saveBlog() {
-    let blog = this.state.blogObj;
+    let blog = this.state.blog;
+    blog.content = this.state.editor.getValue()
     if (!blog._id) {
       blog.author = this.props.me.userName
       blog.author_id = this.props.me.userId
       blog.created_at = new Date().getTime()
+      blog.updated_at = blog.created_at
     } else {
       blog.updated_at = new Date().getTime()
     }
-    blog.content = this.state.blogContent
-    blog.title = this.state.blogTitle
-    blog.tags = this.state.selectedTags;
     Request.Blog.saveBlog(blog).then(resp => {
       if (resp.ok) {
         console.log('保存成功');
+        this.setState({
+          blog: resp.data
+        })
       }
     })
-  }
-  componentWillMount() {
-    this.getTags()
-    let id = this.props.match.params.id;
-    if (id) {
-      this.setState({
-        loading: true
-      })
-      this.getBlog(id);
-    }
   }
   getBlog(id) {
     Request.Blog.getBlog(id).then(resp => {
       if (resp.ok) {
         let blog = resp.data;
         this.setState({
-          blogObj: blog,
-          blogContent: blog.content,
-          blogTitle: blog.title,
-          selectedTags: blog.tags,
+          blog,
           loading: false,
         })
+        this.state.editor.setMarkdown(blog.content)
       }
+    })
+  }
+  componentDidMount() {
+    this.getTags()
+    let id = this.props.match.params.id;
+    let editor = new Editor({
+      el: document.querySelector('#editSection'),
+      initialEditType: 'markdown',
+      previewStyle: 'vertical',
+      height: '300px'
+    });
+    if (id) {
+      this.setState({
+        loading: true
+      })
+      this.getBlog(id);
+    }
+    this.setState({
+      editor
     })
   }
   render () {
@@ -107,7 +118,7 @@ class BlogEdit extends React.Component {
       <div className="blog-edit-page">
         { Loading() }
         <div className="blog-title">
-          <input type="text" value={this.state.blogTitle} name="blogTitle" onChange={this.handleBlogChange} placeholder="博文标题" />
+          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="博文标题" />
           { saveButton() }
         </div>
         <div className="blog-tag-config">
@@ -115,7 +126,7 @@ class BlogEdit extends React.Component {
           {
             this.state.taglist.map(i => {
               let className = "y-tag"
-              if (this.state.selectedTags.indexOf(i.key) != -1) {
+              if (this.state.blog.tags.indexOf(i.key) != -1) {
                 className += " y-tag-selected"
               }
               return (
@@ -127,12 +138,7 @@ class BlogEdit extends React.Component {
           }
         </div>
         <div className="blog">
-          <div className="content">
-            <textarea value={this.state.blogContent} name="blogContent" onChange={this.handleBlogChange} />
-          </div>
-          <div className="preview">
-            <Markdown source={this.state.blogContent} />
-          </div>
+          <div id="editSection" className="editor"></div>
         </div>
       </div>
     )
