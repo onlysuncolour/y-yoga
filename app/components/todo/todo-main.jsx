@@ -82,6 +82,10 @@ class TodoPage extends React.Component{
     });
   }
 
+  onKeyup(e) {
+    e.keyCode === 13 && this.addNewTodo();
+  }
+
   render() {
     return (
       <div className="todo-main-page" style={ {'marginTop': '100px'} }>
@@ -99,7 +103,7 @@ class TodoPage extends React.Component{
             }
             <TodoInputLi>
               <span className="title">new Todo:</span>
-              <input type="text" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} />
+              <input type="text" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)}/>
               <button onClick={this.addNewTodo}> 添加 </button>
             </TodoInputLi>
           </ul>
