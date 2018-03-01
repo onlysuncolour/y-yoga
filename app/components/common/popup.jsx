@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { store } from "app/common/redux/store";
 import { removePopup } from 'actions';
 
 class Popup extends React.Component{

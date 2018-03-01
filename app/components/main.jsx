@@ -3,7 +3,6 @@ import { Route, Switch, Redirect, NavLink} from "react-router-dom"
 import { Provider } from 'react-redux'
 import { ConnectedRouter as Router } from 'react-router-redux'
 
-import { store, history } from '../common/redux/store'
 import { setMe } from 'actions';
 
 import {Header} from './app/header'
@@ -73,7 +72,7 @@ class Main extends React.Component{
     }
     return (
     <Provider store={store}>
-      <Router history={history}>
+      <Router history={browserHistory}>
         <div className="app">
           <Header />
           <div className="router-view">

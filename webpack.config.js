@@ -36,6 +36,8 @@ module.exports = {
       'actions': path.resolve(APP_PATH, 'common/redux/actions.js'),
       'Socket': path.resolve(APP_PATH, 'common/socket.js'),
       'G': path.resolve(APP_PATH, 'common/global-event.js'),
+      'browserHistory': path.resolve(APP_PATH, 'common/history.js'),
+      'store': path.resolve(APP_PATH, 'common/redux/store.js'),
     }
   },
   module: {
@@ -58,6 +60,8 @@ module.exports = {
       'actions': 'actions',
       'Socket': 'Socket',
       'G': 'G',
+      'browserHistory': 'browserHistory',
+      'store': 'store',
     })
   ]
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import {store} from "app/common/redux/store";
 import { connect } from 'react-redux';
 import Editor from 'tui-editor';
 import './blog-edit.less'
@@ -21,6 +20,7 @@ class BlogEdit extends React.Component {
     this.getTags = this.getTags.bind(this)
     this.saveBlog = this.saveBlog.bind(this)
     this.getBlog = this.getBlog.bind(this)
+    this.goBack = this.goBack.bind(this)
   }
   handleBlogChange(event) {
     let blog = this.state.blog
@@ -31,11 +31,23 @@ class BlogEdit extends React.Component {
     Request.Blog.getBlogCategory().then(resp => {
       if (resp.ok) {
         let taglist = resp.data
+        taglist = taglist.filter(i => i.key != 0)
         this.setState({
           taglist: taglist,
         })
       }
     })
+  }
+  goBack() {
+    if (this.state.blog._id) {
+      browserHistory.push({
+        pathname: `/blog-read/${this.state.blog._id}`,
+      })
+    } else {
+      browserHistory.push({
+        pathname: `/blog`,
+      })
+    }
   }
   selectTag(tagKey) {
     let blog = this.state.blog;
@@ -89,7 +101,6 @@ class BlogEdit extends React.Component {
       el: document.querySelector('#editSection'),
       initialEditType: 'markdown',
       previewStyle: 'vertical',
-      height: '300px'
     });
     if (id) {
       this.setState({
@@ -107,10 +118,13 @@ class BlogEdit extends React.Component {
         return ( <div className="loading"> loading</div> )
       }
     }
-    const saveButton = () => {
+    const buttons = () => {
       if (this.props.me.userId) {
         return (
-          <button className="fr" onClick={this.saveBlog}>保存</button>
+          <div className="blog-edit-buttons">
+            <button onClick={this.saveBlog}>保存</button>
+            <button onClick={this.goBack}>返回</button>
+          </div>
         )
       }
     }
@@ -119,7 +133,7 @@ class BlogEdit extends React.Component {
         { Loading() }
         <div className="blog-title">
           <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="博文标题" />
-          { saveButton() }
+          { buttons() }
         </div>
         <div className="blog-tag-config">
           tags:
@@ -148,6 +162,7 @@ class BlogEdit extends React.Component {
 const mapStateToProps = (store) => {
   return {
     me: store.me.me,
+    router: store.router,
   }
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
-import {store} from "app/common/redux/store";
 import { addPopup, removeMe } from 'actions';
 
 import {LoginPage} from '../app/login'
@@ -22,7 +21,7 @@ class Header extends React.Component{
     this.showLogin = this.showLogin.bind(this)
   }
   componentDidMount() {
-    // store.dispatch(getRouter());
+    
   }
   showLogin() {
     let loginPopup = {

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {store} from "app/common/redux/store";
 import { removePopup, setMe } from 'actions';
 
 class LoginPage extends React.Component{
