@@ -17,15 +17,15 @@ module.exports = {
     filename: 'bundle.js'
   },
   //enable dev source map
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
   //enable dev server
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-    port: 9520
-  },
+  // devServer: {
+  //   historyApiFallback: true,
+  //   hot: true,
+  //   inline: true,
+  //   progress: true,
+  //   port: 9520
+  // },
   resolve: {
     extensions: ['', '.js', '.jsx','.json', 'png', 'less'],
     alias: {
@@ -62,6 +62,7 @@ module.exports = {
       'G': 'G',
       'browserHistory': 'browserHistory',
       'store': 'store',
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
   ]
 }

@@ -4,7 +4,7 @@
   "repository": {},
   "scripts": {
     "dev": "webpack-dev-server --progress --profile --colors --hot",
-    "build": "webpack --progress --profile --colors"
+    "build": "webpack --config webpack.config.prod.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
