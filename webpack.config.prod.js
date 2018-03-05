@@ -14,7 +14,7 @@ module.exports = {
   ],
   output: {
     path: BUILD_PATH,
-    publicPath: '/assets/',
+    // publicPath: '/assets/',
     filename: 'bundle.js'
   },
   //enable dev source map
@@ -28,7 +28,7 @@ module.exports = {
   //   port: 9520
   // },
   resolve: {
-    extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpg', 'jpeg', 'css'],
+    extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpg', 'jpeg', 'css', 'gif'],
     alias: {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
@@ -51,6 +51,7 @@ module.exports = {
       {test: /\.png$/, loader:"url-loader?limit=10000&mimetype=image/png&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
       {test: /\.jpeg$/, loader:"url-loader?limit=10000&mimetype=image/jpeg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
       {test: /\.jpg$/, loader:"url-loader?limit=10000&mimetype=image/jpg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
+      {test: /\.gif$/, loader:"url-loader?limit=10000&mimetype=image/jpg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
     ]
   },
   plugins: [

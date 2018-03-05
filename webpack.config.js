@@ -27,7 +27,7 @@ module.exports = {
     port: 9520
   },
   resolve: {
-    extensions: ['', '.js', '.jsx','.json', 'png', 'less'],
+    extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpeg', 'gif'],
     alias: {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
@@ -49,7 +49,7 @@ module.exports = {
       {test: /\.less$/, loader: 'style!css!less'},
       {test: /\.png$/, loader:"url-loader?limit=10000&mimetype=image/png"},
       {test: /\.jpeg$/, loader:"url-loader?limit=10000&mimetype=image/jpeg"},
-      {test: /\.jpg$/, loader:"url-loader?limit=10000&mimetype=image/jpg"},
+      {test: /\.gif$/, loader:"url-loader?limit=10000&mimetype=image/jpg"},
     ]
   },
   plugins: [
