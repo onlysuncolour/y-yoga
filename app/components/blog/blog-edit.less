@@ -31,10 +31,16 @@
     position: absolute;
     top: 230px;
     bottom: 10px;
-    width: 100%;
-    padding: 0 20px;
+    right: 20px;
+    left: 20px;
+    border: 1px solid;
+    // padding: 0 20px;
     .content {
-      
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      padding: 5px 10px;
+      border-right: 1px dashed;
       textarea {
         width: 100%;
         height: 100%;
@@ -44,12 +50,14 @@
           border: 0px;
           outline: none;
         }
-        // margin: 0px;
-        // height: 66px;
       }
     }
     .preview {
-
+      display: inline-block;
+      width: 50%;
+      height: 100%;
+      float: right;
+      padding: 5px 10px;
     }
   }
   .blog-editor-buttons {
