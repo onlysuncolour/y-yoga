@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Editor from 'tui-editor';
+import Markdown from 'react-markdown'
 import './blog-edit.less'
 
 class BlogEdit extends React.Component {
@@ -90,27 +90,18 @@ class BlogEdit extends React.Component {
           blog,
           loading: false,
         })
-        this.state.editor.setMarkdown(blog.content)
       }
     })
   }
   componentDidMount() {
     this.getTags()
     let id = this.props.match.params.id;
-    let editor = new Editor({
-      el: document.querySelector('#editSection'),
-      initialEditType: 'markdown',
-      previewStyle: 'vertical',
-    });
     if (id) {
       this.setState({
         loading: true
       })
       this.getBlog(id);
     }
-    this.setState({
-      editor
-    })
   }
   render () {
     const Loading = () => {
@@ -151,8 +142,17 @@ class BlogEdit extends React.Component {
             })
           }
         </div>
+        <div className="blog-editor-buttons">
+          123
+          <i className="fa fa-bold"></i> fa-lg
+        </div>
         <div className="blog">
-          <div id="editSection" className="editor"></div>
+          <div className="content">
+            <textarea value={this.state.blog.content} name="content" onChange={this.handleBlogChange} />
+          </div>
+          <div className="preview">
+            <Markdown source={this.state.blog.content} />
+          </div>
         </div>
       </div>
     )
