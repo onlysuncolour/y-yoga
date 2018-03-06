@@ -47,6 +47,10 @@ module.exports = {
       {test: /\.json?$/, loader: 'json'},
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.less$/, loader: 'style!css!less'},
+      {test: /\.(eot|otf|webp|ttf|woff|woff2|svg)(\?.*)?$/,loader: "url-loader",},
+        // query: {
+        //   name: `${config.staticPath}font/[name]${config.hashString}.[ext]`
+        // }
       {test: /\.png$/, loader:"url-loader?limit=10000&mimetype=image/png"},
       {test: /\.jpeg$/, loader:"url-loader?limit=10000&mimetype=image/jpeg"},
       {test: /\.gif$/, loader:"url-loader?limit=10000&mimetype=image/jpg"},

@@ -143,8 +143,7 @@ class BlogEdit extends React.Component {
           }
         </div>
         <div className="blog-editor-buttons">
-          123
-          <i className="fa fa-bold"></i> fa-lg
+          <span className="icon-table2"></span>
         </div>
         <div className="blog">
           <div className="content">
