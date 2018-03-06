@@ -123,7 +123,7 @@ class BlogEdit extends React.Component {
       <div className="blog-edit-page">
         { Loading() }
         <div className="blog-title">
-          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="博文标题" />
+          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="请输入标题" />
           { buttons() }
         </div>
         <div className="blog-tag-config">
@@ -143,7 +143,9 @@ class BlogEdit extends React.Component {
           }
         </div>
         <div className="blog-editor-buttons">
-          <span className="icon-table2"></span>
+          <span className="editor-button icon-table2"></span>
+          <span className="editor-button icon-table2"></span>
+          <span className="editor-button icon-table2"></span>
         </div>
         <div className="blog">
           <div className="content">
