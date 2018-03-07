@@ -36,15 +36,45 @@ class BlogEdit extends React.Component {
         content = this.state.blog.content,
         text = "\n",
         length = 1;
-    if (type == 'bold') {
+    if (type == 'header') {
       text += "## \n"
       length += 3;
-    } else if (type == 'bolder') {
-      text += "### \n"
-      length += 4;
-    } else if (type == 'quote') {
-      text += "> \n"
+    } else if (type == 'hheader') {
+      text += "# \n"
       length += 2;
+    } else if (type == 'quote') {
+      text = "` `"
+      length = 1;
+    } else if (type == 'list1') {
+      text += "1. \n2. \n3. \n4. \n"
+      length += 3
+    } else if (type == 'list2') {
+      text += "* \n* \n* \n* \n"
+      length += 2
+    } else if (type == 'italic') {
+      text = "**"
+      length = 1
+    } else if (type == 'bold') {
+      text = "****"
+      length = 2
+    } else if (type == 'strikethrough') {
+      text = "~~~~"
+      length = 2
+    } else if (type == 'pageBreak') {
+      text += "___\n"
+      length += 4
+    } else if (type == 'embed') {
+      text += "```\n\n```\n"
+      length += 4
+    } else if (type == 'chain') {
+      text += "[text](link)"
+      length += 5
+    } else if (type == 'image') {
+      text += "![](link)"
+      length += 8
+    } else if (type == 'table') {
+      text += "| head | head |\n|----|----|\n| content | content |\n"
+      length += 2
     }
     content = content.substring(0, start) + text + content.substring(start, content.length);
     blog.content = content;
@@ -192,18 +222,21 @@ class BlogEdit extends React.Component {
           }
         </div>
         <div className="blog-editor-buttons">
+          <span className="editor-button icon-header" onClick={this.handleBlogContent.bind(this, 'header')}></span>
+          <span className="editor-button icon-header" style={{'fontWeight': 'bolder'}} onClick={this.handleBlogContent.bind(this, 'hheader')}></span>
           <span className="editor-button icon-bold" onClick={this.handleBlogContent.bind(this, 'bold')}></span>
-          <span className="editor-button icon-bold" style={{'fontWeight': 'bolder'}} onClick={this.handleBlogContent.bind(this, 'bolder')}></span>
-          <span className="editor-button icon-underline" onClick={this.handleBlogContent.bind(this, 'underline')}></span>
           <span className="editor-button icon-italic" onClick={this.handleBlogContent.bind(this, 'italic')}></span>
           <span className="editor-button icon-strikethrough" onClick={this.handleBlogContent.bind(this, 'strikethrough')}></span>
+          <span className="editor-button-line">|</span>
           <span className="editor-button icon-embed2" onClick={this.handleBlogContent.bind(this, 'embed')}></span>
+          <span className="editor-button icon-quotes-left" onClick={this.handleBlogContent.bind(this, 'quote')}></span>
+          <span className="editor-button icon-page-break" onClick={this.handleBlogContent.bind(this, 'pageBreak')}></span>
           <span className="editor-button icon-list-numbered" onClick={this.handleBlogContent.bind(this, 'list1')}></span>
           <span className="editor-button icon-list2" onClick={this.handleBlogContent.bind(this, 'list2')}></span>
+          <span className="editor-button-line">|</span>
           <span className="editor-button icon-table2" onClick={this.handleBlogContent.bind(this, 'table')}></span>
-          <span className="editor-button icon-quotes-left" onClick={this.handleBlogContent.bind(this, 'quote')}></span>
+          <span className="editor-button icon-chain" onClick={this.handleBlogContent.bind(this, 'chain')}></span>
           <span className="editor-button icon-images" onClick={this.handleBlogContent.bind(this, 'image')}></span>
-          <span className="editor-button icon-attachment" onClick={this.handleBlogContent.bind(this, 'attachment')}></span>
         </div>
         <div className="blog">
           <div className="content">
