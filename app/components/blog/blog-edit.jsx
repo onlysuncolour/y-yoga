@@ -34,16 +34,21 @@ class BlogEdit extends React.Component {
     let start = textarea.selectionStart,
         blog = this.state.blog,
         content = this.state.blog.content,
-        text = "\n";
-    // debugger;
+        text = "\n",
+        length = 1;
     if (type == 'bold') {
       text += "## \n"
+      length += 3;
     } else if (type == 'bolder') {
       text += "### \n"
+      length += 4;
+    } else if (type == 'quote') {
+      text += "> \n"
+      length += 2;
     }
     content = content.substring(0, start) + text + content.substring(start, content.length);
     blog.content = content;
-    operationAt = start + text.length - 1;
+    operationAt = start + length;
     this.setState({blog})
   }
   getTags() {
@@ -111,6 +116,24 @@ class BlogEdit extends React.Component {
         })
       }
     })
+  }
+  onKeydown(e) {
+    if (e.keyCode == 9) {
+      e.preventDefault();
+      var indent = '    ';
+      var start = this.refs.blogTextarea.selectionStart;
+      var end = this.refs.blogTextarea.selectionEnd;
+      var selected = window.getSelection().toString();
+      selected = indent + selected.replace(/\n/g, '\n' + indent);
+      this.refs.blogTextarea.value = this.refs.blogTextarea.value.substring(0, start) + selected
+              + this.refs.blogTextarea.value.substring(end);
+      let blog = this.state.blog;
+      operationAt = start+4
+      blog.content = this.refs.blogTextarea.value
+      this.setState({
+        blog
+      })
+    }
   }
   componentDidMount() {
     this.getTags()
@@ -184,11 +207,11 @@ class BlogEdit extends React.Component {
         </div>
         <div className="blog">
           <div className="content">
-            <textarea value={this.state.blog.content} name="content" ref="blogTextarea" onChange={this.handleBlogChange} autoFocus='true' />
+            <textarea value={this.state.blog.content} name="content" ref="blogTextarea" onChange={this.handleBlogChange} onKeyDown={this.onKeydown.bind(this)} />
           </div>
-          {/* <div className="preview"> */}
-            <Markdown className="preview" source={this.state.blog.content} />
-          {/* </div> */}
+          <div className="preview markdown-content" ref="blogPreview">
+            <Markdown className="" source={this.state.blog.content} />
+          </div>
         </div>
       </div>
     )

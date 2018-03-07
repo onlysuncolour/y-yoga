@@ -1,4 +1,5 @@
 import './styles/normalize.css'
+import './styles/markdown.css'
 import './styles/common.less'
 import './styles/main.less'
 
