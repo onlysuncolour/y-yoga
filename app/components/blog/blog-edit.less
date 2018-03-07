@@ -19,7 +19,6 @@
   }
   .blog-tag-config {
     margin: 0px 20px;
-    height: 50px;
     .y-tag {
       display: inline-block;
       margin: 5px 10px;
@@ -35,7 +34,7 @@
   }
   .blog {
     flex-grow: 1;
-    height: 100%;
+    height: calc(100% - 180px);
     margin: 0 20px;
     border: 1px solid @blog-gray;
     // padding: 0 20px;
@@ -62,6 +61,13 @@
       height: 100%;
       float: right;
       padding: 5px 10px;
+      p{
+        margin-top: 0;
+        display: block;
+        height: 100%;
+        overflow: auto;
+        word-wrap: break-word;
+      }
     }
   }
   .blog-editor-buttons {
