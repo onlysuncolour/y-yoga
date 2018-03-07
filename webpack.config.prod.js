@@ -52,6 +52,7 @@ module.exports = {
       {test: /\.jpeg$/, loader:"url-loader?limit=10000&mimetype=image/jpeg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
       {test: /\.jpg$/, loader:"url-loader?limit=10000&mimetype=image/jpg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
       {test: /\.gif$/, loader:"url-loader?limit=10000&mimetype=image/jpg&name=images/[hash:8].[name].[ext]", options:{publicPath:'/'}},
+      {test: /\.(eot|otf|webp|ttf|woff|woff2|svg)(\?.*)?$/,loader: "url-loader?name=fonts/[hash:8].[name].ext", options:{publicPath:'/'}},
     ]
   },
   plugins: [

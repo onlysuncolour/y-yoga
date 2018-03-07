@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Markdown from 'react-markdown'
 import './blog-edit.less'
 
+let operationAt = 0;
+
 class BlogEdit extends React.Component {
   constructor() {
     super();
@@ -26,6 +28,23 @@ class BlogEdit extends React.Component {
     let blog = this.state.blog
     blog[event.target.name] = event.target.value
     this.setState({blog: blog});
+  }
+  handleBlogContent(type) {
+    let textarea = this.refs.blogTextarea;
+    let start = textarea.selectionStart,
+        blog = this.state.blog,
+        content = this.state.blog.content,
+        text = "\n";
+    // debugger;
+    if (type == 'bold') {
+      text += "## \n"
+    } else if (type == 'bolder') {
+      text += "### \n"
+    }
+    content = content.substring(0, start) + text + content.substring(start, content.length);
+    blog.content = content;
+    operationAt = start + text.length - 1;
+    this.setState({blog})
   }
   getTags() {
     Request.Blog.getBlogCategory().then(resp => {
@@ -103,6 +122,13 @@ class BlogEdit extends React.Component {
       this.getBlog(id);
     }
   }
+  componentDidUpdate() {
+    if (operationAt > 0) {
+      this.refs.blogTextarea.focus()
+      this.refs.blogTextarea.selectionEnd = operationAt
+      operationAt = 0
+    }
+  }
   render () {
     const Loading = () => {
       if (this.state.loading) {
@@ -143,13 +169,22 @@ class BlogEdit extends React.Component {
           }
         </div>
         <div className="blog-editor-buttons">
-          <span className="editor-button icon-table2"></span>
-          <span className="editor-button icon-table2"></span>
-          <span className="editor-button icon-table2"></span>
+          <span className="editor-button icon-bold" onClick={this.handleBlogContent.bind(this, 'bold')}></span>
+          <span className="editor-button icon-bold" style={{'fontWeight': 'bolder'}} onClick={this.handleBlogContent.bind(this, 'bolder')}></span>
+          <span className="editor-button icon-underline" onClick={this.handleBlogContent.bind(this, 'underline')}></span>
+          <span className="editor-button icon-italic" onClick={this.handleBlogContent.bind(this, 'italic')}></span>
+          <span className="editor-button icon-strikethrough" onClick={this.handleBlogContent.bind(this, 'strikethrough')}></span>
+          <span className="editor-button icon-embed2" onClick={this.handleBlogContent.bind(this, 'embed')}></span>
+          <span className="editor-button icon-list-numbered" onClick={this.handleBlogContent.bind(this, 'list1')}></span>
+          <span className="editor-button icon-list2" onClick={this.handleBlogContent.bind(this, 'list2')}></span>
+          <span className="editor-button icon-table2" onClick={this.handleBlogContent.bind(this, 'table')}></span>
+          <span className="editor-button icon-quotes-left" onClick={this.handleBlogContent.bind(this, 'quote')}></span>
+          <span className="editor-button icon-images" onClick={this.handleBlogContent.bind(this, 'image')}></span>
+          <span className="editor-button icon-attachment" onClick={this.handleBlogContent.bind(this, 'attachment')}></span>
         </div>
         <div className="blog">
           <div className="content">
-            <textarea value={this.state.blog.content} name="content" onChange={this.handleBlogChange} />
+            <textarea value={this.state.blog.content} name="content" ref="blogTextarea" onChange={this.handleBlogChange} autoFocus='true' />
           </div>
           {/* <div className="preview"> */}
             <Markdown className="preview" source={this.state.blog.content} />
