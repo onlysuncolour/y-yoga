@@ -242,8 +242,8 @@ class BlogEdit extends React.Component {
           <div className="content">
             <textarea value={this.state.blog.content} name="content" ref="blogTextarea" onChange={this.handleBlogChange} onKeyDown={this.onKeydown.bind(this)} />
           </div>
-          <div className="preview markdown-content" ref="blogPreview">
-            <Markdown className="" source={this.state.blog.content} />
+          <div className="preview" ref="blogPreview">
+            <Markdown className="markdown-content" source={this.state.blog.content} />
           </div>
         </div>
       </div>
