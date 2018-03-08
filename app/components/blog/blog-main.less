@@ -1,15 +1,24 @@
 .blog-main-page {
+  height: 100%;
   padding-top: 80px;
+  background-color: ghostwhite;
   .top-tab {
-
+    a {
+      float: right;
+      padding: 10px 20px;
+      background-color: aquamarine;
+      border-radius: 20px;
+      margin: 20px;
+    }
   }
   .blog-category {
     display: inline-block;
-    width: 30%;
-    padding-left: 20px;
+    width: 20%;
+    padding-left: 40px;
+    padding-top: 40px;
     .category-item {
       color: green;
-      margin-top: 10px;
+      margin-top: 20px;
       span {
         cursor: pointer;
       }
@@ -20,10 +29,14 @@
   }
   .blog-list {
     display: inline-block;
-    width: 60%;
+    width: 80%;
     float: right;
+    padding-right: 40px;
+    padding-top: 40px;
+    overflow-y: auto;
     .blog-item-brief {
-
+      margin-top: 40px;
+      
     }
   }
 }

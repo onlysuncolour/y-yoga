@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 import './blog-main.less';
 import {BlogCategory} from './blog-category'
 import {ItemBrief} from './blog-item-brief'
@@ -57,12 +58,18 @@ class BlogPage extends React.Component{
     this.getBlogList(data || {})
   }
   render() {
+    const TopTab = () => {
+      if (this.props.me.userId) {
+        return (
+          <div className="top-tab">
+            <Link className='link-test' to="/blog-edit"> 新建 </Link>
+          </div>
+        )
+      }
+    }
     return (
       <div className="blog-main-page">
-        <div className="top-tab">
-          blog-page
-          <Link className='link-test' to="/blog-edit"> 新建 </Link>
-        </div>
+        {TopTab()}
         <BlogCategory category={this.state.category} currentCategory={this.state.currentCategory} changeCategory={this.changeCategory} />
         <div className="blog-list">
           {
@@ -78,4 +85,11 @@ class BlogPage extends React.Component{
   }
 };
 
-module.exports = {BlogPage}
+const mapStateToProps = (store) => {
+  return {
+    me: store.me.me,
+    router: store.router,
+  }
+}
+
+module.exports = {BlogPage: connect(mapStateToProps)(BlogPage)}
