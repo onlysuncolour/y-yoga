@@ -3,22 +3,27 @@
   padding-top: 80px;
   background-color: ghostwhite;
   .top-tab {
+    text-align: right;
     a {
-      float: right;
-      padding: 10px 20px;
-      background-color: aquamarine;
-      border-radius: 20px;
-      margin: 20px;
+      margin-right: 20px;
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 30px;
+      border: 1px solid;
+      border-radius: 26px;
     }
   }
   .blog-category {
-    display: inline-block;
+    position: absolute;
+    left: 0px;
+    top: 80px;
     width: 20%;
     padding-left: 40px;
     padding-top: 40px;
+    font-family: Arial,fantasy;
     .category-item {
       color: green;
-      margin-top: 20px;
+      margin-bottom: 20px;
       span {
         cursor: pointer;
       }
@@ -28,15 +33,40 @@
     }
   }
   .blog-list {
-    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 80px;
     width: 80%;
-    float: right;
     padding-right: 40px;
     padding-top: 40px;
     overflow-y: auto;
     .blog-item-brief {
-      margin-top: 40px;
-      
+      margin-bottom: 40px;
+      .top {
+        .title {
+          font-size: 18px;
+        }
+        .edit {
+          display: inline-block;
+          margin-left: 30px;
+          color: cadetblue;
+          cursor: pointer;
+          &:hover {
+            color: cornflowerblue;
+          }
+        }
+      }
+      .info {
+        .author {
+
+        }
+        .date {
+
+        }
+      }
+      .brief {
+
+      }
     }
   }
 }

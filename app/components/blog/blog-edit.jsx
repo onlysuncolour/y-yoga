@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Markdown from 'react-markdown'
 import './blog-edit.less'
+import Prism from '../../common/prism'
 
 let operationAt = 0;
 
@@ -181,6 +182,7 @@ class BlogEdit extends React.Component {
       this.refs.blogTextarea.selectionEnd = operationAt
       operationAt = 0
     }
+    Prism.highlightAll()
   }
   render () {
     const Loading = () => {

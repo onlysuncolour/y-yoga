@@ -75,7 +75,7 @@ class BlogPage extends React.Component{
           {
             this.state.blogList.map(i => {
               return (
-                <ItemBrief key={i._id} item={i}></ItemBrief>
+                <ItemBrief key={i._id} item={i} me={this.props.me}></ItemBrief>
               )
             })
           }
