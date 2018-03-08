@@ -82,8 +82,6 @@ class BlogRead extends React.Component{
   }
 };
 
-
-
 const mapStateToProps = (store) => {
   return {
     me: store.me.me,

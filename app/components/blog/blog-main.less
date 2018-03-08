@@ -83,12 +83,54 @@
 
 .blog-read-page {
   padding-top: 80px;
+  height: 100%;
   .blog {
     display: inline-block;
-    width: 50%;
+    position: relative;
+    width: 70%;
+    padding-left: 30px;
+    height: 100%;
+    .title-tab {
+      margin-top: 40px;
+      height: 40px;
+      .title {
+        font-size: 26px;
+      }
+      .edit {
+        display: inline-block;
+        margin-left: 30px;
+        color: cadetblue;
+        cursor: pointer;
+        &:hover {
+          color: cornflowerblue;
+        }
+      }
+    }
+    .author-tab {
+      margin-top: 10px;
+      height: 20px;
+      .author {
+        color: brown;
+      }
+      .date {
+        display: inline-block;
+        margin-left: 20px;
+        color: cadetblue;
+      }
+    }
+    .content {
+      position: absolute;
+      top: 120px;
+      width: 100%;
+      left: 0;
+      padding-left: 30px;
+      bottom: 10px;
+      overflow-y: auto;
+    }
   }
   .hot-blog-list {
-    display: inline-block;
-    width: 50%;
+    // display: inline-block;
+    float: right;
+    width: 30%;
   }
 }
