@@ -33,7 +33,7 @@ class ItemBrief extends React.Component{
           <span className="date">{Utils.formatDate(this.props.item.updated_at)}</span>
         </div>
         <div className="brief">
-          {this.props.item.brief || this.props.item.content.substring(0, 100)}
+          {this.props.item.brief || this.props.item.ibrief}
         </div>
       </div>
     )
