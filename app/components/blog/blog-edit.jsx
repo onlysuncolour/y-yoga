@@ -131,9 +131,12 @@ class BlogEdit extends React.Component {
     Request.Blog.saveBlog(blog).then(resp => {
       if (resp.ok) {
         console.log('保存成功');
-        this.setState({
-          blog: resp.data
+        browserHistory.push({
+          pathname: `/blog`,
         })
+        // this.setState({
+        //   blog: resp.data
+        // })
       }
     })
   }

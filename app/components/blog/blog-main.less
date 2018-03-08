@@ -3,11 +3,13 @@
   padding-top: 80px;
   background-color: ghostwhite;
   .top-tab {
-    text-align: right;
     a {
+      z-index: 1;
+      position: absolute;
+      top: 80px;
+      right: 0px;
       margin-right: 20px;
       margin-top: 20px;
-      display: inline-block;
       padding: 10px 30px;
       border: 1px solid;
       border-radius: 26px;
@@ -20,16 +22,20 @@
     width: 20%;
     padding-left: 40px;
     padding-top: 40px;
-    font-family: Arial,fantasy;
+    font-family: fantasy, Arial, serif;
     .category-item {
-      color: green;
       margin-bottom: 20px;
+      color: cadetblue;
+      &:hover {
+        color: cornflowerblue;
+      }
       span {
         cursor: pointer;
+        letter-spacing: 1.5px;
       }
     }
     .selected-category-item {
-      color: red;
+      color: cornflowerblue;
     }
   }
   .blog-list {
@@ -44,7 +50,8 @@
       margin-bottom: 40px;
       .top {
         .title {
-          font-size: 18px;
+          font-size: 20px;
+          color: ##A1D9FF;
         }
         .edit {
           display: inline-block;
@@ -57,15 +64,18 @@
         }
       }
       .info {
+        margin-top: 10px;
         .author {
-
+          display: inline-block;
+          width: 150px;
+          color: brown;
         }
         .date {
-
+          color: cadetblue;
         }
       }
       .brief {
-
+        margin-top: 20px;
       }
     }
   }
