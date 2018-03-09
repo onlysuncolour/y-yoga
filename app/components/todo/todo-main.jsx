@@ -98,17 +98,28 @@ class TodoPage extends React.Component{
     }
   }
 
+  stopPropagation(e) {
+    e.stopPropagation();
+  }
+
+  cancelUpdatingTodo() {
+    this.setState({
+      updatingId: null,
+      updatingTitle: "",
+    })
+  }
+
   updateSQL() {
     Request.Todo.updateSQL()
   }
 
   render() {
     return (
-      <div className="todo-main-page">
+      <div className="todo-main-page" onClick={this.cancelUpdatingTodo.bind(this)}>
         <div className="container">
           <div className="todo-page-title">
             <span className="title">todos</span>
-            <input className="new-todo" placeholder="What needs to be done?" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)} />
+            <input className="new-todo" placeholder="Hey, what needs to be done?" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)} />
             <div className="todo-type-tab">
               <span className={'todo-type '+this.typeStyle('all')} onClick={this.changeTodoType.bind(this, 'all')}>ALL</span>
               <span className={'todo-type '+this.typeStyle('todo')} onClick={this.changeTodoType.bind(this, 'todo')}>ACTIVE</span>
@@ -132,7 +143,7 @@ class TodoPage extends React.Component{
                       return (
                         <div className="todo" key={i._id}>
                           <div className="circle-blank" onClick={this.setDone.bind(this, i)}></div>
-                          <input value={this.state.updatingTitle} onChange={this.changeUpdatingTitle.bind(this)} onKeyUp={this.onKeyupTodo.bind(this)} className="todo-input" placeholder="Edit Todo"></input>
+                          <input value={this.state.updatingTitle} onChange={this.changeUpdatingTitle.bind(this)} onKeyUp={this.onKeyupTodo.bind(this)} className="todo-input" placeholder="Edit Todo" onClick={this.stopPropagation}></input>
                         </div>
                       )
                     } else {

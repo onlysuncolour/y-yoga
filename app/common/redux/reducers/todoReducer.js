@@ -10,13 +10,13 @@ const setTodo = (state, action) => {
 }
 
 const addTodo = (state, action) => {
-  let todos = state.todos;
+  let todos = Utils.copy(state.todos);
   todos.push(action.todo)
   return {todos}
 }
 
 const removeTodo = (state, action) => {
-  let todos = state.todos;
+  let todos = Utils.copy(state.todos);
   for (var i = 0; i < todos.length; i++) {
     if (todos[i]._id == action.todo._id) {
       todos.splice(i, 1);
@@ -27,7 +27,7 @@ const removeTodo = (state, action) => {
 }
 
 const addDone = (state, action) => {
-  let todos = state.todos, done = action.done;
+  let todos = Utils.copy(state.todos), done = action.done;
   for (var i = 0; i < todos.length; i++) {
     if (todos[i]._id == done._id) {
       todos.splice(i, 1);
@@ -39,7 +39,7 @@ const addDone = (state, action) => {
 }
 
 const updateTodo = (state, action) => {
-  let todos = state.todos, todo = action.todo;
+  let todos = Utils.copy(state.todos), todo = action.todo;
   for (var i = 0; i < todos.length; i++) {
     if (todos[i]._id == todo._id) {
       todos.splice(i, 1);
