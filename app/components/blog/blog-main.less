@@ -138,8 +138,33 @@
     }
   }
   .hot-blog-list {
-    // display: inline-block;
     float: right;
     width: 30%;
+    padding-left: 20px;
+    padding-top: 50px;
+    overflow-y: auto;
+    height: 100%;
+    .list-title {
+      font-family: sans-serif;
+    }
+    .list {
+      margin-top: 20px;
+      .hot-blog {
+        margin-bottom: 20px;
+        .blog-title {
+          a {
+            color: cadetblue;
+            &:hover {
+              color: burlywood;
+            }
+          }
+        }
+        .blog-brief {
+          margin-top: 5px;
+          width: 70%;
+          font-size: 14px;
+        }
+      }
+    }
   }
 }

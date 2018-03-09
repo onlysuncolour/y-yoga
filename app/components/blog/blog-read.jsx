@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Markdown from 'react-markdown'
 import Prism from '../../common/prism'
+import { Link } from "react-router-dom"
 
 class BlogRead extends React.Component{
   constructor() {
@@ -67,15 +68,24 @@ class BlogRead extends React.Component{
           </div>
         </div>
         <div className="hot-blog-list">
-          <span>热门博文</span>
-          { this.state.hotBlogList.map(i => {
+          <div className="list-title">
+            <span>HOT BLOGS</span>
+          </div>
+          <div className="list">
+            { this.state.hotBlogList.map(i => {
               return (
-                <div key={i._id}>
-                  {i.title}
+                <div key={i._id} className="hot-blog">
+                  <div className="blog-title">
+                    <Link to={'/blog-read/'+i._id}>{i.title}</Link>
+                  </div>
+                  <div className="blog-brief">
+                    {i.brief || i.ibrief}
+                  </div>
                 </div>
               )
             })
           }
+          </div>
         </div>
       </div>
     )
