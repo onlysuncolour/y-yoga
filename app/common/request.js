@@ -10,6 +10,9 @@ module.exports = {
     update(param) {
       return Ajax.post('/todo/save', param)
     },
+    updateSQL() {
+      return Ajax.get('/todo/updateSQL')
+    },
   },
   Game: {
     LostCity: {
@@ -47,6 +50,9 @@ module.exports = {
     },
     saveBlog(param) {
       return Ajax.post('/blog/save', param)
+    },
+    updateSQL() {
+      return Ajax.get('/blog/updateSQL')
     },
   },
 }

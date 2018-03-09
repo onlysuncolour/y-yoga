@@ -57,6 +57,9 @@ class BlogPage extends React.Component{
     })
     this.getBlogList(data || {})
   }
+  updateSQL() {
+    Request.Blog.updateSQL()
+  }
   render() {
     const TopTab = () => {
       if (this.props.me.userId) {

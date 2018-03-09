@@ -5,6 +5,7 @@ export const actionTypes = {
   ADD_TODO : 'ADD_TODO',
   REMOVE_TODO : 'REMOVE_TODO',
   ADD_DONE : 'ADD_DONE',
+  UPDATE_TODO : 'UPDATE_TODO',
   // popup
   ADD_POPUP : 'ADD_POPUP',
   REMOVE_POPUP : 'REMOVE_POPUP',
@@ -22,7 +23,7 @@ export const setTodo = data => {
 }}
 
 export const addTodo = data => {
-  let todo = {type: 'todo', title: data}
+  let todo = {type: 'todo', title: data, updatedAt: new Date().getTime(), createdAt: new Date().getTime()}
   return dispatch => {
     Request.Todo.create(todo).then(resp => {
       if(resp.ok) {
@@ -34,6 +35,21 @@ export const addTodo = data => {
     })
   }
 }
+
+export const updateTodo = todo => {
+  todo.updatedAt = new Date().getTime();
+  return dispatch => {
+    Request.Todo.update(todo).then(resp => {
+      if(resp.ok) {
+        dispatch({
+          type: actionTypes.UPDATE_TODO,
+          todo: resp.data
+        });
+      }
+    })
+  }
+}
+
 export const removeTodo = todo => ({
     type: actionTypes.REMOVE_TODO,
     todo

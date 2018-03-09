@@ -1,64 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTodoList, addTodo, addDone} from 'actions';
+import { getTodoList, addTodo, addDone, updateTodo} from 'actions';
 import  {default as styled} from 'styled-components'
 import './todo-main.less'
-
-const Todo = styled.li`
-  margin: 10px;
-  padding: 10px;
-  width: 500px;
-  &:hover {
-    background: antiquewhite;
-  }
-  .title {
-    color: cornflowerblue;
-  }
-  button {
-    border: 1px solid #777;
-    width: 60px;
-    border-radius: 2px;
-    float: right;
-    cursor: pointer;
-  }
-`
-const TodoInputLi = styled.li`
-  margin: 10px;
-  padding: 10px;
-  width: 500px;
-  .title {
-    margin-right: 10px;
-  }
-  input {
-    width: 300px;
-    line-height: 30px;
-  }
-  button {
-    border: 1px solid #777;
-    width: 60px;
-    border-radius: 2px;
-    float: right;
-    cursor: pointer;
-  }
-`
-const Done = styled.li`
-  margin: 10px;
-  padding: 10px;
-  width: 500px;
-  .title {
-    color: cadetblue;
-  }
-`
 
 class TodoPage extends React.Component{
   constructor() {
     super();
     this.state = {
-      newTodo: ""
+      newTodo: "",
+      type: 'all',
+      updatingId: null,
+      updatingTitle: "",
     }
     this.addNewTodo = this.addNewTodo.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.setDone = this.setDone.bind(this)
+    this.typeStyle = this.typeStyle.bind(this)
   }
   componentWillMount() {
     store.dispatch(getTodoList());
@@ -68,6 +26,12 @@ class TodoPage extends React.Component{
     let newState = {};
     newState[event.target.name] = event.target.value
     this.setState(newState);
+  }
+
+  changeUpdatingTitle(event) {
+    this.setState({
+      updatingTitle: event.target.value
+    })
   }
 
   setDone(data) {
@@ -86,34 +50,107 @@ class TodoPage extends React.Component{
     e.keyCode === 13 && this.addNewTodo();
   }
 
+  updatingTodo(todo) {
+    this.setState({
+      updatingId: todo._id,
+      updatingTitle: todo.title
+    })
+  }
+
+  setTodo(todo) {
+    todo.type = 'todo'
+    store.dispatch(updateTodo( todo ));
+  }
+
+  onKeyupTodo(e) {
+    if (e.keyCode === 13) {
+      if (this.state.updatingTitle == "") {
+        return
+      }
+      let todo = this.props.todos.filter(i => i._id == this.state.updatingId)[0];
+      todo.title = this.state.updatingTitle;
+      store.dispatch(updateTodo( todo ));
+      this.setState({
+        updatingId: null,
+        updatingTitle: "",
+      })
+    } else if (e.keyCode === 27) {
+      this.setState({
+        updatingId: null,
+        updatingTitle: "",
+      })
+    }
+  }
+
+  changeTodoType(type) {
+    this.setState({
+      type
+    })
+  }
+
+  typeStyle(type) {
+    if (this.state.type == type) {
+      return "todo-type-selected"
+    }
+  }
+
+  updateSQL() {
+    Request.Todo.updateSQL()
+  }
+
   render() {
     return (
       <div className="todo-main-page">
         <div className="container">
-          <ul className="todo-list">
-            <span> TODOs: </span>
-            {
-              this.props.todo.todos.filter(i => i.type=="todo").map( i => (
-                <Todo key={i._id}>
-                <span className="title"> {i.title} </span>
-                  <button onClick={this.setDone.bind(this, i)} value={i._id}> done</button>
-                </Todo>
-              ))
-            }
-            <TodoInputLi>
-              <span className="title">new Todo:</span>
-              <input type="text" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)}/>
-              <button onClick={this.addNewTodo}> 添加 </button>
-            </TodoInputLi>
-          </ul>
-          <ul className="done-list">
-            <span> DONEs: </span>
-            {
-              this.props.todo.todos.filter(i => i.type=="done").map( i => (
-                <Done key={i._id}> <span className="title">{i.title}</span> </Done>
-              ))
-            }
-          </ul>
+          <div className="todo-page-title">
+            <span className="title">todos</span>
+            <input className="new-todo" placeholder="What needs to be done?" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)} />
+            <div className="todo-type-tab">
+              <span className={'todo-type '+this.typeStyle('all')} onClick={this.changeTodoType.bind(this, 'all')}>ALL</span>
+              <span className={'todo-type '+this.typeStyle('todo')} onClick={this.changeTodoType.bind(this, 'todo')}>ACTIVE</span>
+              <span className={'todo-type '+this.typeStyle('done')} onClick={this.changeTodoType.bind(this, 'done')}>COMPLETED</span>
+            </div>
+          </div>
+          <div className="list">
+            <ul>
+              {
+                this.props.todos.filter(i => {
+                  if (this.state.type == 'all') {
+                    return true
+                  } else return i.type == this.state.type
+                }).sort( (a, b) => {
+                  if (a.type == 'todo' && b.type == 'done') { return -1 }
+                  else if (a.type == 'done' && b.type == 'todo') { return 1 }
+                  else { return a.updatedAt - b.updatedAt }
+                }).map( i => {
+                  if (i.type == 'todo') {
+                    if (i._id == this.state.updatingId) {
+                      return (
+                        <div className="todo" key={i._id}>
+                          <div className="circle-blank" onClick={this.setDone.bind(this, i)}></div>
+                          <input value={this.state.updatingTitle} onChange={this.changeUpdatingTitle.bind(this)} onKeyUp={this.onKeyupTodo.bind(this)} className="todo-input" placeholder="Edit Todo"></input>
+                        </div>
+                      )
+                    } else {
+                      return (
+                        <div className="todo" key={i._id}>
+                          <div className="circle-blank" onClick={this.setDone.bind(this, i)}></div>
+                          <label className="todo-title" onDoubleClick={this.updatingTodo.bind(this, i)}>{i.title}</label>
+                        </div>
+                      )
+                    }
+                  } else if (i.type == 'done') {
+                    return (
+                      <div className="done" key={i._id}>
+                        <div className="circle-solid" onClick={this.setTodo.bind(this, i)}></div>
+                        <div className="done-title">{i.title}</div>
+                      </div>
+                    )
+                  }
+                })
+              }
+            </ul>
+          </div>
         </div>
       </div>
     )
@@ -122,7 +159,7 @@ class TodoPage extends React.Component{
 
 const mapStateToProps = (store) => {
   return {
-    todo: store.todo
+    todos: store.todo.todos
   }
 }
 

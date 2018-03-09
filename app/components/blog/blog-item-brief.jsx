@@ -16,7 +16,7 @@ class ItemBrief extends React.Component{
   }
   render() {
     const EditLink = () => {
-      if (this.props.me.userId && this.props.me.userId == this.props.item.author_id) {
+      if (this.props.me.userId && this.props.me.userId == this.props.item.authorId) {
         return (
           <span className="icon-edit edit" onClick={this.goEdit}></span>
         )
@@ -30,7 +30,7 @@ class ItemBrief extends React.Component{
         </div>
         <div className="info">
           <span className="author">{this.props.item.author}</span>
-          <span className="date">{Utils.formatDate(this.props.item.updated_at)}</span>
+          <span className="date">{Utils.formatDate(this.props.item.updatedAt)}</span>
         </div>
         <div className="brief">
           {this.props.item.brief || this.props.item.ibrief}

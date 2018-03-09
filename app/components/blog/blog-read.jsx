@@ -44,7 +44,7 @@ class BlogRead extends React.Component{
   }
   render() {
     const EditLink = () => {
-      if (this.props.me.userId && this.props.me.userId == this.state.blog.author_id) {
+      if (this.props.me.userId && this.props.me.userId == this.state.blog.authorId) {
         return (
           <span className="icon-edit edit" onClick={this.goEdit}></span>
         )
@@ -61,7 +61,7 @@ class BlogRead extends React.Component{
           </div>
           <div className="author-tab">
             <span className="author">{this.state.blog.author}</span>
-            <span className="date">{Utils.formatDate(this.state.blog.updated_at)}</span>
+            <span className="date">{Utils.formatDate(this.state.blog.updatedAt)}</span>
           </div>
           <div className="content">
             <Markdown className="markdown-content" source={this.state.blog.content} />

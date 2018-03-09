@@ -122,11 +122,11 @@ class BlogEdit extends React.Component {
     // blog.content = this.state.editor.getValue()
     if (!blog._id) {
       blog.author = this.props.me.userName
-      blog.author_id = this.props.me.userId
-      blog.created_at = new Date().getTime()
-      blog.updated_at = blog.created_at
+      blog.authorId = this.props.me.userId
+      blog.createdAt = new Date().getTime()
+      blog.updatedAt = blog.createdAt
     } else {
-      blog.updated_at = new Date().getTime()
+      blog.updatedAt = new Date().getTime()
     }
     Request.Blog.saveBlog(blog).then(resp => {
       if (resp.ok) {

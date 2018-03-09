@@ -38,12 +38,25 @@ const addDone = (state, action) => {
   return {todos}
 }
 
+const updateTodo = (state, action) => {
+  let todos = state.todos, todo = action.todo;
+  for (var i = 0; i < todos.length; i++) {
+    if (todos[i]._id == todo._id) {
+      todos.splice(i, 1);
+      break
+    }
+  }
+  todos.push(todo)
+  return {todos}
+}
+
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_TODO: return setTodo(state, action);
     case actionTypes.ADD_TODO: return addTodo(state, action);
     case actionTypes.REMOVE_TODO: return removeTodo(state, action);
     case actionTypes.ADD_DONE: return addDone(state, action);
+    case actionTypes.UPDATE_TODO: return updateTodo(state, action);
     default: return state;
   }
 };
