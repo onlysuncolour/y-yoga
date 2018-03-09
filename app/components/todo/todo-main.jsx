@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getTodoList, addTodo, addDone, updateTodo} from 'actions';
+import { getTodoList, addTodo, addDone, updateTodo, removeTodo} from 'actions';
 import  {default as styled} from 'styled-components'
 import './todo-main.less'
 
@@ -88,6 +88,10 @@ class TodoPage extends React.Component{
     })
   }
 
+  removeTodo(todo) {
+    store.dispatch(removeTodo(todo))
+  }
+
   typeStyle(type) {
     if (this.state.type == type) {
       return "todo-type-selected"
@@ -121,7 +125,7 @@ class TodoPage extends React.Component{
                 }).sort( (a, b) => {
                   if (a.type == 'todo' && b.type == 'done') { return -1 }
                   else if (a.type == 'done' && b.type == 'todo') { return 1 }
-                  else { return a.updatedAt - b.updatedAt }
+                  else { return b.updatedAt - a.updatedAt }
                 }).map( i => {
                   if (i.type == 'todo') {
                     if (i._id == this.state.updatingId) {
@@ -136,6 +140,7 @@ class TodoPage extends React.Component{
                         <div className="todo" key={i._id}>
                           <div className="circle-blank" onClick={this.setDone.bind(this, i)}></div>
                           <label className="todo-title" onDoubleClick={this.updatingTodo.bind(this, i)}>{i.title}</label>
+                          <span className="icon-trash-o todo-delete" onClick={this.removeTodo.bind(this, i)}></span>
                         </div>
                       )
                     }
@@ -144,6 +149,7 @@ class TodoPage extends React.Component{
                       <div className="done" key={i._id}>
                         <div className="circle-solid" onClick={this.setTodo.bind(this, i)}></div>
                         <div className="done-title">{i.title}</div>
+                        <span className="icon-trash-o todo-delete" onClick={this.removeTodo.bind(this, i)}></span>
                       </div>
                     )
                   }
@@ -158,6 +164,7 @@ class TodoPage extends React.Component{
 };
 
 const mapStateToProps = (store) => {
+  console.log(1);
   return {
     todos: store.todo.todos
   }
