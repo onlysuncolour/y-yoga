@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTodoList, addTodo, addDone} from 'actions';
 import  {default as styled} from 'styled-components'
-
+import './todo-main.less'
 
 const Todo = styled.li`
   margin: 10px;
@@ -88,10 +88,9 @@ class TodoPage extends React.Component{
 
   render() {
     return (
-      <div className="todo-main-page" style={ {'marginTop': '100px'} }>
-        todo-page
+      <div className="todo-main-page">
         <div className="container">
-          <ul>
+          <ul className="todo-list">
             <span> TODOs: </span>
             {
               this.props.todo.todos.filter(i => i.type=="todo").map( i => (
@@ -107,9 +106,7 @@ class TodoPage extends React.Component{
               <button onClick={this.addNewTodo}> 添加 </button>
             </TodoInputLi>
           </ul>
-        </div>
-        <div>
-          <ul>
+          <ul className="done-list">
             <span> DONEs: </span>
             {
               this.props.todo.todos.filter(i => i.type=="done").map( i => (
