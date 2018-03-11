@@ -12,7 +12,6 @@ class UsPage extends React.Component{
     super();
   }
   componentDidMount() {
-    Utils.sayHello();
   }
   nowTime() {
     return Date()
