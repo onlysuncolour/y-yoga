@@ -19,6 +19,11 @@ class BlogRead extends React.Component{
     this.getBlog(id);
     this.getHotBlogList()
   }
+  componentWillReceiveProps(nextProps) {
+    let id = nextProps.match.params.id;
+    this.getBlog(id);
+    this.getHotBlogList()
+  }
   componentDidUpdate() {
     Prism.highlightAll()
   }
