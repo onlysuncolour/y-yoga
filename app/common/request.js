@@ -10,6 +10,9 @@ module.exports = {
     update(param) {
       return Ajax.post('/todo/save', param)
     },
+    deleteOne(param) {
+      return Ajax.post('/todo/deleteOne', param)
+    },
     updateSQL() {
       return Ajax.get('/todo/updateSQL')
     },

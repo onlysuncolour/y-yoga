@@ -50,10 +50,18 @@ export const updateTodo = todo => {
   }
 }
 
-export const removeTodo = todo => ({
-    type: actionTypes.REMOVE_TODO,
-    todo
-})
+export const removeTodo = todo => {
+  return dispatch => {
+    Request.Todo.deleteOne(todo).then(resp => {
+      if(resp.ok) {
+        dispatch({
+          type: actionTypes.REMOVE_TODO,
+          todo
+        })
+      }
+    })
+  }
+}
 
 export const addDone = (todo) => {
   todo.type = "done"
