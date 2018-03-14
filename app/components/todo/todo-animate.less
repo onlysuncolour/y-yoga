@@ -1,0 +1,29 @@
+.todo-animate-tab {
+  height: 400px;
+  background-color: snow;
+  line-height: 46px;
+  padding: 10px 0;
+  .line-one {
+    margin: 10px 0 ;
+    white-space: nowrap;
+    position: relative;
+    .content {
+      position: relative;
+      display: inline-block;
+      span {
+        display: inline-block;
+        padding: 0 20px;
+        margin-right: 10px;
+        color: #fff;
+        background-color: #000;
+        font-size: 40px;
+        font-weight: bold;
+      }
+      animation: fadeInLeftBig 12s infinite linear;
+    }
+  }
+}
+
+@keyframes fadeInLeftBig {
+  0% { transform: translateX(0); } 100% { transform: translateX(-50%); }
+}

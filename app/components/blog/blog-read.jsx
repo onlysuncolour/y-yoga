@@ -13,6 +13,7 @@ class BlogRead extends React.Component{
     }
     this.getBlog = this.getBlog.bind(this)
     this.getHotBlogList = this.getHotBlogList.bind(this)
+    this.goEdit = this.goEdit.bind(this)
   }
   componentWillMount() {
     let id = this.props.match.params.id;
@@ -45,6 +46,11 @@ class BlogRead extends React.Component{
           hotBlogList: list
         })
       }
+    })
+  }
+  goEdit() {
+    browserHistory.push({
+      pathname: `/blog-edit/${this.state.blog._id}`,
     })
   }
   render() {
