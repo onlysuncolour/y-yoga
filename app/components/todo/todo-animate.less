@@ -3,7 +3,8 @@
   background-color: snow;
   line-height: 46px;
   padding: 10px 0;
-  .line-one {
+  overflow-x: hidden;
+  .line {
     margin: 10px 0 ;
     white-space: nowrap;
     position: relative;
@@ -19,11 +20,19 @@
         font-size: 40px;
         font-weight: bold;
       }
+    }
+    .fade-in-left {
       animation: fadeInLeftBig 12s infinite linear;
+    }
+    .fade-in-right {
+      animation: fadeInRightBig 12s infinite linear;
     }
   }
 }
 
 @keyframes fadeInLeftBig {
   0% { transform: translateX(0); } 100% { transform: translateX(-50%); }
+}
+@keyframes fadeInRightBig {
+  0% { transform: translateX(-50%); } 100% { transform: translateX(0); }
 }
