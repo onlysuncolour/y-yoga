@@ -4,7 +4,6 @@ import { getTodoList, addTodo, addDone, updateTodo, removeTodo} from 'actions';
 import  {default as styled} from 'styled-components'
 import './todo-main.less'
 import {TodoCategory} from './todo-category'
-import {TodoAnimate} from './todo-animate'
 
 class TodoPage extends React.Component{
   constructor() {
@@ -119,7 +118,6 @@ class TodoPage extends React.Component{
     return (
       <div className="todo-main-page" onClick={this.cancelUpdatingTodo.bind(this)}>
         <div className="container">
-          <TodoAnimate></TodoAnimate>
           <div className="todo-page-title">
             <span className="title">todos</span>
             <input className="new-todo" placeholder="Hey, what needs to be done?" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)} />

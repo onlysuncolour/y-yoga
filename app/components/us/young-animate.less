@@ -1,4 +1,4 @@
-.todo-animate-tab {
+.young-animate-tab {
   height: 400px;
   background-color: snow;
   line-height: 46px;
@@ -11,14 +11,24 @@
     .content {
       position: relative;
       display: inline-block;
-      span {
+      .wd {
         display: inline-block;
-        padding: 0 20px;
-        margin-right: 10px;
-        color: #fff;
-        background-color: #000;
-        font-size: 40px;
-        font-weight: bold;
+        position: relative;
+        padding: 0 5px;
+        margin-right: 5px;
+        color: #000;
+        // background-color: #000;
+        font-size: 50px;
+        font-weight: bolder;
+        .cover {
+          position: absolute;
+          display: inline-block;
+          background-color: #000;
+          left: 0;
+          width: 0;
+          height: 100%;
+          animation: wordCover 10s;
+        }
       }
     }
     .fade-in-left {
@@ -27,6 +37,25 @@
     .fade-in-right {
       animation: fadeInRightBig 12s infinite linear;
     }
+  }
+}
+
+@keyframes wordCover {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes wordCoverEnd {
+  0% {
+    width: 100%;
+  }
+  100% {
+
   }
 }
 
