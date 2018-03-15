@@ -14,7 +14,9 @@ class YoungAnimate extends React.Component{
     this.getLines = this.getLines.bind(this)
     this.setBlock = this.setBlock.bind(this)
     this.setWordWhite = this.setWordWhite.bind(this)
+    this.setWordBlack = this.setWordBlack.bind(this)
     this.setBlockOver = this.setBlockOver.bind(this)
+    this.setLineNewWords = this.setLineNewWords.bind(this)
     this.getLines()
   }
   componentDidMount() {
@@ -30,15 +32,20 @@ class YoungAnimate extends React.Component{
         var onceTime = width / speed * 1000; //ms
         line.animationDuration = onceTime+"ms"
         line.fadeClass = i%2? "fade-in-left" : "fade-in-right"
-        // this.refs[line.name].style.animationDuration = onceTime + "ms"
       })
       this.setState( { lines } )
       this.i = 0;
       setTimeout(this.setBlock, 5000)
     } else if (this.i == 2) {
-
-    } else if (this.i == 3) {
-
+      this.setWordWhite()
+      setTimeout(this.setBlock, 5000)
+    } else if (this.i == 4) {
+      setTimeout(this.setBlock, 10000)
+      this.i = 0
+    } else if (this.i == 5) {
+      setTimeout(this.setLineNewWords, 5000)
+    } else if (this.i == 6 || this.i == 7) {
+      setTimeout(this.setBlockOver, 4500)
     }
   }
   getLines() {
@@ -48,7 +55,7 @@ class YoungAnimate extends React.Component{
         let a = Math.floor(Math.random()*lines.length),
         b = Math.floor(Math.random()*lines.length);
         lines.splice(b, 0, Utils.copy(lines[a]))
-        lines[b].name += '_c'
+        lines[b].name += 'i'
         this.transLines = [a, b]
         this.setState({
           lines: resp.data
@@ -57,26 +64,53 @@ class YoungAnimate extends React.Component{
     })
   }
   setBlock() {
-    let l = this.transLines[1],
+    let l ,
       lines = Utils.copy(this.state.lines);
+    if (this.i == 0) {
+      l = this.transLines[1]
+      this.i = 6
+    } else if (this.i == 2) {
+      this.i = 7
+      l = this.transLines[0]
+    }
     lines.forEach(i => {
       i.coverClass = ""
     })
     lines[l].coverClass = "cover-animate";
+    // this.i = 0;
     this.setState({
       lines
     })
-    setTimeout(this.setWordWhite, 4500)
-    setTimeout(this.setBlockOver, 4500)
-    // this.refs[line.name].style.animationDuration = onceTime + "ms"
+    if (this.i == 6) {
+      setTimeout(this.setWordWhite, 4500)
+    } else if (this.i == 7) {
+      setTimeout(this.setWordBlack, 4500)
+    }
   }
   setWordWhite() {
-    let line = this.state.lines[this.transLines[1]]
+    let line;
+    if (this.i == 0 || this.i == 6 || this.i == 5) {
+      line = this.state.lines[this.transLines[1]]
+    } else if(this.i == 2 || this.i == 7) {
+      line = this.state.lines[this.transLines[0]]
+    }
     this.refs[line.name].style.color = "snow"
   }
+  setWordBlack() {
+    let line = this.state.lines[this.transLines[0]]
+    this.refs[line.name].style.color = "#000"
+  }
   setBlockOver() {
-    let l = this.transLines[1],
+    let l,
       lines = Utils.copy(this.state.lines);
+    if (this.i == 6) {
+       l = this.transLines[1]
+       this.i = 5;
+       // lines = this.setLineNewWords()
+    } else if (this.i == 7) {
+      l = this.transLines[0]
+      this.i = 4
+    }
     lines.forEach(i => {
       i.coverClass = ""
     })
@@ -84,6 +118,20 @@ class YoungAnimate extends React.Component{
     this.setState({
       lines
     })
+  }
+  setLineNewWords() {
+    let lines = Utils.copy(this.state.lines),
+      i = Math.floor(Math.random()*(lines.length-1));
+    if (i >= this.transLines[1]) i++;
+    let line = Utils.copy(lines[i])
+    line.name += "i"
+    lines[this.transLines[1]] = line;
+    this.transLines = [this.transLines[1], i]
+    this.i = 2;
+    this.setState({
+      lines
+    })
+    // return lines
   }
 
   render() {
