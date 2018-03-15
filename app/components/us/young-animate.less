@@ -1,13 +1,19 @@
 .young-animate-tab {
-  height: 400px;
+  // height: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  width: 100%;
   background-color: snow;
   line-height: 46px;
-  padding: 10px 0;
+  // padding: 10px 0;
   overflow-x: hidden;
+  overflow-y: hidden;
   .line {
     margin: 10px 0 ;
     white-space: nowrap;
     position: relative;
+    color: #000;
     .content {
       position: relative;
       display: inline-block;
@@ -15,8 +21,7 @@
         display: inline-block;
         position: relative;
         padding: 0 5px;
-        margin-right: 5px;
-        color: #000;
+        margin-right: 10px;
         // background-color: #000;
         font-size: 50px;
         font-weight: bolder;
@@ -27,7 +32,13 @@
           left: 0;
           width: 0;
           height: 100%;
-          animation: wordCover 10s;
+          // animation: wordCover 10s;
+        }
+        .cover-animate {
+          animation: wordCover 5s;
+        }
+        .cover-end-animate {
+          animation: wordCoverEnd 5s;
         }
       }
     }
@@ -46,16 +57,21 @@
     width: 0;
   }
   100% {
+    left: 0;
     width: 100%;
   }
 }
 
 @keyframes wordCoverEnd {
   0% {
+    left: auto;
     width: 100%;
+    right: 0px;
   }
   100% {
-
+    left: auto;
+    width: 0;
+    right: 0px;
   }
 }
 

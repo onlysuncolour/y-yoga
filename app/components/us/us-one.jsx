@@ -5,10 +5,22 @@ class UsOne extends React.Component{
   constructor() {
     super();
     this.state = {
-      contents: ["聪明", "好看", "精通 Vue，React，NodeJs 等", "自学 NodeJs"]
+      contents: []
     }
+    this.getInfo = this.getInfo.bind(this)
   }
   componentDidMount() {
+    console.log(this.props.oneName);
+    this.getInfo()
+  }
+  getInfo() {
+    Request.Keywords.getUsInfo(this.props.oneName).then(resp => {
+      if (resp.ok) {
+        this.setState({
+          contents: resp.data.words
+        })
+      }
+    })
   }
   render() {
     return (

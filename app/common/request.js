@@ -58,4 +58,12 @@ module.exports = {
       return Ajax.get('/blog/updateSQL')
     },
   },
+  Keywords: {
+    getUsInfo(name) {
+      return Ajax.get(`/keywords/us`, {me: name})
+    },
+    getYoungCircle() {
+      return Ajax.get(`/keywords/youngCircle`)
+    }
+  }
 }
