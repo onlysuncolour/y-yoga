@@ -17,6 +17,7 @@ import {Yoga} from './us/yoga'
 import {Young} from './us/young'
 import {BlogEdit} from './blog/blog-edit'
 import {BlogRead} from './blog/blog-read'
+import {ManagementPage} from './management/management-main'
 
 import {Popup} from './common/popup'
 import './main.less'
@@ -62,6 +63,7 @@ class Main extends React.Component{
             <Route path="/blog" component = {BlogPage} />
             <Route exact path="/others" component = {OthersPage} />
             <Route path="/others/lost-city" component = {LostCity} />
+            <Route path="/management" component = {ManagementPage} />
             <Route exact path="/blog-edit" component = {BlogEdit} />
             <Route path="/blog-edit/:id" component = {BlogEdit} />
             <Route path="/blog-read/:id" component = {BlogRead} />

@@ -62,7 +62,7 @@ class BlogPage extends React.Component{
   }
   render() {
     const TopTab = () => {
-      if (this.props.me.userId) {
+      if (this.props.me._id) {
         return (
           <div className="top-tab">
             <Link className='link-test' to="/blog-edit"> 新建 </Link>

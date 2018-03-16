@@ -16,12 +16,13 @@ class Header extends React.Component{
         {title: '博客', link: '/blog', name: 'blog'},
         {title: '照片墙', link: '/photo', name: 'photo'},
         {title: '其他', link: '/others', name: 'others'},
+        {title: '管理', link: '/management', name: 'management', admin: true}
       ],
     }
     this.showLogin = this.showLogin.bind(this)
   }
   componentDidMount() {
-    
+
   }
   showLogin() {
     let loginPopup = {
@@ -46,10 +47,10 @@ class Header extends React.Component{
   }
   render() {
     const loginTab = () => {
-      if (this.props.me && this.props.me.userId) {
+      if (this.props.me && this.props.me._id) {
         return (
           <div className="header-user-tab fr">
-            {this.props.me.userName}
+            {this.props.me.name}
             <button onClick={this.logout}> 退出</button>
           </div>
         )
@@ -69,7 +70,7 @@ class Header extends React.Component{
         </div>
         <ul className="header-menu-list inline-block">
           {
-            this.state.menus.map(i => (
+            this.state.menus.filter(i => !i.admin || (i.admin && this.props.me.isAdmin)).map(i => (
               <li className={"header-menu-item "+{true: 'selecetd-menu', false: 'unselected-menu'}[i.link==this.props.router.location.pathname]} key={i.link}>
                 <Link className="link" to={i.link}> {i.title} </Link>
               </li>

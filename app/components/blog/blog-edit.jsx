@@ -121,8 +121,8 @@ class BlogEdit extends React.Component {
     let blog = this.state.blog;
     // blog.content = this.state.editor.getValue()
     if (!blog._id) {
-      blog.author = this.props.me.userName
-      blog.authorId = this.props.me.userId
+      blog.author = this.props.me.name
+      blog.authorId = this.props.me._id
       blog.createdAt = new Date().getTime()
       blog.updatedAt = blog.createdAt
     } else {
@@ -194,7 +194,7 @@ class BlogEdit extends React.Component {
       }
     }
     const buttons = () => {
-      if (this.props.me.userId) {
+      if (this.props.me._id) {
         return (
           <div className="blog-edit-buttons">
             <button className="save-btn" onClick={this.saveBlog}>发布</button>

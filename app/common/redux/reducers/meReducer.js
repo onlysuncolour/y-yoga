@@ -6,7 +6,7 @@ const initialState = {
 
 const setMe = (state, action) => {
   let me = action.me
-  Socket.connect(me.userId)
+  Socket.connect(me._id)
   return {me}
 }
 const removeMe = (state) => {

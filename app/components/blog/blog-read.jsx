@@ -55,7 +55,7 @@ class BlogRead extends React.Component{
   }
   render() {
     const EditLink = () => {
-      if (this.props.me.userId && this.props.me.userId == this.state.blog.authorId) {
+      if (this.props.me._id && this.props.me._id == this.state.blog.authorId) {
         return (
           <span className="icon-edit edit" onClick={this.goEdit}></span>
         )

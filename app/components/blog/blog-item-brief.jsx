@@ -16,7 +16,7 @@ class ItemBrief extends React.Component{
   }
   render() {
     const EditLink = () => {
-      if (this.props.me.userId && this.props.me.userId == this.props.item.authorId) {
+      if (this.props.me._id && this.props.me._id == this.props.item.authorId) {
         return (
           <span className="icon-edit edit" onClick={this.goEdit}></span>
         )
