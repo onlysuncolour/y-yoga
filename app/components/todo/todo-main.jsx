@@ -41,6 +41,9 @@ class TodoPage extends React.Component{
   }
 
   addNewTodo() {
+    if(this.state.newTodo == '') {
+      return;
+    }
     store.dispatch(addTodo(this.state.newTodo));
     this.setState({
       newTodo: ""
