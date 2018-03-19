@@ -124,6 +124,7 @@ class YoungAnimate extends React.Component{
       i = Math.floor(Math.random()*(lines.length-1));
     if (i >= this.transLines[1]) i++;
     let line = Utils.copy(lines[i])
+    line.fadeClass = "fade-in-right" ? "fade-in-left" : "fade-in-right"
     line.name += "i"
     lines[this.transLines[1]] = line;
     this.transLines = [this.transLines[1], i]
@@ -131,37 +132,47 @@ class YoungAnimate extends React.Component{
     this.setState({
       lines
     })
-    // return lines
   }
 
   render() {
     return (
       <div className="young-animate-tab">
-        {
-          this.state.lines.map((line, index) => (
-            <div className="line" key={line.name}>
-              <div className={`content ${line.fadeClass}`} ref={line.name}
-                 style={{animationDuration: line.animationDuration || "10s"}} >
-                {
-                  line.words.map(span => (
-                    <div className="wd" key={span}>
-                      <span className={`word`}>{span}</span>
-                      <span className={`cover ${line.coverClass}`}></span>
-                    </div>
-                  ))
-                }
-                {
-                  line.words.map(span => (
-                    <div className="wd" key={span}>
-                      <span className={`word`}>{span}</span>
-                      <span className={`cover ${line.coverClass}`}></span>
-                    </div>
-                  ))
-                }
+        <div className="animate-table">
+          {
+            this.state.lines.map((line, index) => (
+              <div className="line" key={line.name}>
+                <div className={`content ${line.fadeClass}`} ref={line.name}
+                   style={{animationDuration: line.animationDuration || "10s"}} >
+                  {
+                    line.words.map(span => (
+                      <div className="wd" key={span}>
+                        <span className={`word`}>{span}</span>
+                        <span className={`cover ${line.coverClass}`}></span>
+                      </div>
+                    ))
+                  }
+                  {
+                    line.words.map(span => (
+                      <div className="wd" key={span}>
+                        <span className={`word`}>{span}</span>
+                        <span className={`cover ${line.coverClass}`}></span>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
-            </div>
-          ))
-        }
+            ))
+          }
+        </div>
+
+        <div className="close">
+          <span className="icon-cross" onClick={this.props.closeAnimate}></span>
+        </div>
+        <div className="i-am-young">
+          <span>
+            I &nbsp; A M &nbsp; Y O U N G !
+          </span>
+        </div>
       </div>
     )
   }

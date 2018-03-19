@@ -5,6 +5,13 @@ require('./management.less')
 class ManagementPage extends React.Component{
   constructor() {
     super();
+    this.state = {
+      tabs: [
+        {name: "主页配置", code: 'usPage'},
+        {name: "博客配置", code: 'blogPage'},
+        {name: "照片配置", code: 'photoPage'},
+      ]
+    }
   }
   componentDidMount() {
   }
