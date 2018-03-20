@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './login.less'
 import { removePopup, setMe } from 'actions';
 
 class LoginPage extends React.Component{
@@ -38,18 +39,18 @@ class LoginPage extends React.Component{
   render() {
     return (
       <div className="login-page">
-        <span>登陆</span>
+        <span>登录</span>
         <div className="form-tab">
           <div className="input-tab">
-            <span> username </span>
-              <input type="text" value={this.state.username} name="username" onChange={this.handleInput} />
+            <p class="input-label"> username </p>
+            <input class="input" type="text" value={this.state.username} name="username" onChange={this.handleInput} />
           </div>
           <div className="input-tab">
-            <span> password </span>
-            <input type="password" value={this.state.password} name="password" onChange={this.handleInput} />
+            <p class="input-label"> password </p>
+            <input class="input" type="password" value={this.state.password} name="password" onChange={this.handleInput} />
           </div>
           <div className="bottom-button">
-            <button onClick={this.login}> 登陆 </button>
+            <button onClick={this.login}> 登录 </button>
           </div>
         </div>
       </div>
