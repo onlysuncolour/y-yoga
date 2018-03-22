@@ -179,7 +179,6 @@ class TodoPage extends React.Component{
 };
 
 const mapStateToProps = (store) => {
-  console.log(1);
   return {
     todos: store.todo.todos
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, Route, Switch, Redirect, NavLink, Match} from "react-router-dom"
 require('./management.less')
-import {UsPageManagement} from './us-page-management'
+import {UsPageManagement} from './us-page/us-page-management'
 import {BlogPageManagement} from './blog-page-management'
 import {PhotoPageManagement} from './photo-page-management'
 
@@ -17,7 +17,11 @@ class ManagementPage extends React.Component{
       currentTab: "usPage"
     }
   }
+  componentWillMount() {
+    // TODO: 判断用户权限，跳转首页
+  }
   componentDidMount() {
+
   }
   changeTab(tab) {
     this.setState({currentTab: tab.code})
