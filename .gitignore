@@ -1,5 +1,7 @@
 node_modules
 build
+dist
+package-lock.json
 *.css
 !app/styles/*.css
 !app/styles/icomoon/*.css
