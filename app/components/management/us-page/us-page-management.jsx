@@ -1,6 +1,6 @@
 import React from 'react';
-import {OneMainPageManagement} from './one-main-page-management.jsx'
-import {YoungAnimateKeywordsManagement} from './young-animate-keywords-management.jsx'
+import {OneMainPageManagement} from './one-main-page-management'
+import {YoungAnimateKeywordsManagement} from './young-animate-keywords-management'
 class UsPageManagement extends React.Component{
   constructor() {
     super();

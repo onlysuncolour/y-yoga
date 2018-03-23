@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "repository": {},
   "scripts": {
-    "dev": "webpack-dev-server --progress --profile --colors --hot --optimize-minimize",
-    "build": "webpack --config webpack.config.prod.js"
+    "dev": "webpack-dev-server --progress --profile --colors --hot ",
+    "build": "webpack --config webpack.config.prod.js --optimize-minimize"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -31,6 +31,7 @@
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-react-transform": "^2.0.2",
     "character-entities": "^1.2.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.1.0",

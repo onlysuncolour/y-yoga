@@ -42,12 +42,12 @@ class LoginPage extends React.Component{
         <span>登录</span>
         <div className="form-tab">
           <div className="input-tab">
-            <p class="input-label"> username </p>
-            <input class="input" type="text" value={this.state.username} name="username" onChange={this.handleInput} />
+            <p className="input-label"> username </p>
+            <input className="input" type="text" value={this.state.username} name="username" onChange={this.handleInput} />
           </div>
           <div className="input-tab">
-            <p class="input-label"> password </p>
-            <input class="input" type="password" value={this.state.password} name="password" onChange={this.handleInput} />
+            <p className="input-label"> password </p>
+            <input className="input" type="password" value={this.state.password} name="password" onChange={this.handleInput} />
           </div>
           <div className="bottom-button">
             <button onClick={this.login}> 登录 </button>

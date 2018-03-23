@@ -1,7 +1,6 @@
 const path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var less = require("less");
 var APP_PATH = path.resolve(__dirname, 'app');
 
 module.exports = {
@@ -53,7 +52,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "young-yoga",
+    }),
     new webpack.ProvidePlugin({
       'Utils': 'Utils',
       'Request': 'Request',
@@ -77,9 +78,6 @@ module.exports = {
     "proxy": {
       "/api": {
         "target": "http://localhost:9521",
-        // rewrite: function(req) {
-        //   req.url = req.url.replace(/^\/api/, '');
-        // },
         // changeOrigin: true,
         // secure: false,
         logLevel: 'debug'
@@ -87,7 +85,7 @@ module.exports = {
     }
   },
   resolve: {
-    // extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpeg', 'gif'],
+    extensions: ['.js', '.jsx','.json', 'png', 'less', 'css', 'jpeg', 'gif'],
     alias: {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),

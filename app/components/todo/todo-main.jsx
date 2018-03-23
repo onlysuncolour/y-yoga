@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getTodoList, addTodo, addDone, updateTodo, removeTodo} from 'actions';
-import  {default as styled} from 'styled-components'
 import './todo-main.less'
-import {TodoCategory} from './todo-category.jsx'
+import {TodoCategory} from './todo-category'
 
 class TodoPage extends React.Component{
   constructor() {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {UsOne} from './us-one.jsx'
-import {Yoga} from './yoga.jsx'
-import {Young} from './young.jsx'
+import {UsOne} from './us-one'
+import {Yoga} from './yoga'
+import {Young} from './young'
 
 import  {default as styled} from 'styled-components'
 import './us-main.less'

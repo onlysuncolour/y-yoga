@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import './blog-main.less';
-import {BlogCategory} from './blog-category.jsx'
-import {ItemBrief} from './blog-item-brief.jsx'
+import {BlogCategory} from './blog-category'
+import {ItemBrief} from './blog-item-brief'
 
 class BlogPage extends React.Component{
   constructor() {

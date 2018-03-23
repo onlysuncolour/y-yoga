@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link, Route, Switch, Redirect, NavLink, Match} from "react-router-dom"
 require('./management.less')
-import {UsPageManagement} from './us-page/us-page-management.jsx'
-import {BlogPageManagement} from './blog-page-management.jsx'
-import {PhotoPageManagement} from './photo-page-management.jsx'
+import {UsPageManagement} from './us-page/us-page-management'
+import {BlogPageManagement} from './blog-page-management'
+import {PhotoPageManagement} from './photo-page-management'
 
 class ManagementPage extends React.Component{
   constructor() {

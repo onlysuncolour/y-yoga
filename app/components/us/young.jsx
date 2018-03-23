@@ -1,5 +1,5 @@
 import React from 'react';
-import {YoungAnimate} from './young-animate.jsx'
+import {YoungAnimate} from './young-animate'
 
 class Young extends React.Component{
   constructor() {
