@@ -10,7 +10,7 @@ const Ajax = {
   },
   ajax(request, url, params) {
     let promise = new Promise(function(resolve, reject) {
-      axios[request](server['dev']+'/api'+url, params, {withCredentials: true}).then(resp => {
+      axios[request]('/api'+url, params, {withCredentials: true}).then(resp => {
         resolve({
           ok: true,
           data: resp.data

@@ -6,7 +6,7 @@ import './styles/main.less'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Main} from './components/main'
+import {Main} from './components/main.jsx'
 
 window.env = "development";
 

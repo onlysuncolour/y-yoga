@@ -1,33 +1,93 @@
-var path = require('path');
+const path = require('path');
 var webpack = require('webpack');
-var less = require("less");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+var less = require("less");
+var APP_PATH = path.resolve(__dirname, 'app');
 
 module.exports = {
-  entry: [
-    // 'webpack/hot/only-dev-server',
-    path.resolve(APP_PATH, 'index.jsx')
-  ],
+  entry: path.resolve(APP_PATH, 'index.jsx'),
   output: {
-    path: BUILD_PATH,
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
-  //enable dev source map
-  devtool: 'eval-source-map',
-  //enable dev server
+  module: {
+    rules: [
+      { test: /\.jsx?$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', "@babel/preset-react"]
+          }
+        },
+        exclude: /(node_modules)/,
+      }, { test: /\.js?$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        },
+        exclude: /(node_modules)/,
+      }, { test: /\.(png|jpg|jpeg$|gif|eot|otf|webp|ttf|woff|woff2|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
+      }, { test: /\.less$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "less-loader"
+        }]
+      }, { test: /\.css$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      'Utils': 'Utils',
+      'Request': 'Request',
+      'Dict': 'Dict',
+      'actions': 'actions',
+      'Socket': 'Socket',
+      'Manba': 'Manba',
+      'G': 'G',
+      'browserHistory': 'browserHistory',
+      'store': 'store',
+    })
+  ],
+  mode: 'development',
+  devtool: "eval-source-map",
   devServer: {
     historyApiFallback: true,
     hot: true,
     inline: true,
     progress: true,
-    port: 9520
+    port: 9520,
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:9521",
+        // rewrite: function(req) {
+        //   req.url = req.url.replace(/^\/api/, '');
+        // },
+        // changeOrigin: true,
+        // secure: false,
+        logLevel: 'debug'
+      },
+    }
   },
   resolve: {
-    extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpeg', 'gif'],
+    // extensions: ['', '.js', '.jsx','.json', 'png', 'less', 'jpeg', 'gif'],
     alias: {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
@@ -41,33 +101,5 @@ module.exports = {
       'store': path.resolve(APP_PATH, 'common/redux/store.js'),
     }
   },
-  module: {
-    loaders: [
-      {test: /\.jsx?$/, loader: 'babel', include: APP_PATH, query: {presets: ['es2015', 'react']}},
-      {test: /\.js?$/, loader: 'babel', include: APP_PATH, query: {presets:  ['es2015']}},
-      {test: /\.json?$/, loader: 'json'},
-      {test: /\.css$/, loader: 'style!css'},
-      {test: /\.less$/, loader: 'style!css!less'},
-      {test: /\.(eot|otf|webp|ttf|woff|woff2|svg)(\?.*)?$/,loader: "url-loader",},
-        // query: {
-        //   name: `${config.staticPath}font/[name]${config.hashString}.[ext]`
-        // }
-      {test: /\.png$/, loader:"url-loader?limit=10000&mimetype=image/png"},
-      {test: /\.jpeg$/, loader:"url-loader?limit=10000&mimetype=image/jpeg"},
-      {test: /\.gif$/, loader:"url-loader?limit=10000&mimetype=image/jpg"},
-    ]
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      'Utils': 'Utils',
-      'Request': 'Request',
-      'Dict': 'Dict',
-      'actions': 'actions',
-      'Socket': 'Socket',
-      'Manba': 'Manba',
-      'G': 'G',
-      'browserHistory': 'browserHistory',
-      'store': 'store',
-    })
-  ]
-}
+
+};

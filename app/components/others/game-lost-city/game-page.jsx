@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {GameWaitingPage} from './game-waiting-page'
-import {GamePlayingPage} from './game-playing-page'
+import {GameWaitingPage} from './game-waiting-page.jsx'
+import {GamePlayingPage} from './game-playing-page.jsx'
 require('./game-lost-city.less')
 class LostCity extends React.Component{
   constructor() {

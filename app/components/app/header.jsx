@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import { addPopup, removeMe } from 'actions';
 
-import {LoginPage} from '../app/login'
+import {LoginPage} from '../app/login.jsx'
 
 
 class Header extends React.Component{

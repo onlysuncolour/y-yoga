@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {GameCard} from './game-card'
+import {GameCard} from './game-card.jsx'
 class GamePlayingPage extends React.Component{
   constructor() {
     super();

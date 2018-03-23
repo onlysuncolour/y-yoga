@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getTodoList, addTodo, addDone, updateTodo, removeTodo} from 'actions';
 import  {default as styled} from 'styled-components'
 import './todo-main.less'
-import {TodoCategory} from './todo-category'
+import {TodoCategory} from './todo-category.jsx'
 
 class TodoPage extends React.Component{
   constructor() {
@@ -166,6 +166,7 @@ class TodoPage extends React.Component{
                         <div className="done-title">{i.title}</div>
                         <span className="icon-trash-o todo-delete" onClick={this.removeTodo.bind(this, i)}></span>
                       </div>
+
                     )
                   }
                 })
