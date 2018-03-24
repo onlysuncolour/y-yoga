@@ -78,9 +78,12 @@ module.exports = {
     "proxy": {
       "/api": {
         "target": "http://localhost:9521",
-        // changeOrigin: true,
-        // secure: false,
         logLevel: 'debug'
+      },
+      "/socket.io": {
+        "target": "http://localhost:9521",
+        logLevel: 'debug',
+        ws: true,
       },
     }
   },

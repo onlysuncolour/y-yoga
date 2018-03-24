@@ -4,7 +4,7 @@ let socket;
 
 let SOCKETIO = {
   connect(token) {
-    let socketUrl = `http://localhost:9521?token=${token}`
+    let socketUrl = `?token=${token}`
     socket = io(socketUrl)
     this.setSocket();
   },
