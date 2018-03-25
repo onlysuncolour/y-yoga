@@ -65,6 +65,7 @@ module.exports = {
       'G': 'G',
       'browserHistory': 'browserHistory',
       'store': 'store',
+      'searchformat': 'searchformat',
     })
   ],
   mode: 'development',
@@ -95,6 +96,7 @@ module.exports = {
       'Dict': path.resolve(APP_PATH, './common/config/dict.js'),
       'app': APP_PATH,
       "Manba": 'manba',
+      'searchformat': 'query-string',
       'actions': path.resolve(APP_PATH, 'common/redux/actions.js'),
       'Socket': path.resolve(APP_PATH, 'common/socket.js'),
       'G': path.resolve(APP_PATH, 'common/global-event.js'),

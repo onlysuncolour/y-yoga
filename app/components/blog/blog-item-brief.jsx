@@ -11,8 +11,10 @@ class ItemBrief extends React.Component{
   }
   goEdit() {
     browserHistory.push({
-      pathname: `/blog-edit/${this.props.item._id}`,
+      pathname: `/blog-edit`,
+      search: searchformat.stringify({id: this.props.item._id})
     })
+
   }
   render() {
     const EditLink = () => {
@@ -25,7 +27,10 @@ class ItemBrief extends React.Component{
     return (
       <div className="blog-item-brief">
         <div className="top">
-          <Link className="link title" to={'/blog-read/'+this.props.item._id}>{this.props.item.title}</Link>
+          <Link className="link title" to={{
+            pathname: '/blog-read',
+            search: searchformat.stringify({id: this.props.item._id})
+          }}>{this.props.item.title}</Link>
           {EditLink()}
         </div>
         <div className="info">

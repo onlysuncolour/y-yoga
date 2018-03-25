@@ -30,7 +30,7 @@ class LoginPage extends React.Component{
       username: this.state.username,
       password: this.state.password,
     }).then(resp => {
-      if (resp.ok && resp.data.userId) {
+      if (resp.ok && resp.data._id) {
         store.dispatch(setMe(resp.data))
         store.dispatch(removePopup())
       }

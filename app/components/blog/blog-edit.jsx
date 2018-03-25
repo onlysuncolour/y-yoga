@@ -96,7 +96,8 @@ class BlogEdit extends React.Component {
   goBack() {
     if (this.state.blog._id) {
       browserHistory.push({
-        pathname: `/blog-read/${this.state.blog._id}`,
+        pathname: '/blog-read',
+        search: searchformat.stringify({id: this.state.blog._id})
       })
     } else {
       browserHistory.push({
@@ -171,7 +172,7 @@ class BlogEdit extends React.Component {
   }
   componentDidMount() {
     this.getTags()
-    let id = this.props.match.params.id;
+    let id = searchformat.parse(this.props.location.search).id;
     if (id) {
       this.setState({
         loading: true

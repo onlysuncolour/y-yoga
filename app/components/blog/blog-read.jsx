@@ -15,8 +15,10 @@ class BlogRead extends React.Component{
     this.getHotBlogList = this.getHotBlogList.bind(this)
     this.goEdit = this.goEdit.bind(this)
   }
-  componentWillMount() {
-    let id = this.props.match.params.id;
+  // componentWillMount() {
+  // }
+  componentDidMount() {
+    let id = searchformat.parse(this.props.location.search).id;
     this.getBlog(id);
     this.getHotBlogList()
   }
@@ -87,7 +89,10 @@ class BlogRead extends React.Component{
               return (
                 <div key={i._id} className="hot-blog">
                   <div className="blog-title">
-                    <Link to={'/blog-read/'+i._id}>{i.title}</Link>
+                    <Link to={{
+                      pathname: '/blog-read',
+                      search: searchformat.stringify({id: i._id})
+                    }}>{i.title}</Link>
                   </div>
                   <div className="blog-brief">
                     {i.brief || i.ibrief}

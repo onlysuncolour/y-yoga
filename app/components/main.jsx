@@ -65,8 +65,8 @@ class Main extends React.Component{
             <Route path="/others/lost-city" component = {LostCity} />
             <Route path="/management" component = {ManagementPage} />
             <Route exact path="/blog-edit" component = {BlogEdit} />
-            <Route path="/blog-edit/:id" component = {BlogEdit} />
-            <Route path="/blog-read/:id" component = {BlogRead} />
+            <Route path="/blog-edit" component = {BlogEdit} />
+            <Route path="/blog-read" component = {BlogRead} />
             <Redirect to="/"/>
           </Switch>
         )
