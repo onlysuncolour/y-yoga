@@ -56,7 +56,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       title: "young-yoga",
-      hash: true,
+      // hash: true,
     }),
     new webpack.ProvidePlugin({
       'Utils': 'Utils',
