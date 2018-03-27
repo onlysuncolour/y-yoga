@@ -46,13 +46,17 @@ class YoungAnimateKeywordsManagement extends React.Component{
     keywordList[lineIndex].name = event.target.value
     this.setState({ keywordList });
   }
-
+  removeWord(lineIndex, keyIndex) {
+    let keywordList = Utils.copy(this.state.keywordList)
+    keywordList[lineIndex].splice(keyIndex, 1)
+    this.setState({ keywordList });
+  }
   render() {
     return (
       <div className="young-animate-keywords-management">
         keyword lists
         <div>
-          <table>
+          <table border="1" bordercolor="#a0c6e5" rules="rows">
             <thead>
               <tr>
                 <th>name</th>
@@ -69,7 +73,7 @@ class YoungAnimateKeywordsManagement extends React.Component{
                         l.mode == 'edit' ?
                         ( <td><input className="list-name-edit" name={iOl} value={l.name} onChange={this.handleListNameChange.bind(this)} /></td> )
                           :
-                        ( <td><span>{l.name}</span></td> )
+                        ( <td><span className="list-name">{l.name}</span></td> )
                       }
                       {
                         l.mode == 'edit' ?
@@ -78,11 +82,16 @@ class YoungAnimateKeywordsManagement extends React.Component{
                             {
                               l.words.map((k, iOk) => {
                                 return (
-                                  <input className="keyword-edit" key={iOk} name={`${iOl}_${iOk}`} value={k} onChange={this.handleKeywordChange.bind(this)} />
+                                  <div key={iOk} className="keyword-edit">
+                                    <input name={`${iOl}_${iOk}`} value={k} onChange={this.handleKeywordChange.bind(this)} />
+                                    <i className="icon-cross" onClick={this.removeWord.bind(this, iOl, iOk)}></i>
+                                  </div>
                                 )
                               })
                             }
-                            <i onClick={this.addNewKeyword.bind(this, iOl)} className="icon-plus"></i>
+                            <div className="add-keyword" onClick={this.addNewKeyword.bind(this, iOl)}>
+                              <i className="icon-plus"></i>
+                            </div>
                           </td>
                         )
                           :
@@ -100,9 +109,9 @@ class YoungAnimateKeywordsManagement extends React.Component{
                       }
                       {
                         l.mode == 'edit' ?
-                        ( <td><button onClick={this.saveLine.bind(this, iOl)}>保存</button></td> )
+                        ( <td><button className="keyword-button" onClick={this.saveLine.bind(this, iOl)}>保存</button></td> )
                           :
-                        ( <td><button onClick={this.setLineEdit.bind(this, iOl)}>编辑</button></td> )
+                        ( <td><button className="keyword-button" onClick={this.setLineEdit.bind(this, iOl)}>编辑</button></td> )
                       }
                     </tr>
                   )
