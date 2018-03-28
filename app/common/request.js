@@ -59,8 +59,8 @@ module.exports = {
     },
   },
   Keywords: {
-    getUsInfo(name) {
-      return Ajax.get(`/keywords/us`, {me: name})
+    getUsInfo(keyword) {
+      return Ajax.get(`/keywords/us`, {keyword})
     },
     getYoungCircle() {
       return Ajax.get(`/keywords/youngCircle`)

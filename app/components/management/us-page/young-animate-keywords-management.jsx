@@ -48,7 +48,7 @@ class YoungAnimateKeywordsManagement extends React.Component{
   }
   removeWord(lineIndex, keyIndex) {
     let keywordList = Utils.copy(this.state.keywordList)
-    keywordList[lineIndex].splice(keyIndex, 1)
+    keywordList[lineIndex].words.splice(keyIndex, 1)
     this.setState({ keywordList });
   }
   render() {
