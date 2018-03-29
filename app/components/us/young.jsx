@@ -1,5 +1,6 @@
 import React from 'react';
 import {YoungAnimate} from './young-animate'
+import {YoungMusicBox} from './young-music-box'
 
 class Young extends React.Component{
   constructor() {
@@ -24,8 +25,9 @@ class Young extends React.Component{
     }
     return (
       <div className="young-page">
-        {Animate()}
+        {/* {Animate()} */}
         <div className="container">
+          <YoungMusicBox></YoungMusicBox>
         </div>
 
         young

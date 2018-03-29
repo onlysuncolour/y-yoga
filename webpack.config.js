@@ -27,7 +27,7 @@ module.exports = {
           }
         },
         exclude: /(node_modules)/,
-      }, { test: /\.(png|jpg|jpeg$|gif|eot|otf|webp|ttf|woff|woff2|svg)$/,
+      }, { test: /\.(png|jpg|jpeg$|gif|eot|otf|webp|ttf|woff|woff2|svg|mp3)$/,
         use: [
           {
             loader: 'file-loader',
