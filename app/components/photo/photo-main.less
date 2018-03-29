@@ -6,5 +6,56 @@
     height: 100%;
     overflow-y: auto;
     position: relative;
+    .album-wrapper{
+      figure{
+        padding: 0;
+        margin: 0;
+        position: relative;
+        transition: all .1s;
+        filter: grayscale(100%);
+        cursor:crosshair;
+        .album-title{
+          position: absolute;
+          top: 50px;
+          display: block;
+          width: 0;
+          height: 0;
+          overflow: hidden;
+          transition: all 1s ease;
+          white-space: nowrap;
+          color: white;
+        }
+        .album-desc{
+          position: absolute;
+          top: 100px;
+          display: block;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+          transition: all 1s ease .1s;
+          white-space: nowrap;
+          color: white;
+        }
+        .album-photo{
+          width: 100%;
+          height: auto;
+        }
+        &:hover{
+          filter: grayscale(0);
+          .album-title{
+          height: auto;
+          width: 100%;
+          }
+          .album-desc{
+          height: auto;
+          width: 100%;
+          }
+          .album-photo{
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
   }
 }
