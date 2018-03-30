@@ -59,23 +59,27 @@ class YoungMusicBox extends React.Component{
     this.musicBox.pause()
     this.setState({status: "pause"})
   }
+  // musicOnEnd() {
+  //   console.log('music-end')
+  //   this.nextMusic.bind(this, true)()
+  // }
   onCanPlay(e) {
     // debugger;
   }
-  onTimeUpdate() {
+  onTimeUpdate(e) {
     // debugger;
   }
   testPause() {
     // debugger;
   }
-  NextMusic(type) {
+  nextMusic(type, status) {
     let index = this.state.musicList.indexOf(this.state.currentMusic),
       musicListLength = this.state.musicList.length,
       currentMusic;
     if (type === true) {
       currentMusic = index < musicListLength - 1 ? this.state.musicList[index+1] : this.state.musicList[0]
     } else if (type === false) {
-      currentMusic = index == 0 ? this.state.musicList(musicListLength-1) : this.state.musicList[index-1]
+      currentMusic = index == 0 ? this.state.musicList[musicListLength-1] : this.state.musicList[index-1]
     }
     this.setState({currentMusic, autoplay: true})
   }
@@ -89,12 +93,14 @@ class YoungMusicBox extends React.Component{
           onCanPlay={this.onCanPlay.bind(this)}
           onTimeUpdate={this.onTimeUpdate.bind(this)}
           onPause={this.testPause}
-          onEnded={this.NextMusic.bind(this, true)}
+          onEnded={this.nextMusic.bind(this, true, 'onEnded')}
+          onError={this.nextMusic.bind(this, true, 'onError')}
+          onStalled={this.nextMusic.bind(this, true, 'onStalled')}
         ></audio>
         <div>{this.state.currentMusic.name}</div>
         <button onClick={this.playMusic.bind(this)}> 播放</button>
-        <button onClick={this.NextMusic.bind(this, true)}> 下一首</button>
-        <button onClick={this.NextMusic.bind(this, false)}> 上一首</button>
+        <button onClick={this.nextMusic.bind(this, true, 'next')}> 下一首</button>
+        <button onClick={this.nextMusic.bind(this, false, 'previous')}> 上一首</button>
         <button onClick={this.stopMusic.bind(this)}> 暂停</button>
       
       </div>
