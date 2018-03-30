@@ -1,0 +1,85 @@
+.music-box-main {
+  padding: 20px;
+  .music-box-table {
+    // display: inline-block;
+    // width: 300px;
+    .music-title {
+
+    }
+    .music-controls {
+      margin-top: 20px;
+      .music-progress-bar {
+        display: inline-block;
+        .music-range-input {
+          width: 300px;
+          margin: 20px;
+        }
+        .music-times {
+          display: inline-block;
+          font-size: 13px;
+          color: #999;
+        }
+      }
+      .buttons-tab {
+        display: inline-block;
+        margin-right: 30px;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        font-size: 18px;
+        .music-control-btn {
+          cursor: pointer;
+
+        }
+        .previous-btn {
+          margin-right: 10px;
+          padding: 6px 10px;
+          border: 1px solid #fff;
+          border-radius: 16px;
+          background-color: orangered;
+          color: #fff;
+        }
+        .play-btn {
+          margin-right: 10px;
+          padding: 6px 8px;
+          border: 1px solid #fff;
+          border-radius: 17px;
+          background-color: orangered;
+          color: #fff;
+        }
+        .pause-btn {
+          margin-right: 10px;
+          padding: 6px 7px;
+          border: 1px solid #fff;
+          border-radius: 17px;
+          background-color: orangered;
+          color: #fff;
+        }
+        .next-btn {
+          padding: 6px 10px;
+          border: 1px solid #fff;
+          border-radius: 16px;
+          background-color: orangered;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .music-list-table {
+    width: 300px;
+    float: right;
+    height: 500px;
+    overflow: auto;
+    .music-list {
+      li {
+        margin-bottom: 20px;
+        .music-name {
+          cursor: pointer;
+        }
+        .music-name-on-playing {
+          color: crimson;
+        }
+      }
+    }
+  }
+}
