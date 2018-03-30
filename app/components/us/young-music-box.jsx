@@ -4,8 +4,8 @@ class YoungMusicBox extends React.Component{
   constructor() {
     super();
     this.state = {
-      duration: null,
-      currentTime: null,
+      duration: 0,
+      currentTime: 0,
       autoplay: false,
       musicList: [
         {
@@ -50,27 +50,24 @@ class YoungMusicBox extends React.Component{
     this.setState({currentMusic})
   }
   playMusic() {
-    // debugger;
     this.musicBox.play()
     this.setState({status: "play"})
   }
   stopMusic() {
-    // debugger;
     this.musicBox.pause()
     this.setState({status: "pause"})
   }
-  // musicOnEnd() {
-  //   console.log('music-end')
-  //   this.nextMusic.bind(this, true)()
-  // }
   onCanPlay(e) {
-    // debugger;
+
   }
   onTimeUpdate(e) {
-    // debugger;
+    this.setState({
+      duration: e.target.duration || 0,
+      currentTime: e.target.currentTime || 0,
+    })
   }
   testPause() {
-    // debugger;
+
   }
   nextMusic(type, status) {
     let index = this.state.musicList.indexOf(this.state.currentMusic),
@@ -81,7 +78,26 @@ class YoungMusicBox extends React.Component{
     } else if (type === false) {
       currentMusic = index == 0 ? this.state.musicList[musicListLength-1] : this.state.musicList[index-1]
     }
-    this.setState({currentMusic, autoplay: true})
+    this.setState({currentMusic, autoplay: true, duration: 0, currentTime: 0})
+  }
+  changeCurrentTime(e) {
+    let currentTime
+    if (typeof e == 'number') {
+      currentTime = e
+    } else {
+      currentTime = e.target.value
+    }
+    this.musicBox.currentTime = currentTime
+    this.setState({
+      currentTime
+    })
+  }
+  changeMusic(music) {
+    if(music == this.state.currentMusic) {
+      this.changeCurrentTime.bind(this, 0)
+    } else {
+      this.setState({ currentMusic: music, autoplay: true })
+    }
   }
   render() {
     return (
@@ -102,7 +118,27 @@ class YoungMusicBox extends React.Component{
         <button onClick={this.nextMusic.bind(this, true, 'next')}> 下一首</button>
         <button onClick={this.nextMusic.bind(this, false, 'previous')}> 上一首</button>
         <button onClick={this.stopMusic.bind(this)}> 暂停</button>
-      
+        <div>
+          <span>{Utils.getMinuteTime(this.state.currentTime)}</span>
+          <input type="range" value={this.state.currentTime} max={this.state.duration} min="0" onChange={this.changeCurrentTime.bind(this)} />
+          <span>{Utils.getMinuteTime(this.state.duration)}</span>
+        </div>
+        <div>
+          <ul className="music-list">
+          {
+            this.state.musicList.map((music, index) => {
+              return (
+                <li key={index}>
+                  <span
+                    className={`music ${this.state.currentMusic==music ? "music-on-playing" : ""}`}
+                    onDoubleClick={this.changeMusic.bind(this, music)}
+                  >{music.name}</span>
+                </li>
+              )
+            })
+          }
+          </ul>
+        </div>
       </div>
     )
   }

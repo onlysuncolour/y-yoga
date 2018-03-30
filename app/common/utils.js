@@ -105,4 +105,17 @@ module.exports = {
       return Manba(input).format('YYYY-MM-DD')
     }
   },
+  getMinuteTime: function (input) {
+    if(isNaN(input)) {
+      return NaN
+    } 
+    let v = Number(input)
+    let minute = parseInt(v/60),
+      second = parseInt(v%60),
+      result = "";
+      result += minute < 10 ? "0"+minute : minute;
+      result += ":"
+      result += second < 10 ? "0"+second : second;
+    return result
+  },
 }
