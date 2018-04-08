@@ -73,13 +73,17 @@ class MusicBox extends React.Component{
   nextMusic(type, status) {
     let index = this.state.musicList.indexOf(this.state.currentMusic),
       musicListLength = this.state.musicList.length,
-      currentMusic;
+      currentMusic,
+      autoplay = true;
     if (type === true) {
       currentMusic = index < musicListLength - 1 ? this.state.musicList[index+1] : this.state.musicList[0]
     } else if (type === false) {
       currentMusic = index == 0 ? this.state.musicList[musicListLength-1] : this.state.musicList[index-1]
     }
-    this.setState({currentMusic, autoplay: true, duration: 0, currentTime: 0})
+    if (this.state.status == "pause" && (status == "onEnded" || status == "onError" || status == "onStalled")) {
+      autoplay = false
+    }
+    this.setState({currentMusic, autoplay, duration: 0, currentTime: 0})
   }
   changeCurrentTime(e) {
     let currentTime

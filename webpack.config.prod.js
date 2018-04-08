@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const fs = require('fs')
+// const os = require('os')
+// const WebpackSshDeployPlugin = require('webpack-ssh-deploy-plugin').WebpackSshDeployPlugin
 var APP_PATH = path.resolve(__dirname, 'app');
 
 module.exports = {
@@ -69,7 +72,15 @@ module.exports = {
       'G': 'G',
       'browserHistory': 'browserHistory',
       'store': 'store',
-    })
+    }),
+    // new WebpackSshDeployPlugin({
+    //   root: '/home/young/smbshare',
+    //   host: '47.100.2.29',
+    //   port: 22,
+    //   username: 'root',
+    //   readyTimeout: 9999999,
+    //   privateKey: fs.readFileSync(path.join(os.homedir(), '.ssh/yyoga')),
+    // })
   ],
   mode: 'production',
   resolve: {
