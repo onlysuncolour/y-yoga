@@ -4,7 +4,7 @@ import './photo-main.less'
 class PhotoPage extends React.Component{
   constructor() {
     super();
-    this.state ={
+    this.state = {
       // 七牛获取图片宽高，设置img
       arr: [1,2,3,4,5,6]
     }
