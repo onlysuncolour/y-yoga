@@ -8,13 +8,13 @@ class GameCard extends React.Component {
     this.discardCard = this.discardCard.bind(this)
   }
   pickCard() {
-
+    this.props.pickCard(this.props.card)
   }
   playCard() {
-
+    this.props.playCard(this.props.card)
   }
   discardCard() {
-
+    this.props.discardCard(this.props.card)
   }
   render() {
     const CardNumber = (cardNumber) => {

@@ -208,11 +208,11 @@ class BlogEdit extends React.Component {
       <div className="blog-edit-page">
         { Loading() }
         <div className="blog-title">
-          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="请输入标题" />
+          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="请输入标题" autocomplete="off" />
           { buttons() }
         </div>
         <div className="blog-tag-config">
-          tags:
+          <span class="tag-label">标签：</span>
           {
             this.state.taglist.map(i => {
               let className = "y-tag"
