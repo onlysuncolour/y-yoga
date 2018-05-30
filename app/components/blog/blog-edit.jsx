@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Markdown from 'react-markdown'
 import './blog-edit.less'
+import { addPopup } from 'actions';
 import Prism from '../../common/prism'
+
+import {BlogBriefEdit} from './blog-brief-edit'
 
 let operationAt = 0;
 
@@ -18,12 +21,15 @@ class BlogEdit extends React.Component {
       taglist: [],
       editor: null,
       loading: false,
+      brief: ""
     }
     this.handleBlogChange = this.handleBlogChange.bind(this)
     this.getTags = this.getTags.bind(this)
     this.saveBlog = this.saveBlog.bind(this)
     this.getBlog = this.getBlog.bind(this)
     this.goBack = this.goBack.bind(this)
+    
+    this.showBriefEditor = this.showBriefEditor.bind(this)
   }
   handleBlogChange(event) {
     let blog = this.state.blog
@@ -170,6 +176,27 @@ class BlogEdit extends React.Component {
       })
     }
   }
+  showBriefEditor() {
+    let loginPopup = {
+      render: (data, events) => {
+        return (
+          <BlogBriefEdit data={data} events={events}>
+          </BlogBriefEdit>
+        )
+      },
+      data: {
+        brief: this.state.brief
+      },
+      events: {
+        setBrief: (brief) => {
+          this.setState({
+            brief
+          })
+        }
+      }
+    }
+    store.dispatch(addPopup(loginPopup))
+  }
   componentDidMount() {
     this.getTags()
     let id = searchformat.parse(this.props.location.search).id;
@@ -208,11 +235,11 @@ class BlogEdit extends React.Component {
       <div className="blog-edit-page">
         { Loading() }
         <div className="blog-title">
-          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="请输入标题" autocomplete="off" />
+          <input type="text" value={this.state.blog.title} name="title" onChange={this.handleBlogChange} placeholder="请输入标题" autoComplete="off" />
           { buttons() }
         </div>
         <div className="blog-tag-config">
-          <span class="tag-label">标签：</span>
+          <span className="tag-label">标签：</span>
           {
             this.state.taglist.map(i => {
               let className = "y-tag"
@@ -243,6 +270,7 @@ class BlogEdit extends React.Component {
           <span className="editor-button icon-table2" onClick={this.handleBlogContent.bind(this, 'table')}></span>
           <span className="editor-button icon-chain" onClick={this.handleBlogContent.bind(this, 'chain')}></span>
           <span className="editor-button icon-images" onClick={this.handleBlogContent.bind(this, 'image')}></span>
+          <span className="fr add-brief-button" onClick={this.showBriefEditor.bind(this)} >博文概述</span>
         </div>
         <div className="blog">
           <div className="content">

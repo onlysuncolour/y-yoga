@@ -25,7 +25,7 @@ class Popup extends React.Component{
                 <div className="popup-mask"></div>
                 <div onClick={this.removePopup} className="popup-body">
                   <div onClick={this.stopPropagation} className="popup-container">
-                    {i.render()}
+                    {i.render(i.data, i.events)}
                   </div>
                 </div>
               </div>

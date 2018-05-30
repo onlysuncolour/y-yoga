@@ -52,6 +52,11 @@
   }
   .blog-tag-config {
     margin: 0px 20px;
+    .tag-label {
+      color: #666;
+      font-size: 13px;
+      margin-left: 12px;
+    }
     .y-tag {
       display: inline-block;
       margin: 5px 5px;
@@ -59,10 +64,11 @@
       border: 1px solid #808080;
       border-radius: 3px;
       cursor: pointer;
+      font-size: 14px;
     }
     .y-tag-selected {
       background-color: #c0ebd7;
-      border: none;
+      border: 1px solid #c0ebd7;
       color: #fff;
     }
   }
@@ -112,10 +118,10 @@
     border-bottom: none;
     .editor-button{
       display: inline-block;
-      padding: 10px 0;
+      padding: 5px 0;
       margin: 5px 10px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 14px;
       color: #8590a6;
       &:hover {
         color: darkturquoise;
@@ -123,10 +129,41 @@
     }
     .editor-button-line {
       display: inline-block;
-      font-size: 40px;
+      font-size: 30px;
       vertical-align: bottom;
       margin: 0 10px;
       color: #8590a6;
     }
+    .add-brief-button {
+      padding: 3px 10px;
+      border: 1px solid #4c8dae;
+      font-size: 14px;
+      margin-top: 5px;
+      border-radius: 4px;
+      color: #4c8dae;
+      cursor: pointer;
+      &:hover {
+        color: #003371;
+        border: 1px solid #003371;
+      }
+    }
+  }
+}
+
+.blog-brief-edit {
+  width: 800px;
+  height: 200px;
+  .header {
+    height: 40px;
+  }
+  .content {
+    textarea {
+      width: 780px;
+      height: 120px;
+      resize: none;
+    }
+  }
+  .footer {
+
   }
 }
