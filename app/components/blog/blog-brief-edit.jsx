@@ -36,7 +36,7 @@ class BlogBriefEdit extends React.Component{
           <span>博文概述</span>
         </div>
         <div className="content">
-          <textarea value={this.state.brief} name="brief" onChange={this.handleInput} ></textarea>
+          <textarea value={this.state.brief} name="brief" onChange={this.handleInput}></textarea>
         </div>
         <div className="footer">
           <button onClick={this.save}> 保存 </button>

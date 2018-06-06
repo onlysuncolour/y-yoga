@@ -57,6 +57,12 @@ module.exports = {
     updateSQL() {
       return Ajax.get('/blog/updateSQL')
     },
+    getAuthorInfo(id) {
+
+    },
+    getBlogRemark(id) {
+      
+    }
   },
   Keywords: {
     getUsInfo(keyword) {

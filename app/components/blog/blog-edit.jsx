@@ -17,6 +17,7 @@ class BlogEdit extends React.Component {
         content: "",
         title: "",
         tags: [],
+        brief: "",
       },
       taglist: [],
       editor: null,
@@ -126,7 +127,7 @@ class BlogEdit extends React.Component {
   }
   saveBlog() {
     let blog = this.state.blog;
-    // blog.content = this.state.editor.getValue()
+    // TODO: 没有博文概述的时候，出来一个弹窗
     if (!blog._id) {
       blog.author = this.props.me.name
       blog.authorId = this.props.me._id
@@ -177,7 +178,7 @@ class BlogEdit extends React.Component {
     }
   }
   showBriefEditor() {
-    let loginPopup = {
+    let briefEditPopup = {
       render: (data, events) => {
         return (
           <BlogBriefEdit data={data} events={events}>
@@ -185,17 +186,19 @@ class BlogEdit extends React.Component {
         )
       },
       data: {
-        brief: this.state.brief
+        brief: this.state.blog.brief
       },
       events: {
         setBrief: (brief) => {
+          let blog = this.state.blog
+          blog.brief = brief
           this.setState({
-            brief
+            blog
           })
         }
       }
     }
-    store.dispatch(addPopup(loginPopup))
+    store.dispatch(addPopup(briefEditPopup))
   }
   componentDidMount() {
     this.getTags()
