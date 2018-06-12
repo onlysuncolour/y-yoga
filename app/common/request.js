@@ -71,5 +71,19 @@ module.exports = {
     getYoungCircle() {
       return Ajax.get(`/keywords/youngCircle`)
     }
+  },
+  Photo: {
+    listAblum(param) {
+      return Ajax.get('/photo/listAblum', param)
+    },
+    listPhoto(param) {
+      return Ajax.get('/photo/listPhoto', param)
+    },
+    add(param) {
+      return Ajax.post('/photo/add', param)
+    },
+    update(param) {
+      return Ajax.post('/photo/update', param)
+    },
   }
 }

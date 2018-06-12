@@ -1,7 +1,6 @@
 import React from 'react';
 import './photo-main.less'
 import styled from 'styled-components'
-import Link from 'react-router-dom/Link';
 
 const Album = styled.div`
     .album-wrapper{
@@ -44,10 +43,10 @@ class PhotoPage extends React.Component{
     this.state = {
       // 七牛获取图片宽高，设置img
       arr: [
-        {id: 1, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 2, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 3, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 4, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
+        {title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
+        {title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
+        {title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
+        {title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
       ]
     }
   }
@@ -56,24 +55,6 @@ class PhotoPage extends React.Component{
   render() {
     return (
       <div className="photo-main-page">
-        <Album className="album-page">
-          {
-          this.state.arr.map((item, index)=>{
-            return (
-              <Link to={`/photo/ablum/${item.id}`} key={item.id}>
-                <div className="album-wrapper">
-                  <div className="album-thumbnail">
-                    <img className="album-image" src={item.url}/>
-                  </div>
-                  <div className="album-name">{item.title}</div>
-                  <div className="album-desc">{item.desc}</div>
-                  <div className="album-other"><span className="fl">{item.count}张照片</span><span className="fr">{item.updatedAt}更新</span></div>
-                </div>
-              </Link>
-            )
-          })
-          }
-        </Album>
         <div className="container">
         {
           <div className="album-wrapper">
