@@ -23,7 +23,8 @@ import {ManagementPage} from './management/management-main'
 
 import {Popup} from './common/popup'
 import './main.less'
-
+import a from './common/UI';
+console.log('---', a)
 class Main extends React.Component{
   constructor() {
     super();
