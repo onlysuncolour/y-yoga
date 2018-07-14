@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom"
+import {Button} from 'components/UI';
 
 class ItemBrief extends React.Component{
   constructor() {
@@ -36,6 +37,7 @@ class ItemBrief extends React.Component{
         <div className="info">
           <span className="author">{this.props.item.author}</span>
           <span className="date">{Utils.formatDate(this.props.item.updatedAt)}</span>
+          <Button text="clickMe"></Button>
         </div>
         <div className="brief">
           {this.props.item.brief || this.props.item.ibrief}

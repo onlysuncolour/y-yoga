@@ -5,21 +5,18 @@ class Button extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      text: props.initialValue || 'placeholder'
+      text: props.text || 'placeholder'
     }
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(event) {
     this.setState({
-      text: event.target.value
+      text: 'clicked'
     });
   }
   render() {
     return (
-      <div>
-        type something:
-        <input type="text" onChange={this.handleChange} value={this.state.text}/>
-      </div>
+      <button type="button" onClick={this.handleChange}>{this.state.text}</button>
     )
   }
 }
