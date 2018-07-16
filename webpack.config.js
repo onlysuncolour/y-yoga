@@ -102,7 +102,8 @@ module.exports = {
       'G': path.resolve(APP_PATH, 'common/global-event.js'),
       'browserHistory': path.resolve(APP_PATH, 'common/history.js'),
       'store': path.resolve(APP_PATH, 'common/redux/store.js'),
-      'components': path.resolve(APP_PATH, './components')
+      'components': path.resolve(APP_PATH, './components'),
+      'common': path.resolve(APP_PATH, './common'),
     }
   },
 

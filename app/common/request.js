@@ -1,5 +1,10 @@
 import Ajax from './ajax'
 module.exports = {
+  Common: {
+    qiniuToken(param) {
+      return Ajax.post('/qiniu/token', param)
+    }
+  },
   Todo: {
     getTodoList () {
       return Ajax.get('/todo/getlist');

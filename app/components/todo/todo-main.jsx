@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getTodoList, addTodo, addDone, updateTodo, removeTodo} from 'actions';
 import './todo-main.less'
 import {TodoCategory} from './todo-category'
+import {Uploader} from 'components/common/uploader'
 
 class TodoPage extends React.Component{
   constructor() {
@@ -121,6 +122,9 @@ class TodoPage extends React.Component{
       <div className="todo-main-page" onClick={this.cancelUpdatingTodo.bind(this)}>
         <div className="container">
           <div className="todo-page-title">
+          <div className="uploader-test">
+            <Uploader></Uploader>
+          </div>
             <span className="title">todos</span>
             <input className="new-todo" placeholder="Hey, what needs to be done?" value={this.state.newTodo} name="newTodo" onChange={this.handleChange} onKeyUp={this.onKeyup.bind(this)} />
             <div className="todo-type-tab">
