@@ -5,25 +5,18 @@ class Uploader extends React.Component {
   constructor() {
     super();
     this.state = {
-      files: [],
-      // uploader: null,
       token: null,
       file: null,
       fileName: "",
       observable: null,
       subscription: null,
     };
-    this.getQiniuToken = this.getQiniuToken.bind(this)
-    // this.initUploader = this.initUploader.bind(this)
     this.handleFileChange = this.handleFileChange.bind(this)
     this.uploadFile = this.uploadFile.bind(this)
 
     this.uploadNext = this.uploadNext.bind(this)
     this.uploadError = this.uploadError.bind(this)
     this.uploadComplete = this.uploadComplete.bind(this)
-  }
-  componentWillMount() {
-    this.getQiniuToken()
   }
   handleFileChange(event) {
     let newState = {};
@@ -40,8 +33,7 @@ class Uploader extends React.Component {
         let token = resp.data.token
         let observable = Qiniu.upload(
           this.state.file, 
-          // this.state.file.name, 
-          null,
+          null, // TODO: key, 需要自己生成key + .file后缀
           token,
           {
             fname: this.state.file.name,
@@ -59,12 +51,10 @@ class Uploader extends React.Component {
     })
   }
   uploadNext(res) {
-    
+    // TODO: 重写uploader样式中的进度条的进度，需要从这边获取
   }
   uploadError(err) {
-    err
-    this
-    debugger;
+    // TODO: 处理上传失败
   }
   uploadComplete(res) {
     let files = [{
@@ -75,19 +65,12 @@ class Uploader extends React.Component {
     Request.Common.addFile(files).then(resp => {
       if (resp.ok) {
         console.log('文件上传成功！')
+        // TODO: 需要调用props方法 返回file的key
       }
     })
   }
-  getQiniuToken() {
-    // Request.Common.qiniuToken().then(resp => {
-    //   if (resp.ok) {
-    //     this.setState({
-    //       token: resp.data.token
-    //     })
-    //   }
-    // })
-  }
   render() {
+    // TODO: 需要重写uploader的样式
     return(
       <div>
         <input type="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
