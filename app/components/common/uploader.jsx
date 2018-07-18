@@ -32,9 +32,6 @@ class Uploader extends React.Component {
     this.setState(newState);
   }
   uploadFile() {
-    // console.log(this.state.file)
-    // this;
-    // debugger;
     if (!this.state.file) {
       return
     }
@@ -43,7 +40,8 @@ class Uploader extends React.Component {
         let token = resp.data.token
         let observable = Qiniu.upload(
           this.state.file, 
-          this.state.file.name, 
+          // this.state.file.name, 
+          null,
           token,
           {
             fname: this.state.file.name,
@@ -69,9 +67,16 @@ class Uploader extends React.Component {
     debugger;
   }
   uploadComplete(res) {
-    res
-    this
-    debugger;
+    let files = [{
+      filename: this.state.file.name,
+      key: res.key,
+      type: this.state.file.type
+    }]
+    Request.Common.addFile(files).then(resp => {
+      if (resp.ok) {
+        console.log('文件上传成功！')
+      }
+    })
   }
   getQiniuToken() {
     // Request.Common.qiniuToken().then(resp => {

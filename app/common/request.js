@@ -3,6 +3,9 @@ module.exports = {
   Common: {
     qiniuToken(param) {
       return Ajax.post('/qiniu/token', param)
+    },
+    addFile(param) {
+      return Ajax.post('/qiniu/addFile', param)
     }
   },
   Todo: {
