@@ -67,7 +67,8 @@ class Uploader extends React.Component {
     Request.Common.addFile(files).then(resp => {
       if (resp.ok) {
         console.log('文件上传成功！')
-        this.props.onChange(files[0])
+        let f = resp.data;
+        this.props.onChange(f[0])
       }
     })
   }
