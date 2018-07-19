@@ -33,17 +33,11 @@ class Uploader extends React.Component {
     Request.Common.qiniuToken().then(resp => {
       if (resp.ok) {
         let token = resp.data.token
+        let key = getKey(file.name);
         let observable = Qiniu.upload(
-          file, 
-          null, // TODO: key, 需要自己生成key + .file后缀
-          token,
-          {
-            fname: file.name,
-            mimeType: null
-          },
-          {
-            region: Qiniu.region.z0
-          }
+          file, key, token,
+          { fname: file.name, mimeType: null },
+          { region: Qiniu.region.z0 }
         )
         this.setState({
           subscription: observable.subscribe(this.uploadNext, this.uploadError, this.uploadComplete),
@@ -85,6 +79,29 @@ class Uploader extends React.Component {
 
 Uploader.propTypes = {
   onChange: PropTypes.func.isRequired
+}
+
+let getKey = (filename) => {
+  let randomString = (len) => {
+  　len = len || 32;
+    let chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';   
+    let maxPos = chars.length;
+    let pwd = '';
+　　for (let i = 0; i < len; i++) {
+    　　pwd += chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
+  },
+  getSuffix = (filename) => {
+    let pos = filename.lastIndexOf('.');
+    let suffix = '';
+    if (pos != -1) {
+        suffix = filename.substring(pos);
+    }
+    return suffix;
+  };
+  let suffix = getSuffix(filename);
+  return `${randomString(24)}${suffix}`;
 }
 
 module.exports = {Uploader}
