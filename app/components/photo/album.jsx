@@ -44,12 +44,7 @@ class PhotoPage extends React.Component{
     super();
     this.state = {
       // 七牛获取图片宽高，设置img
-      arr: [
-        {id: 1, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 2, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 3, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-        {id: 4, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-      ],
+      list: [],
       file: null
     }
     this.fileChange = this.fileChange.bind(this)
@@ -64,7 +59,7 @@ class PhotoPage extends React.Component{
       console.log(resp)
       if (resp.ok) {
         this.setState({
-          data: resp
+          list: resp.data
         })
       }
     }, error => {
@@ -82,16 +77,16 @@ class PhotoPage extends React.Component{
       </div>
         <Album className="album-page">
           {
-          this.state.arr.map((item, index)=>{
+          this.state.list.map((item, index)=>{
             return (
-              <Link to={`/photo/ablum/${item.id}`} key={item.id}>
+              <Link to={`/photo/ablum/${item._id}`} key={item._id}>
                 <div className="album-wrapper">
                   <div className="album-thumbnail">
-                    <img className="album-image" src={item.url}/>
+                    <img className="album-image" src={item.imgUrl}/>
                   </div>
-                  <div className="album-name">{item.title}</div>
-                  <div className="album-desc">{item.desc}</div>
-                  <div className="album-other"><span className="fl">{item.count}张照片</span><span className="fr">{item.updatedAt}更新</span></div>
+                  <div className="album-name">{item.name}</div>
+                  <div className="album-desc">{item.description}</div>
+                  <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
                 </div>
               </Link>
             )
@@ -102,7 +97,7 @@ class PhotoPage extends React.Component{
         {
           <div className="album-wrapper">
           {
-            this.state.arr.map((a, index) => {
+            this.state.list.map((a, index) => {
               return (
                 <figure key={index}>
                   <p className="album-title">黄浦江上的的卢浦大桥</p>
