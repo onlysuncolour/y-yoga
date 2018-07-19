@@ -12,6 +12,7 @@
     "js-model": "^1.2.1",
     "manba": "^1.2.0",
     "plupload-es6": "^2.1.11",
+    "prop-types": "^15.6.2",
     "qiniu-js": "^2.4.0",
     "query-string": "^6.0.0",
     "react": "^16.2.0",

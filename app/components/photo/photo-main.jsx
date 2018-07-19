@@ -49,8 +49,15 @@ class PhotoPage extends React.Component{
         {id: 2, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
         {id: 3, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
         {id: 4, title: 'Kinfolk', desc: 'city guides', count: 138, updatedAt: '2016-11-13', url: 'https://img3.doubanio.com/view/photo/sqs/public/p2169576573.webp'},
-      ]
+      ],
+      file: null
     }
+    this.fileChange = this.fileChange.bind(this)
+  }
+  fileChange(file) {
+    this.setState({
+      file
+    })
   }
   componentDidMount() {
   }
@@ -58,7 +65,7 @@ class PhotoPage extends React.Component{
     return (
       <div className="photo-main-page">
       <div className="uploader-test">
-        <Uploader></Uploader>
+        <Uploader onChange={this.fileChange}></Uploader>
       </div>
         <Album className="album-page">
           {

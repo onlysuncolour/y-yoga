@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import * as Qiniu from 'qiniu-js'
 
 class Uploader extends React.Component {
@@ -23,20 +24,21 @@ class Uploader extends React.Component {
     newState.fileName = event.target.value
     newState.file = event.target.files[0]
     this.setState(newState);
+    this.uploadFile(newState.file)
   }
-  uploadFile() {
-    if (!this.state.file) {
+  uploadFile(file) {
+    if (!file) {
       return
     }
-    Request.Common.qiniuToken({key: this.state.file.name}).then(resp => {
+    Request.Common.qiniuToken().then(resp => {
       if (resp.ok) {
         let token = resp.data.token
         let observable = Qiniu.upload(
-          this.state.file, 
+          file, 
           null, // TODO: key, 需要自己生成key + .file后缀
           token,
           {
-            fname: this.state.file.name,
+            fname: file.name,
             mimeType: null
           },
           {
@@ -65,7 +67,7 @@ class Uploader extends React.Component {
     Request.Common.addFile(files).then(resp => {
       if (resp.ok) {
         console.log('文件上传成功！')
-        // TODO: 需要调用props方法 返回file的key
+        this.props.onChange(files[0])
       }
     })
   }
@@ -74,10 +76,14 @@ class Uploader extends React.Component {
     return(
       <div>
         <input type="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
-        <button onClick={this.uploadFile}>test</button>
+        {/* <button onClick={this.uploadFile}>test</button> */}
       </div>
     )
   }
+}
+
+Uploader.propTypes = {
+  onChange: PropTypes.func.isRequired
 }
 
 module.exports = {Uploader}
