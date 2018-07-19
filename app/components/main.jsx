@@ -8,8 +8,7 @@ import { setMe } from 'actions';
 import {Header} from './app/header'
 import {BlogPage} from './blog/blog-main'
 import {UsPage} from './us/us-main'
-import {PhotoPage} from './photo/photo-main'
-import {PhotoAlbumPage} from './photo/photo-album'
+import {PhotoPage} from './photo/album'
 import {PhotoDetailPage} from './photo/photo-detail'
 import {TodoPage} from './todo/todo-main'
 import {OthersPage} from './others/others-main'
@@ -63,8 +62,7 @@ class Main extends React.Component{
             <Route path="/young" component = {Young} />
             <Route path="/todo" component = {TodoPage} />
             <Route path="/photo" component = {PhotoPage} />
-            <Route path="/photo/album" component = {PhotoAlbumPage} />
-            <Route path="/photo/photo" component = {PhotoDetailPage} />
+            <Route path="/photo/detail" component = {PhotoDetailPage} />
             <Route path="/blog" component = {BlogPage} />
             <Route exact path="/others" component = {OthersPage} />
             <Route path="/others/lost-city" component = {LostCity} />

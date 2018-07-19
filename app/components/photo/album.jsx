@@ -59,7 +59,20 @@ class PhotoPage extends React.Component{
       file
     })
   }
+  getData() {
+    Request.Photo.listAblum().then(resp => {
+      console.log(resp)
+      if (resp.ok) {
+        this.setState({
+          data: resp
+        })
+      }
+    }, error => {
+
+    })
+  }
   componentDidMount() {
+    this.getData()
   }
   render() {
     return (

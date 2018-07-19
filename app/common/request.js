@@ -82,16 +82,16 @@ module.exports = {
   },
   Photo: {
     listAblum(param) {
-      return Ajax.get('/photo/listAblum', param)
+      return Ajax.get('/album/list', param)
     },
     listPhoto(param) {
-      return Ajax.get('/photo/listPhoto', param)
+      return Ajax.get('/photo/list', param)
     },
     add(param) {
       return Ajax.post('/photo/add', param)
     },
     update(param) {
-      return Ajax.post('/photo/update', param)
+      return Ajax.post('/photo/save', param)
     },
   }
 }

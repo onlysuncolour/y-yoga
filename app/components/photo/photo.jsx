@@ -9,7 +9,7 @@ const Album = styled.div`
       .album-thumbnail{
         width: 181px;
         height: 181px;
-        background: url(https://img3.doubanio.com/f/shire/283921263c43e490777b39d1a4e03bdedfc4d871/pics/albumback.gif) 1px 1px no-repeat;
+        background: url(https://img1.doubanio.com/view/photo/l/public/p2217762129.webp) 1px 1px no-repeat;
         padding: 4px 7px 7px 4px;
         .album-image{
           display: block;
