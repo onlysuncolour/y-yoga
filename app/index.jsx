@@ -10,6 +10,6 @@ import {Main} from './components/main'
 window.env = "development";
 
 const app = document.createElement('div');
-app.id = "main";
+app.id = "app";
 document.body.appendChild(app);
 ReactDOM.render(<Main />, app);

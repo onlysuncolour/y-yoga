@@ -2,6 +2,7 @@ import React from 'react';
 import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
+import {Uploader} from 'components/common/uploader'
 
 const Album = styled.div`
     .album-wrapper{
@@ -56,6 +57,9 @@ class PhotoPage extends React.Component{
   render() {
     return (
       <div className="photo-main-page">
+      <div className="uploader-test">
+        <Uploader></Uploader>
+      </div>
         <Album className="album-page">
           {
           this.state.arr.map((item, index)=>{
