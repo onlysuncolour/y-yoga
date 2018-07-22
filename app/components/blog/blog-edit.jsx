@@ -129,12 +129,11 @@ class BlogEdit extends React.Component {
     let blog = this.state.blog;
     // TODO: 没有博文概述的时候，出来一个弹窗
     if (!blog._id) {
-      blog.author = this.props.me.name
-      blog.authorId = this.props.me._id
-      blog.createdAt = new Date().getTime()
+      blog.author = this.props.me
+      blog.createdAt = new Date().toISOString()
       blog.updatedAt = blog.createdAt
     } else {
-      blog.updatedAt = new Date().getTime()
+      blog.updatedAt = new Date().toISOString()
     }
     Request.Blog.saveBlog(blog).then(resp => {
       if (resp.ok) {
@@ -142,9 +141,6 @@ class BlogEdit extends React.Component {
         browserHistory.push({
           pathname: `/blog`,
         })
-        // this.setState({
-        //   blog: resp.data
-        // })
       }
     })
   }

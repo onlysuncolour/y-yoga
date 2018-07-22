@@ -47,6 +47,7 @@ class Header extends React.Component{
   }
   render() {
     const loginTab = () => {
+      console.log(this.props.me);
       if (this.props.me && this.props.me._id) {
         return (
           <div className="header-user-tab fr">
@@ -70,7 +71,7 @@ class Header extends React.Component{
         </div>
         <ul className="header-menu-list inline-block">
           {
-            this.state.menus.filter(i => !i.admin || (i.admin && this.props.me.isAdmin)).map(i => (
+            this.state.menus.filter(i => !i.admin || (i.admin && this.props.me.admin)).map(i => (
               <li className={"header-menu-item "+{true: 'selecetd-menu', false: 'unselected-menu'}[i.link==this.props.router.location.pathname]} key={i.link}>
                 <Link className="link" to={i.link}> {i.title} </Link>
               </li>

@@ -112,10 +112,6 @@ class TodoPage extends React.Component{
     })
   }
 
-  updateSQL() {
-    Request.Todo.updateSQL()
-  }
-
   render() {
     return (
       <div className="todo-main-page" onClick={this.cancelUpdatingTodo.bind(this)}>

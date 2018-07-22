@@ -39,7 +39,7 @@ class BlogPage extends React.Component{
     let params = {}
     if (currentCategory && currentCategory._id) {
       if (currentCategory.key) {
-        params.tags = currentCategory.key
+        params.tags = currentCategory._id
       }
     }
     Request.Blog.getBlogList(params).then(resp => {
@@ -56,9 +56,6 @@ class BlogPage extends React.Component{
       currentCategory: data || {}
     })
     this.getBlogList(data || {})
-  }
-  updateSQL() {
-    Request.Blog.updateSQL()
   }
   render() {
     const TopTab = () => {

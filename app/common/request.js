@@ -21,9 +21,6 @@ module.exports = {
     deleteOne(param) {
       return Ajax.post('/todo/deleteOne', param)
     },
-    updateSQL() {
-      return Ajax.get('/todo/updateSQL')
-    },
   },
   Game: {
     LostCity: {
@@ -61,12 +58,6 @@ module.exports = {
     },
     saveBlog(param) {
       return Ajax.post('/blog/save', param)
-    },
-    updateSQL() {
-      return Ajax.get('/blog/updateSQL')
-    },
-    getAuthorInfo(id) {
-
     },
     getBlogRemark(id) {
       
