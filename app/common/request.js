@@ -72,8 +72,11 @@ module.exports = {
     }
   },
   Photo: {
-    listAblum(param) {
+    albumList(param) {
       return Ajax.get('/album/list', param)
+    },
+    saveAlbum(param) {
+      return Ajax.post('/album/save', param)
     },
     listPhoto(param) {
       return Ajax.get('/photo/list', param)

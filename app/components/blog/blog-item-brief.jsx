@@ -15,7 +15,6 @@ class ItemBrief extends React.Component{
       pathname: `/blog-edit`,
       search: searchformat.stringify({id: this.props.item._id})
     })
-
   }
   render() {
     const EditLink = () => {

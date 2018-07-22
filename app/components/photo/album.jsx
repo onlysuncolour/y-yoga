@@ -2,7 +2,7 @@ import React from 'react';
 import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
-import {Uploader} from 'components/common/uploader'
+import { connect } from 'react-redux';
 
 const Album = styled.div`
     .album-wrapper{
@@ -39,7 +39,7 @@ const Album = styled.div`
       }
     }
 `
-class PhotoPage extends React.Component{
+class AlbumPage extends React.Component{
   constructor() {
     super();
     this.state = {
@@ -47,15 +47,9 @@ class PhotoPage extends React.Component{
       list: [],
       file: null
     }
-    this.fileChange = this.fileChange.bind(this)
-  }
-  fileChange(file) {
-    this.setState({
-      file
-    })
   }
   getData() {
-    Request.Photo.listAblum().then(resp => {
+    Request.Photo.albumList().then(resp => {
       console.log(resp)
       if (resp.ok) {
         this.setState({
@@ -70,19 +64,28 @@ class PhotoPage extends React.Component{
     this.getData()
   }
   render() {
+    const TopTab = () => {
+      if (this.props.me._id) {
+        return (
+          <div className="top-tab">
+            <Link to="/album/edit"> 新建 </Link>
+          </div>
+        )
+      }
+    }
     return (
       <div className="photo-main-page">
-      <div className="uploader-test">
-        <Uploader onChange={this.fileChange}></Uploader>
-      </div>
+      {TopTab()}
         <Album className="album-page">
           {
-          this.state.list.map((item, index)=>{
+          this.state.list.map((item)=>{
             return (
               <Link to={`/photo/ablum/${item._id}`} key={item._id}>
                 <div className="album-wrapper">
                   <div className="album-thumbnail">
-                    <img className="album-image" src={item.imgUrl}/>
+                    <img className="album-image" 
+                    src={item.img.url}
+                    />
                   </div>
                   <div className="album-name">{item.name}</div>
                   <div className="album-desc">{item.description}</div>
@@ -93,27 +96,16 @@ class PhotoPage extends React.Component{
           })
           }
         </Album>
-        <div className="container">
-        {
-          <div className="album-wrapper">
-          {
-            this.state.list.map((a, index) => {
-              return (
-                <figure key={index}>
-                  <p className="album-title">黄浦江上的的卢浦大桥</p>
-                  <p className="album-desc">拍摄者：W3School 项目组，拍摄时间：2010 年 10 月</p>
-                  <img className="album-photo" src="app/images/small/8.jpg"/>
-                </figure>
-              )
-            })
-          }
-            
-          </div>
-        }
-        </div>
       </div>
     )
   }
 };
 
-module.exports = {PhotoPage}
+const mapStateToProps = (store) => {
+  return {
+    me: store.me.me,
+    router: store.router,
+  }
+}
+
+module.exports = {AlbumPage: connect(mapStateToProps)(AlbumPage)}
