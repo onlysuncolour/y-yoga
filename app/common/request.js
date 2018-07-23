@@ -84,10 +84,7 @@ module.exports = {
     listPhoto(param) {
       return Ajax.get('/photo/list', param)
     },
-    add(param) {
-      return Ajax.post('/photo/add', param)
-    },
-    update(param) {
+    savePhoto(param) {
       return Ajax.post('/photo/save', param)
     },
   }

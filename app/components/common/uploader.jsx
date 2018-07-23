@@ -6,13 +6,12 @@ class Uploader extends React.Component {
   constructor() {
     super();
     this.state = {
-      token: null,
       file: null,
-      fileName: "",
       observable: null,
       subscription: null,
     };
     this.handleFileChange = this.handleFileChange.bind(this)
+    this.clear = this.clear.bind(this)
     this.uploadFile = this.uploadFile.bind(this)
 
     this.uploadNext = this.uploadNext.bind(this)
@@ -21,10 +20,13 @@ class Uploader extends React.Component {
   }
   handleFileChange(event) {
     let newState = {};
-    newState.fileName = event.target.value
     newState.file = event.target.files[0]
     this.setState(newState);
     this.uploadFile(newState.file)
+  }
+  clear() {
+    this.state.file = null;
+    this.refs.file.value = null
   }
   uploadFile(file) {
     if (!file) {
@@ -70,7 +72,7 @@ class Uploader extends React.Component {
     // TODO: 需要重写uploader的样式
     return(
       <div>
-        <input type="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
+        <input type="file" ref="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
         {/* <button onClick={this.uploadFile}>test</button> */}
       </div>
     )

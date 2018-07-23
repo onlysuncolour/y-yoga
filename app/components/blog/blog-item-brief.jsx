@@ -17,7 +17,6 @@ class ItemBrief extends React.Component{
     })
   }
   render() {
-    debugger;
     const EditLink = () => {
       if (this.props.me._id && this.props.me._id == this.props.item.author._id) {
         return (

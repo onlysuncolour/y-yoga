@@ -3,6 +3,7 @@ import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
+import {PhotoEdit} from './photo-edit'
 class AlbumPage extends React.Component{
   constructor() {
     super();
@@ -33,22 +34,23 @@ class AlbumPage extends React.Component{
     let id = searchformat.parse(this.props.location.search).id;
     this.getAlbumInfo(id)
     this.getPhotos(id)
-    // debugger;
   }
   render() {
-    let TopTab = () => {
-      // if (this.props.me._id) {
-      //   return (
-      //     <div className="top-tab">
-      //       上传图片
-      //       <Uploader onChange={this.fileChange}></Uploader>
-      //     </div>
-      //   )
-      // }
+    if (!this.state.album._id) {
+      return (
+        <div></div>
+      )
+    }
+    let showAddAlbum = () => {
+      if (this.props.me._id) {
+        return (
+          <PhotoEdit album={this.state.album}></PhotoEdit>
+        )
+      }
     }
     return (
       <div className="photo-main-page">
-      {TopTab()}
+      {showAddAlbum()}
         {/* <Album className="album-page">
           {
           this.state.list.map((item)=>{
