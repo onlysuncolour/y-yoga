@@ -7,7 +7,7 @@ class PhotoEdit extends React.Component{
     this.state = {
       photo: {
         name: '',
-        img: {},
+        img: null,
         album: this.props.album,
         description: '',
         tags: [],
@@ -39,6 +39,11 @@ class PhotoEdit extends React.Component{
       if (resp.ok) {
         console.log('上传成功！')     
         this.refs.uploader.clear();
+        let photo = this.state.photo
+        photo.name = ''
+        photo.img = null
+        photo.description = ''
+        this.setState({photo})
         this.props.success();
       }
     })
