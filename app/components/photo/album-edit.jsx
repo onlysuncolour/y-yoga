@@ -1,3 +1,5 @@
+// TODO: 需要改为 弹窗实现
+
 import React from 'react';
 import {Uploader} from 'components/common/uploader'
 
@@ -42,6 +44,7 @@ class AlbumEditPage extends React.Component{
     })
   }
   componentDidMount() {
+    // TODO: 需要有router中id 或者props中id 调用接口拿数据
   }
   render() {
     return (

@@ -75,6 +75,9 @@ module.exports = {
     albumList(param) {
       return Ajax.get('/album/list', param)
     },
+    getAlbum(id) {
+      return Ajax.get(`/album/getOne`, {id})
+    },
     saveAlbum(param) {
       return Ajax.post('/album/save', param)
     },

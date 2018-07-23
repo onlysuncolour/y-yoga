@@ -17,6 +17,7 @@ class ItemBrief extends React.Component{
     })
   }
   render() {
+    debugger;
     const EditLink = () => {
       if (this.props.me._id && this.props.me._id == this.props.item.author._id) {
         return (
@@ -34,12 +35,12 @@ class ItemBrief extends React.Component{
           {EditLink()}
         </div>
         <div className="info">
-          <span className="author">{this.props.item.author}</span>
+          <span className="author">{this.props.item.author.name}</span>
           <span className="date">{Utils.formatDate(this.props.item.updatedAt)}</span>
           <Button text="clickMe"></Button>
         </div>
         <div className="brief">
-          {this.props.item.brief || this.props.item.ibrief}
+          {this.props.item.brief}
         </div>
       </div>
     )

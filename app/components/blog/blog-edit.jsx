@@ -242,11 +242,11 @@ class BlogEdit extends React.Component {
           {
             this.state.taglist.map(i => {
               let className = "y-tag"
-              if (this.state.blog.tags.indexOf(i.key) != -1) {
+              if (this.state.blog.tags.indexOf(i._id) != -1) {
                 className += " y-tag-selected"
               }
               return (
-                <div className={className} key={i.key} onClick={this.selectTag.bind(this, i.key)}>
+                <div className={className} key={i._id} onClick={this.selectTag.bind(this, i._id)}>
                   {i.title}
                 </div>
               )
