@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import * as Qiniu from 'qiniu-js'
 
 class Uploader extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       file: null,
       observable: null,
       subscription: null,
+      url: props.file && props.file.url,
+      uploadStatus: 'waiting'
     };
     this.handleFileChange = this.handleFileChange.bind(this)
     this.clear = this.clear.bind(this)
@@ -25,6 +27,10 @@ class Uploader extends React.Component {
     this.uploadFile(newState.file)
   }
   clear() {
+    this.setState({
+      uploadStatus: 'waiting',
+      url: null
+    })
     this.state.file = null;
     this.refs.file.value = null
   }
@@ -32,6 +38,10 @@ class Uploader extends React.Component {
     if (!file) {
       return
     }
+    this.setState({
+      uploadStatus: 'loading',
+      url: null,
+    })
     Request.Common.qiniuToken().then(resp => {
       if (resp.ok) {
         let token = resp.data.token
@@ -43,7 +53,7 @@ class Uploader extends React.Component {
         )
         this.setState({
           subscription: observable.subscribe(this.uploadNext, this.uploadError, this.uploadComplete),
-          observable
+          observable,
         })
       }
     })
@@ -64,6 +74,10 @@ class Uploader extends React.Component {
       if (resp.ok) {
         console.log('文件上传成功！')
         let f = resp.data;
+        this.setState({
+          uploadStatus: 'done',
+          url: f[0].url
+        })
         this.props.onChange(f[0])
       }
     })
@@ -74,6 +88,17 @@ class Uploader extends React.Component {
       <div>
         <input type="file" ref="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
         {/* <button onClick={this.uploadFile}>test</button> */}
+        {
+          this.state.uploadStatus == 'waiting' ? 
+          <div>选择文件上传</div> : this.state.uploadStatus == 'loading' ? 
+          <div>上传中</div> : 
+          <div>上传成功</div>
+        }
+        {
+          this.state.url? 
+          <img src={this.state.url} /> :
+          <div></div>
+        }
       </div>
     )
   }

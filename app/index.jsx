@@ -6,10 +6,10 @@ import './styles/main.less'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Main} from './components/main'
+import {App} from './components/app'
 window.env = "development";
 
 const app = document.createElement('div');
 app.id = "app";
 document.body.appendChild(app);
-ReactDOM.render(<Main />, app);
+ReactDOM.render(<App />, app);

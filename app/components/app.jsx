@@ -10,7 +10,6 @@ import {BlogPage} from './blog/blog-main'
 import {UsPage} from './us/us-main'
 import {AlbumListPage} from './photo/album-list'
 import {AlbumPage} from './photo/album'
-import {AlbumEditPage} from './photo/album-edit'
 import {PhotoDetailPage} from './photo/photo-detail'
 import {TodoPage} from './todo/todo-main'
 import {OthersPage} from './others/others-main'
@@ -23,10 +22,10 @@ import {BlogRead} from './blog/blog-read'
 import {ManagementPage} from './management/management-main'
 
 import {Popup} from './common/popup'
-import './main.less'
+import './app.less'
 import UI from 'components/UI';
 console.log('---', UI)
-class Main extends React.Component{
+class App extends React.Component{
   constructor() {
     super();
     this.state = {
@@ -65,7 +64,6 @@ class Main extends React.Component{
             <Route path="/todo" component = {TodoPage} />
             <Route exact path="/album" component = {AlbumListPage} />
             <Route path="/album/detail" component = {AlbumPage} />
-            <Route path="/album/edit" component = {AlbumEditPage} />
             {/* <Route path="/album/:id" component = {AlbumPage} /> */}
             <Route path="/blog" component = {BlogPage} />
             <Route exact path="/others" component = {OthersPage} />
@@ -97,4 +95,4 @@ class Main extends React.Component{
   }
 }
 
-module.exports = {Main}
+module.exports = {App}

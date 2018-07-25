@@ -3,6 +3,8 @@ import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
+import {SaveAlbum} from './wigets/save-album'
+import { addPopup } from 'actions';
 
 const Album = styled.div`
     .album-wrapper{
@@ -63,12 +65,32 @@ class AlbumListPage extends React.Component{
   componentDidMount() {
     this.getData()
   }
+  editAlbum(album) {
+    let editAlbumPopup = {
+      render: (data, events) => {
+        return (
+          <SaveAlbum data={data} events={events}>
+          </SaveAlbum>
+        )
+      },
+      data: {
+        album
+      },
+      events: {
+        success: () => {
+          this.getData()
+        }
+      }
+    }
+    store.dispatch(addPopup(editAlbumPopup))
+  }
   render() {
     const TopTab = () => {
       if (this.props.me._id) {
         return (
           <div className="top-tab">
-            <Link to="/album/edit"> 新建 </Link>
+            {/* <Link to="/album/edit"> 新建 </Link> */}
+            <button onClick={this.editAlbum.bind(this, null)}>新建</button>
           </div>
         )
       }
@@ -80,21 +102,22 @@ class AlbumListPage extends React.Component{
           {
           this.state.list.map((item)=>{
             return (
-              <Link to={
-                {pathname: '/album/detail',
-                search: searchformat.stringify({id: item._id})}
-              } key={item._id}>
+              <div key={item._id}>
                 <div className="album-wrapper">
                   <div className="album-thumbnail">
                     <img className="album-image" 
                     src={item.img.url}
                     />
                   </div>
-                  <div className="album-name">{item.name}</div>
+                  <Link to={
+                      {pathname: '/album/detail',
+                      search: searchformat.stringify({id: item._id})}
+                    }>{item.name}</Link>
                   <div className="album-desc">{item.description}</div>
                   <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
+                  <button onClick={this.editAlbum.bind(this, item)}>编辑</button>
                 </div>
-              </Link>
+              </div>
             )
           })
           }

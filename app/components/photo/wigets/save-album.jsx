@@ -2,12 +2,12 @@
 
 import React from 'react';
 import {Uploader} from 'components/common/uploader'
-
-class AlbumEditPage extends React.Component{
-  constructor() {
-    super();
+import { removePopup } from 'actions';
+class SaveAlbum extends React.Component{
+  constructor(props) {
+    super(props);
     this.state = {
-      album: {
+      album: props.data.album || {
         name: "",
         description: "",
         img: null
@@ -39,7 +39,8 @@ class AlbumEditPage extends React.Component{
         alert('保存成功！')
         browserHistory.push({
           pathname: `/album`,
-        })
+        })        
+        store.dispatch(removePopup())
       }
     })
   }
@@ -48,7 +49,7 @@ class AlbumEditPage extends React.Component{
   }
   render() {
     return (
-      <div className="photo-main-page">
+      <div className="photo-save-page">
         <div>
           <div className="title">相册名称</div>
           <div className="input"><input  type="text" value={this.state.album.name} name="name" onChange={this.handleInputChange} placeholder="请输入标题" autoComplete="off" /></div>
@@ -59,7 +60,9 @@ class AlbumEditPage extends React.Component{
         </div>
         <div>
           <div className="title">相册主题图</div>
-          <div className="input"><Uploader onChange={this.fileChange}></Uploader></div>
+          <div className="input">
+            <Uploader onChange={this.fileChange} type="photo" file={this.state.album.img}></Uploader>
+          </div>
         </div>
         <div>
           <button onClick={this.saveAlbum}>保存</button>
@@ -69,4 +72,4 @@ class AlbumEditPage extends React.Component{
   }
 };
 
-module.exports = {AlbumEditPage}
+module.exports = {SaveAlbum}
