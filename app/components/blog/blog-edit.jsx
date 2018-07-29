@@ -112,14 +112,15 @@ class BlogEdit extends React.Component {
       })
     }
   }
-  selectTag(tagKey) {
+  selectTag(tag) {
     let blog = this.state.blog;
     let selectedTags = blog.tags
-    if (selectedTags.indexOf(tagKey) == -1) {
-      selectedTags.push(tagKey)
+    if (selectedTags.filter(i => i._id == tag._id).length == 0) {
+      selectedTags.push(tag)
     } else {
-      let index = selectedTags.indexOf(tagKey)
-      selectedTags.splice(index, 1)
+      for (let i = selectedTags.length-1; i >= 0; i--) {
+        if (selectedTags[i]._id == tag._id) selectedTags.splice(i, 1)
+      }
     }
     this.setState({
       blog: blog
@@ -242,11 +243,11 @@ class BlogEdit extends React.Component {
           {
             this.state.taglist.map(i => {
               let className = "y-tag"
-              if (this.state.blog.tags.indexOf(i._id) != -1) {
+              if (this.state.blog.tags.filter(t => t._id==i._id).length>0) {
                 className += " y-tag-selected"
               }
               return (
-                <div className={className} key={i._id} onClick={this.selectTag.bind(this, i._id)}>
+                <div className={className} key={i._id} onClick={this.selectTag.bind(this, i)}>
                   {i.title}
                 </div>
               )

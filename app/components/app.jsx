@@ -24,8 +24,6 @@ import {ManagementPage} from './management/management-main'
 
 import {Popup} from './common/popup'
 import './app.less'
-import UI from 'components/UI';
-console.log('---', UI)
 class App extends React.Component{
   constructor() {
     super();

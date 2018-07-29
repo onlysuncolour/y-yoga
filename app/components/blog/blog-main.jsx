@@ -27,6 +27,10 @@ class BlogPage extends React.Component{
     Request.Blog.getBlogCategory().then(resp => {
       if (resp.ok) {
         let category = resp.data
+        category.unshift({
+          title: '全部',
+          _id: null,
+        })
         this.setState({
           category: category,
           currentCategory: category[0] || {}

@@ -104,6 +104,7 @@ module.exports = {
       'browserHistory': path.resolve(APP_PATH, 'common/history.js'),
       'store': path.resolve(APP_PATH, 'common/redux/store.js'),
       'components': path.resolve(APP_PATH, './components'),
+      'UI': path.resolve(APP_PATH, './components/UI'),
       'common': path.resolve(APP_PATH, './common'),
     }
   },

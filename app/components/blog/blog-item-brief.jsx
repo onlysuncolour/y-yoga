@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom"
-import {Button} from 'components/UI';
+import {Button} from 'UI';
 
 class ItemBrief extends React.Component{
   constructor() {
