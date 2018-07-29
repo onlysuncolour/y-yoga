@@ -23,7 +23,7 @@ export const setTodo = data => {
 }}
 
 export const addTodo = data => {
-  let todo = {type: 'todo', title: data, updatedAt: new Date().getTime(), createdAt: new Date().getTime()}
+  let todo = {type: 'todo', title: data}
   return dispatch => {
     Request.Todo.create(todo).then(resp => {
       if(resp.ok) {

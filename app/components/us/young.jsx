@@ -24,7 +24,7 @@ class Young extends React.Component{
     }
     return (
       <div className="young-page">
-        {/* {Animate()} */}
+        {Animate()}
         <div className="container">
           <div className="basic-info">
             <div>头像</div>
@@ -35,12 +35,14 @@ class Young extends React.Component{
             <div>掌握前端技术介绍</div>
             <div>大图</div>
           </div>
-          <div className="tech-info">
-            <div>掌握前端技术介绍</div>
+          <div className="game-info">
+            <div>喜欢玩游戏，喜欢玩桌游</div>
             <div>大图</div>
           </div>
-
-
+          <div className="travel-info">
+            <div>喜欢旅游</div>
+            <div>大图</div>
+          </div>
         </div>
       </div>
     )
