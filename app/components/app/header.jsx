@@ -15,6 +15,7 @@ class Header extends React.Component{
         {title: 'TODO', link: '/todo', name: 'todo'},
         {title: '博客', link: '/blog', name: 'blog'},
         {title: '照片墙', link: '/album', name: 'album'},
+        {title: '音乐', link: '/music', name: 'music'},
         {title: '其他', link: '/others', name: 'others'},
         {title: '管理', link: '/management', name: 'management', admin: true}
       ],

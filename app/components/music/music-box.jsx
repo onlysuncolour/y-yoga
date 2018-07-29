@@ -1,5 +1,4 @@
 import React from 'react';
-require('./music-box.less')
 
 class MusicBox extends React.Component{
   constructor() {

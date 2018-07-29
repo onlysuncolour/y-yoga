@@ -1,6 +1,5 @@
 import React from 'react';
 import {YoungAnimate} from './young-animate'
-import {MusicBox} from './music-box'
 
 class Young extends React.Component{
   constructor() {
@@ -27,10 +26,22 @@ class Young extends React.Component{
       <div className="young-page">
         {/* {Animate()} */}
         <div className="container">
-          <MusicBox></MusicBox>
-        </div>
+          <div className="basic-info">
+            <div>头像</div>
+            <div>个人介绍</div>
+            <div>大图</div>
+          </div>
+          <div className="tech-info">
+            <div>掌握前端技术介绍</div>
+            <div>大图</div>
+          </div>
+          <div className="tech-info">
+            <div>掌握前端技术介绍</div>
+            <div>大图</div>
+          </div>
 
-        young
+
+        </div>
       </div>
     )
   }

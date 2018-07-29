@@ -19,6 +19,7 @@ import {Yoga} from './us/yoga'
 import {Young} from './us/young'
 import {BlogEdit} from './blog/blog-edit'
 import {BlogRead} from './blog/blog-read'
+import {Music} from './music/music'
 import {ManagementPage} from './management/management-main'
 
 import {Popup} from './common/popup'
@@ -65,6 +66,7 @@ class App extends React.Component{
             <Route exact path="/album" component = {AlbumListPage} />
             <Route path="/album/detail" component = {AlbumPage} />
             {/* <Route path="/album/:id" component = {AlbumPage} /> */}
+            <Route path="/music" component = {Music} />
             <Route path="/blog" component = {BlogPage} />
             <Route exact path="/others" component = {OthersPage} />
             <Route path="/others/lost-city" component = {LostCity} />
