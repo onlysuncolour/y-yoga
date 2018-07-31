@@ -3,7 +3,8 @@ import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
-import {PhotoEdit} from './photo-edit'
+import { addPopup } from 'actions';
+import {SavePhoto} from './wigets/save-photo'
 
 const Album = styled.div`
     .album-wrapper{
@@ -67,6 +68,26 @@ class AlbumPage extends React.Component{
       }
     })
   }
+  editPhoto(photo) {
+    let editPhotoPopup = {
+      render: (data, events) => {
+        return (
+          <SavePhoto data={data} events={events}>
+          </SavePhoto>
+        )
+      },
+      data: {
+        photo,
+        album: this.state.album
+      },
+      events: {
+        success: () => {
+          this.getPhotos()
+        }
+      }
+    }
+    store.dispatch(addPopup(editPhotoPopup))
+  }
   componentDidMount() {
     this.getAlbumInfo()
     this.getPhotos()
@@ -77,29 +98,33 @@ class AlbumPage extends React.Component{
         <div></div>
       )
     }
-    let showAddAlbum = () => {
+    const TopTab = () => {
       if (this.props.me._id) {
         return (
-          <PhotoEdit album={this.state.album} success={this.getPhotos}></PhotoEdit>
+          <div className="top-tab">
+            {/* <Link to="/album/edit"> 新建 </Link> */}
+            <button onClick={this.editPhoto.bind(this, null)}>新建</button>
+          </div>
         )
       }
     }
     return (
       <div className="photo-main-page">
-      {showAddAlbum()}
+      {/* {showAddAlbum()} */}
+      {TopTab()}
         <Album className="album-page">
           {
           this.state.list.map((item)=>{
             return (
               <div key={item._id}>
-                <div className="album-wrapper">
-                  <div className="album-thumbnail">
-                    <img className="album-image" 
+                <div className="photo-wrapper">
+                  <div className="photo-thumbnail">
+                    <img className="photo-image" 
                     src={item.img.url}
                     />
                   </div>
-                  <div className="album-name">{item.name}</div>
-                  <div className="album-desc">{item.description}</div>
+                  <div className="photo-name" onClick={this.editPhoto.bind(this, item)}>{item.name}</div>
+                  <div className="photo-desc">{item.description}</div>
                 </div>
               </div>
             )

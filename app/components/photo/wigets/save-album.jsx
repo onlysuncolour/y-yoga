@@ -1,5 +1,3 @@
-// TODO: 需要改为 弹窗实现
-
 import React from 'react';
 import {Uploader} from 'components/common/uploader'
 import { removePopup } from 'actions';
