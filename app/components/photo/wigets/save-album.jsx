@@ -63,7 +63,7 @@ class SaveAlbum extends React.Component{
           </div>
         </div>
         <div>
-          <button onClick={this.saveAlbum}>保存</button>
+          <button className="y-btn" onClick={this.saveAlbum}>保存</button>
         </div>
       </div>
     )

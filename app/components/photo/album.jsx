@@ -77,6 +77,7 @@ class AlbumPage extends React.Component{
         )
       },
       data: {
+        title: '上传图片',
         photo,
         album: this.state.album
       },

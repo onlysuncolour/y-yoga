@@ -16,7 +16,7 @@ class Button extends React.Component{
   }
   render() {
     return (
-      <button type="button" onClick={this.handleChange}>{this.state.text}</button>
+      <button className="y-btn" type="button" onClick={this.handleChange}>{this.state.text}</button>
     )
   }
 }

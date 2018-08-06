@@ -85,7 +85,7 @@ class Uploader extends React.Component {
   render() {
     // TODO: 需要重写uploader的样式
     return(
-      <div>
+      <div className="uploader-page">
         <input type="file" ref="file" value={this.state.fileName} onChange={this.handleFileChange} name="file" />
         {/* <button onClick={this.uploadFile}>test</button> */}
         {
@@ -96,7 +96,7 @@ class Uploader extends React.Component {
         }
         {
           this.state.url? 
-          <img src={this.state.url} /> :
+          <div className="img-wrapper"><img className="img" src={this.state.url} /></div> :
           <div></div>
         }
       </div>

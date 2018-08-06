@@ -17,6 +17,13 @@ class SavePhoto extends React.Component{
     this.handleInputChange = this.handleInputChange.bind(this)
     this.savePhoto = this.savePhoto.bind(this)
   }
+  // showModal = () => {
+  //   this.savePhoto()
+  // }
+
+  // hideModal = () => {
+  //   store.dispatch(removePopup())
+  // }
   handleInputChange(event) {
     let photo = this.state.photo
     photo[event.target.name] = event.target.value
@@ -51,7 +58,7 @@ class SavePhoto extends React.Component{
   render() {
     return (
       <div className="photo-edit-page">
-        上传图片
+        {/* 上传图片 */}
         <div className="form">
           <Uploader onChange={this.fileChange} ref="uploader"  file={this.state.photo.img}></Uploader>
           图片名称

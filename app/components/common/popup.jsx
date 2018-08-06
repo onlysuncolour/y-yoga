@@ -22,11 +22,13 @@ class Popup extends React.Component{
           this.props.popup.popups.map(i => {
             return (
               <div key={i.key}>
-                <div className="popup-mask"></div>
-                <div onClick={this.removePopup} className="popup-body">
+                <div className="popup-mask" onClick={this.removePopup}></div>
+                <div className="popup-body">
+                  <div className="popup-header">{i.data.title}</div>
                   <div onClick={this.stopPropagation} className="popup-container">
                     {i.render(i.data, i.events)}
                   </div>
+                  <div className="popup-footer"></div>
                 </div>
               </div>
             )

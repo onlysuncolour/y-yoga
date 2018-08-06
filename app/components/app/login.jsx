@@ -39,7 +39,7 @@ class LoginPage extends React.Component{
   render() {
     return (
       <div className="login-page">
-        <span>登录</span>
+        {/* <header className="popup-header">登录</header> */}
         <div className="form-tab">
           <div className="input-tab">
             <p className="input-label"> username </p>
@@ -49,9 +49,9 @@ class LoginPage extends React.Component{
             <p className="input-label"> password </p>
             <input className="input" type="password" value={this.state.password} name="password" onChange={this.handleInput} />
           </div>
-          <div className="bottom-button">
-            <button onClick={this.login}> 登录 </button>
-          </div>
+          <footer className="popup-footer">
+            <button className="y-btn" onClick={this.login}> 登录 </button>
+          </footer>
         </div>
       </div>
     )
