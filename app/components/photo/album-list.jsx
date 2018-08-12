@@ -9,7 +9,7 @@ import { addPopup } from 'actions';
 const Album = styled.div`
     .album-wrapper{
       display: inline-block;
-      margin: 40px 130px;
+      padding: 20px;
       .album-thumbnail{
         width: 181px;
         height: 181px;
@@ -102,21 +102,19 @@ class AlbumListPage extends React.Component{
           {
           this.state.list.map((item)=>{
             return (
-              <div key={item._id}>
-                <div className="album-wrapper">
-                  <div className="album-thumbnail">
-                    <img className="album-image" 
-                    src={item.img.url}
-                    />
-                  </div>
-                  <Link to={
-                      {pathname: '/album/detail',
-                      search: searchformat.stringify({id: item._id})}
-                    }>{item.name}</Link>
-                  <div className="album-desc">{item.description}</div>
-                  <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
-                  <button onClick={this.editAlbum.bind(this, item)}>编辑</button>
+              <div className="album-wrapper" key={item._id}>
+                <div className="album-thumbnail">
+                  <img className="album-image" 
+                  src={item.img.url + '?imageView2/1/w/350/h/350'}
+                  />
                 </div>
+                <Link to={
+                    {pathname: '/album/detail',
+                    search: searchformat.stringify({id: item._id})}
+                  }>{item.name}</Link>
+                <div className="album-desc">{item.description}</div>
+                <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
+                <button onClick={this.editAlbum.bind(this, item)}>编辑</button>
               </div>
             )
           })
