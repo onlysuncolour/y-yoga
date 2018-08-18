@@ -96,7 +96,7 @@ class Uploader extends React.Component {
         }
         {
           this.state.url? 
-          <div className="img-wrapper"><img className="img" src={this.state.url} /></div> :
+          <div className="img-wrapper"><img className="img" src={this.state.url} /></div> :
           <div></div>
         }
       </div>

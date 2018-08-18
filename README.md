@@ -27,3 +27,7 @@ npm run build
 
 ## 数据库
 - mongodb [1](https://www.tutorialspoint.com/mongodb/) [2](https://docs.mongodb.com/manual/mongo/)
+
+
+## 其他
+七牛 文档
