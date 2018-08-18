@@ -136,7 +136,7 @@ class MusicBox extends React.Component{
         <div className="buttom-bar">
           <div className="music-progress-bar">
             <input type="range" className="music-range-input" value={this.state.currentTime} max={this.state.duration} min="0" onChange={this.changeCurrentTime.bind(this)} />
-            <span className="music-times">{Utils.getMinuteTime(this.state.currentTime)}/{Utils.getMinuteTime(this.state.duration)}</span>
+            {/* <span className="music-times">{Utils.getMinuteTime(this.state.currentTime)}/{Utils.getMinuteTime(this.state.duration)}</span> */}
           </div>
         </div>
       </div>
