@@ -5,6 +5,8 @@ import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
 import { addPopup } from 'actions';
 import {SavePhoto} from './wigets/save-photo'
+import {Button} from 'UI';
+
 
 const Album = styled.div`
     .album-wrapper{
@@ -104,7 +106,7 @@ class AlbumPage extends React.Component{
         return (
           <div className="top-tab">
             {/* <Link to="/album/edit"> 新建 </Link> */}
-            <button onClick={this.editPhoto.bind(this, null)}>新建</button>
+            <Button onClick={this.editPhoto.bind(this, null)}>新建11</Button>
           </div>
         )
       }
