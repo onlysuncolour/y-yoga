@@ -1,19 +1,19 @@
 @import "variables";
 
 @font-face {
-  font-family: 'icomoon';
-  src:  url('@{icomoon-font-path}/icomoon.eot?s6z09v');
-  src:  url('@{icomoon-font-path}/icomoon.eot?s6z09v#iefix') format('embedded-opentype'),
-    url('@{icomoon-font-path}/icomoon.ttf?s6z09v') format('truetype'),
-    url('@{icomoon-font-path}/icomoon.woff?s6z09v') format('woff'),
-    url('@{icomoon-font-path}/icomoon.svg?s6z09v#icomoon') format('svg');
+  font-family: '@{icomoon-font-family}';
+  src:  url('@{icomoon-font-path}/@{icomoon-font-family}.eot?se0eu5');
+  src:  url('@{icomoon-font-path}/@{icomoon-font-family}.eot?se0eu5#iefix') format('embedded-opentype'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.ttf?se0eu5') format('truetype'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.woff?se0eu5') format('woff'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.svg?se0eu5#@{icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: '@{icomoon-font-family}' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -26,29 +26,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-plus {
+.icon-trash-can {
   &:before {
-    content: @icon-plus; 
-  }
-}
-.icon-trash-o {
-  &:before {
-    content: @icon-trash-o; 
-  }
-}
-.icon-edit {
-  &:before {
-    content: @icon-edit; 
-  }
-}
-.icon-pencil-square-o {
-  &:before {
-    content: @icon-pencil-square-o; 
-  }
-}
-.icon-step-backward {
-  &:before {
-    content: @icon-step-backward; 
+    content: @icon-trash-can; 
   }
 }
 .icon-play {
@@ -61,24 +41,14 @@
     content: @icon-pause; 
   }
 }
+.icon-step-backward {
+  &:before {
+    content: @icon-step-backward; 
+  }
+}
 .icon-step-forward {
   &:before {
     content: @icon-step-forward; 
-  }
-}
-.icon-chain {
-  &:before {
-    content: @icon-chain; 
-  }
-}
-.icon-link {
-  &:before {
-    content: @icon-link; 
-  }
-}
-.icon-header {
-  &:before {
-    content: @icon-header; 
   }
 }
 .icon-images {
@@ -139,6 +109,51 @@
 .icon-embed2 {
   &:before {
     content: @icon-embed2; 
+  }
+}
+.icon-pause-outline {
+  &:before {
+    content: @icon-pause-outline; 
+  }
+}
+.icon-play-outline {
+  &:before {
+    content: @icon-play-outline; 
+  }
+}
+.icon-plus {
+  &:before {
+    content: @icon-plus; 
+  }
+}
+.icon-trash-o {
+  &:before {
+    content: @icon-trash-o; 
+  }
+}
+.icon-edit {
+  &:before {
+    content: @icon-edit; 
+  }
+}
+.icon-pencil-square-o {
+  &:before {
+    content: @icon-pencil-square-o; 
+  }
+}
+.icon-chain {
+  &:before {
+    content: @icon-chain; 
+  }
+}
+.icon-link {
+  &:before {
+    content: @icon-link; 
+  }
+}
+.icon-header {
+  &:before {
+    content: @icon-header; 
   }
 }
 

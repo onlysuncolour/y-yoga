@@ -5,6 +5,7 @@ import { addPopup, removeMe } from 'actions';
 
 import {LoginPage} from '../app/login'
 
+import {MusicBox} from './music-box'
 
 class Header extends React.Component{
   constructor() {
@@ -48,7 +49,6 @@ class Header extends React.Component{
   }
   render() {
     const loginTab = () => {
-      console.log(this.props.me);
       if (this.props.me && this.props.me._id) {
         return (
           <div className="header-user-tab fr">
@@ -79,6 +79,7 @@ class Header extends React.Component{
             ))
           }
         </ul>
+        <MusicBox></MusicBox>
         { loginTab() }
       </nav>
     )
