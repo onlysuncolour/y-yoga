@@ -87,5 +87,13 @@ module.exports = {
     savePhoto(param) {
       return Ajax.post('/photo/save', param)
     },
+  },
+  Music: {
+    getTags() {
+      return Ajax.get('/music/tags')
+    },
+    getList(param) {
+      return Ajax.get(`/music/list`, param)
+    },
   }
 }
