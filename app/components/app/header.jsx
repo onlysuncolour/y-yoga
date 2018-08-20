@@ -79,8 +79,8 @@ class Header extends React.Component{
             ))
           }
         </ul>
-        <MusicBox></MusicBox>
         { loginTab() }
+        <MusicBox></MusicBox>
       </nav>
     )
   }

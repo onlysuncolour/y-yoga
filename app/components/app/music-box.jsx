@@ -91,7 +91,7 @@ class MusicBox extends React.Component{
   }
   render() {
     return (
-      <div className="music-box-header">
+      <div className="music-box-header fr">
         <audio src={this.state.currentMusic.url} autoPlay={this.state.autoplay}
           ref={music => this.musicBox=music}
           preload="true"

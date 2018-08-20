@@ -1,6 +1,7 @@
 import React from 'react';
+import {Button} from 'UI'
 
-class BlogReadComment extends React.Component{
+class BlogReadRemark extends React.Component{
   constructor() {
     super();
     this.state = {
@@ -25,12 +26,22 @@ class BlogReadComment extends React.Component{
   }
   render() {
     return (
-      <div className="blog-read-comment">
+      <div className="blog-read-remark">
         <hr/>
-        
+        <div className="add-remark">
+          <textarea name="" className="remark"></textarea>
+          <Button>发表</Button>
+        </div>
+        <div className="remark-list">
+          {
+            this.state.remarkList.map(r => {
+              
+            })
+          }
+        </div>
       </div>
     )
   }
 };
 
-module.exports = {BlogReadComment}
+module.exports = {BlogReadRemark}

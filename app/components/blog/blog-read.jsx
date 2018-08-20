@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Markdown from 'react-markdown'
 import Prism from '../../common/prism'
 import { Link } from "react-router-dom"
-import { BlogReadComment } from './blog-read-comment' 
+import { BlogReadRemark } from './blog-read-remark' 
 import { BlogReadFooter } from './blog-read-footer' 
 
 class BlogRead extends React.Component{
@@ -85,7 +85,7 @@ class BlogRead extends React.Component{
             <Markdown className="markdown-content" source={this.state.blog.content} />
           </div>
           <BlogReadFooter blog={this.state.blog}></BlogReadFooter>
-          <BlogReadComment blogId={this.state.blog._id}></BlogReadComment>
+          <BlogReadRemark blogId={this.state.blog._id}></BlogReadRemark>
         </div>
         <div className="hot-blog-list">
           <div className="list-title">
