@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import * as PropTypes from 'prop-types';
 import React from 'react';
 
+// todo: disabled
+
 class Button extends React.Component{
   
   constructor(props) {

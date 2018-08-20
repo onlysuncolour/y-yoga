@@ -54,13 +54,16 @@ module.exports = {
       return Ajax.get('/blog/hotlist')
     },
     getBlog(id) {
-      return Ajax.get(`/blog/blog/${id}`)
+      return Ajax.get(`/blog/${id}`)
     },
     saveBlog(param) {
       return Ajax.post('/blog/save', param)
     },
     getBlogRemark(id) {
-      
+      return Ajax.get(`/blog/${id}/remark`)
+    },
+    addRemark(param) {
+      return Ajax.post(`/blog/remark`, param)
     }
   },
   Keywords: {
