@@ -106,7 +106,7 @@ class AlbumPage extends React.Component{
         return (
           <div className="top-tab">
             {/* <Link to="/album/edit"> 新建 </Link> */}
-            <Button onClick={this.editPhoto.bind(this, null)}>新建11</Button>
+            <Button onClick={this.editPhoto.bind(this, null)}>新建</Button>
           </div>
         )
       }

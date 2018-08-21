@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'UI';
+
 
 class OneMainPageManagement extends React.Component{
   constructor() {
@@ -86,9 +88,9 @@ class OneMainPageManagement extends React.Component{
           <div className="operation">
             {
               this.state.keywordsEdit ? 
-                (<button onClick={this.saveKeywords.bind(this)}>保存</button>)
+                (<Button onClick={this.saveKeywords.bind(this)}>保存</Button>)
               :
-                (<button onClick={this.editKeywords.bind(this)}>编辑</button>)
+                (<Button onClick={this.editKeywords.bind(this)}>编辑</Button>)
             }
           </div>
         </div>

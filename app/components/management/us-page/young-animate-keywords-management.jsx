@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'UI';
 
 class YoungAnimateKeywordsManagement extends React.Component{
   constructor() {
@@ -109,9 +110,9 @@ class YoungAnimateKeywordsManagement extends React.Component{
                       }
                       {
                         l.mode == 'edit' ?
-                        ( <td><button className="keyword-button" onClick={this.saveLine.bind(this, iOl)}>保存</button></td> )
+                        ( <td><Button className="keyword-button" onClick={this.saveLine.bind(this, iOl)}>保存</Button></td> )
                           :
-                        ( <td><button className="keyword-button" onClick={this.setLineEdit.bind(this, iOl)}>编辑</button></td> )
+                        ( <td><Button className="keyword-button" onClick={this.setLineEdit.bind(this, iOl)}>编辑</Button></td> )
                       }
                     </tr>
                   )

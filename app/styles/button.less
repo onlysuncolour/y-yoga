@@ -1,5 +1,41 @@
+@btn-prefix: ~"@{prefix}btn";
+
+.btn-size(@padding; @font-size; @border-radius) {
+  padding:  @padding;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+
+.btn-color(@color; @percent: 10%;) {
+  color: @color;
+  background-color: @background;
+  border: @border;
+  &:hover{
+    color: lighten(@color, @percent);
+    border-color: lighten(@color, 10%);
+  }
+  &:active{
+    color: darken(@color, 10%);
+    border-color: darken(@color, 10%);
+  }
+}
+
+.btn-text-color(@color; @default: true) {
+  color: @color;
+  border-color: @border;
+  &:hover{
+    color: lighten(@color, 10%);
+    border-color: lighten(@color, 10%);
+  }
+  &:active{
+    color: darken(@color, 10%);
+    border-color: darken(@color, 10%);
+  }
+}
+
+
 // button, .y-btn{
-.y-btn{
+.@{btn-prefix} {
   padding-left: 16px;
   padding-right: 16px;
   vertical-align: middle;
@@ -8,13 +44,40 @@
   // line-height: 30px;
   color: #333;
   transition: all .2s;
-  border-radius: 2px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
   // &+button, &+.y-btn{
- &+.y-btn{
+ &+.@{btn-prefix}{
     margin-left: 5px;
   }
   &:hover{
     cursor: pointer;
     background-color: #e8e8e8
+  }
+  &-red{
+    .btn-color(@red-color-6);
+  }
+  &-gray{
+    .btn-color(@gray-color-6);
+  }
+  &-green{
+    .btn-color(@green-color-6);
+  }
+  &-blue{
+    .btn-color(@blue-color-6);
+  }
+  &-text{
+    &-red{
+      .btn-text-color(@red-color-6);
+    }
+    &-gray{
+      .btn-text-color(@gray-color-6);
+    }
+    &-green{
+      .btn-text-color(@green-color-6);
+    }
+    &-blue{
+      .btn-text-color(@blue-color-6);
+    }
   }
 }

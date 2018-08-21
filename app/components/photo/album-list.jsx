@@ -115,7 +115,7 @@ class AlbumListPage extends React.Component{
                   }>{item.name}</Link>
                 <div className="album-desc">{item.description}</div>
                 <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
-                <button onClick={this.editAlbum.bind(this, item)}>编辑</button>
+                <Button type="text" color="green" onClick={this.editAlbum.bind(this, item)}>编辑</Button>
               </div>
             )
           })
