@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from 'UI'
+import {Remark} from './remark'
 
 class BlogReadRemark extends React.Component{
   constructor() {
@@ -56,9 +57,7 @@ class BlogReadRemark extends React.Component{
           {
             this.state.remarkList.map(r => {
               return (
-                <div key={r._id}>
-                  {r.content} {new Date(r.createdAt).toLocaleDateString()} {r.author.name}
-                </div>
+                <Remark getDatas={this.getDatas} key={r._id} remark={r} blogId={this.props.blogId}></Remark>
               )
             })
           }
