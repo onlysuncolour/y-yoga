@@ -136,7 +136,7 @@
       top: 120px;
       width: 100%;
       left: 0;
-      padding-left: 30px;
+      // padding-left: 30px;
       // bottom: 10px;
       // overflow-y: auto;
       .markdown-content {
@@ -175,6 +175,89 @@
           font-size: 14px;
         }
       }
+    }
+  }
+}
+
+.blog-read-remark {
+  .add-remark {
+    .info {
+      font-size: 15px;
+      padding: 5px 0;
+    }
+    textarea {
+      display: block;
+      width: 800px;
+      min-height: 150px;
+      resize: none;
+    }
+    .add-remark-btn {
+      background-color: red;
+      color: #fff;
+      padding: 5px 15px;
+      margin: 10px 0;
+    }
+  }
+  .remark-list {
+    .remark {
+      position: relative;
+      border-left: solid 1px;
+      border-bottom: solid 1px;
+      padding: 5px 10px;
+      margin-bottom: 10px;
+      .author {
+        position: absolute;
+        width: 120px;
+        padding: 10px 5px;
+      }
+      .content-panel {
+        margin-left: 120px;
+        .reply {
+          position: relative;
+          border-left: 1px solid #999;
+          border-bottom: 1px solid #999;
+          padding: 0 0px 10px 10px;
+          color: #666;
+          .reply-info {
+            position: absolute;
+            
+          }
+          .reply-content {
+            margin-left: 60px;
+          }
+          .reply-bottom {
+            margin-left: 60px;
+            .reply-author {
+              display: inline-block;
+            }
+            .reply-date {
+              display: inline-block;
+            }
+          }
+        }
+        .content {
+  
+        }
+        .my-reply {
+          textarea {
+  
+          }
+          .my-reply-btn {
+  
+          }
+        }
+        .remark-footer {
+          .date {
+              display: inline-block;
+  
+          }
+          .remark-btn {
+              display: inline-block;
+  
+          }
+        }
+      }
+      
     }
   }
 }

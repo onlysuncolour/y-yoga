@@ -50,8 +50,9 @@ class BlogReadRemark extends React.Component{
       <div className="blog-read-remark">
         <hr/>
         <div className="add-remark">
+          <div className="info">你想说些什么？</div>
           <textarea name="currentRemark" className="remark" value={this.state.currentRemark} onChange={this.handleChange}></textarea>
-          <Button onClick={this.addRemark}>发表</Button>
+          <Button className="add-remark-btn" onClick={this.addRemark}>发表</Button>
         </div>
         <div className="remark-list">
           {

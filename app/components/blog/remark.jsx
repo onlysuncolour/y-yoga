@@ -46,42 +46,47 @@ class Remark extends React.Component{
         <div className="author">
           {this.state.remark.author.name}
         </div>
-        {
-          !!this.state.remark.replayRemark && (
-            <div className="reply">
-              <div className="replyContent">
-                {this.state.remark.replayRemark.content}
-              </div>
-              <div className="reply-bottom">
-                <div className="reply-author">
-                  {this.state.remark.replayRemark.author.name}
+        <div className="content-panel">
+          {
+            !!this.state.remark.replayRemark && (
+              <div className="reply">
+                <div className="reply-info">
+                  回复：
                 </div>
-                <div className="reply-date">
-                  {this.state.remark.replayRemark.createdAt}
+                <div className="reply-content">
+                  {this.state.remark.replayRemark.content}
+                </div>
+                <div className="reply-bottom">
+                  <div className="reply-author">
+                    {this.state.remark.replayRemark.author.name}
+                  </div>
+                  <div className="reply-date">
+                    {new Date(this.state.remark.replayRemark.createdAt).toLocaleDateString()}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        }
-        <div className="content">
-          {this.state.remark.content}
+            )
+          }
+          <div className="content">
+            {this.state.remark.content}
+          </div>
+          {
+            this.state.showReply ? (
+              <div className="my-reply">
+                <textarea name="myReply" value={this.state.myReply} onChange={this.handleChange}></textarea>
+                <Button className="my-reply-btn" onClick={this.replay.bind(this, false)}>取消</Button>
+                <Button className="my-reply-btn" onClick={this.submit}>评论</Button>
+              </div>
+            ) : (
+              <div className="remark-footer">
+                <div className="date">
+                  {new Date(this.state.remark.createdAt).toLocaleDateString()}
+                </div>
+                <Button className="remark-btn" onClick={this.replay.bind(this, true)}>回复</Button>
+              </div>
+            )
+          }
         </div>
-        {
-          this.state.showReply ? (
-            <div className="my-reply">
-              <textarea name="myReply" value={this.state.myReply} onChange={this.handleChange}></textarea>
-              <Button onClick={this.replay.bind(this, false)}>取消</Button>
-              <Button onClick={this.submit}>评论</Button>
-            </div>
-          ) : (
-            <div className="remark-footer">
-              <div className="date">
-                {new Date(this.state.remark.createdAt).toLocaleDateString()}
-              </div>
-              <Button onClick={this.replay.bind(this, true)}>回复</Button>
-            </div>
-          )
-        }
       </div>
     )
   }
