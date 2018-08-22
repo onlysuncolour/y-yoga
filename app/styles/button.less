@@ -7,9 +7,9 @@
 }
 
 .btn-color(@color; @percent: 10%;) {
-  color: @color;
-  background-color: @background;
-  border: @border;
+  color: #FFF;
+  background-color: @color;
+  border: @color;
   &:hover{
     color: lighten(@color, @percent);
     border-color: lighten(@color, 10%);
@@ -22,7 +22,7 @@
 
 .btn-text-color(@color; @default: true) {
   color: @color;
-  border-color: @border;
+  border-color: @color;
   &:hover{
     color: lighten(@color, 10%);
     border-color: lighten(@color, 10%);
@@ -55,29 +55,29 @@
     background-color: #e8e8e8
   }
   &-red{
-    .btn-color(@red-color-6);
+    .btn-color(@red-6);
   }
   &-gray{
-    .btn-color(@gray-color-6);
+    .btn-color(@gray-6);
   }
   &-green{
-    .btn-color(@green-color-6);
+    .btn-color(@green-6);
   }
   &-blue{
-    .btn-color(@blue-color-6);
+    .btn-color(@blue-6);
   }
   &-text{
     &-red{
-      .btn-text-color(@red-color-6);
+      .btn-text-color(@red-6);
     }
     &-gray{
-      .btn-text-color(@gray-color-6);
+      .btn-text-color(@gray-6);
     }
     &-green{
-      .btn-text-color(@green-color-6);
+      .btn-text-color(@green-6);
     }
     &-blue{
-      .btn-text-color(@blue-color-6);
+      .btn-text-color(@blue-6);
     }
   }
 }

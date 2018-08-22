@@ -1,6 +1,6 @@
 // export {default as Button} from './button'
-import Button from './button'
-import Input from './input'
+import Button from './components/button'
+import Input from './components/input'
 
 export {
   Button, 
