@@ -11,6 +11,7 @@
     "classnames": "^2.2.6",
     "history": "^4.7.2",
     "js-model": "^1.2.1",
+    "lottie-web": "^5.2.1",
     "manba": "^1.2.0",
     "plupload-es6": "^2.1.11",
     "prop-types": "^15.6.2",

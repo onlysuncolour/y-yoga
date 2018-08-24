@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {SaveAlbum} from './wigets/save-album'
 import { addPopup } from 'actions';
 import { Button } from 'UI';
+import Lottie from 'lottie-web';
 
 const Album = styled.div`
     .album-wrapper{
@@ -63,8 +64,18 @@ class AlbumListPage extends React.Component{
 
     })
   }
+  initSvg() {
+    Lottie.loadAnimation({
+      container: this.refs.lottieDemo, // the dom element that will contain the animation
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'app/images/svg/letter.json' // the path to the animation json
+    });
+  }
   componentDidMount() {
-    this.getData()
+    this.getData();
+    this.initSvg();
   }
   editAlbum(album) {
     let editAlbumPopup = {
@@ -98,6 +109,7 @@ class AlbumListPage extends React.Component{
     }
     return (
       <div className="photo-main-page">
+      <div style={{width:'100px', height:'100px'}} ref="lottieDemo"></div>
       {TopTab()}
         <Album className="album-page">
           {
