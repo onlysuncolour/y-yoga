@@ -9,27 +9,35 @@
 .btn-color(@color; @percent: 10%;) {
   color: #FFF;
   background-color: @color;
-  border: @color;
+  border-color: @color;
+  transition: all .2s;
   &:hover{
-    color: lighten(@color, @percent);
-    border-color: lighten(@color, 10%);
+    color: #FFF;
+    // color: lighten(@color, @percent);
+    background-color: lighten(@color, @percent);
+    border-color: lighten(@color, @percent);
   }
   &:active{
-    color: darken(@color, 10%);
-    border-color: darken(@color, 10%);
+    color: #FFF;
+    // color: darken(@color, 10%);
+    background-color: lighten(@color, @percent);
+    border-color: lighten(@color, @percent);
   }
 }
 
-.btn-text-color(@color; @default: true) {
-  color: @color;
-  border-color: @color;
+.btn-text-color(@color; @default: true; @percent: 10%) {
+  transition: all .2s;
+  & when(@default){
+    color: @color;
+    border-color: @color;
+  }
   &:hover{
-    color: lighten(@color, 10%);
-    border-color: lighten(@color, 10%);
+    color: lighten(@color, @percent);
+    border-color: lighten(@color, @percent);
   }
   &:active{
-    color: darken(@color, 10%);
-    border-color: darken(@color, 10%);
+    color: darken(@color, @percent);
+    border-color: darken(@color, @percent);
   }
 }
 
@@ -42,12 +50,10 @@
   padding: 5px 15px 6px;
   font-size: 14px;
   border-radius: 4px;
-  color: #515a6e;
+  color: inherit;
   background-color: #fff;
-  border: 1px solid transparent;
-  border-color: #dcdee2;
-  &:hover{
-  }
+  border: 1px solid #dcdee2;
+  .btn-text-color(@primary-color, false);
   &+.@{btn-prefix}{
     margin-left: 5px;
   }
@@ -69,7 +75,11 @@
   &-text{
     color: #515a6e;
     background-color: transparent;
+    .btn-text-color(@primary-color);
     border-color: transparent;
+    &:hover{
+      border-color: transparent;
+    }
     &-primary{
       .btn-text-color(@primary-color);
     }

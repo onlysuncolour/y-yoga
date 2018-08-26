@@ -110,6 +110,13 @@ class AlbumListPage extends React.Component{
     return (
       <div className="photo-main-page">
       <div style={{width:'100px', height:'100px'}} ref="lottieDemo"></div>
+      <div>
+        <p>buttons</p>
+        <Button>default</Button>
+        <Button className="y-btn-text">text</Button>
+        <Button className="y-btn-text-green">text-green</Button>
+        <Button className="y-btn-green">text-green</Button>
+      </div>
       {TopTab()}
         <Album className="album-page">
           {
@@ -127,7 +134,7 @@ class AlbumListPage extends React.Component{
                   }>{item.name}</Link>
                 <div className="album-desc">{item.description}</div>
                 <div className="album-other"><span className="fl">n张照片</span><span className="fr">{item.updatedAt}更新</span></div>
-                <Button type="text" color="green" onClick={this.editAlbum.bind(this, item)}>编辑</Button>
+                <Button onClick={this.editAlbum.bind(this, item)}>编辑</Button>
               </div>
             )
           })

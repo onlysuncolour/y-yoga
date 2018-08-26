@@ -96,7 +96,6 @@ module.exports = {
       'Utils': path.resolve(APP_PATH, './common/utils.js'),
       'Request': path.resolve(APP_PATH, './common/request.js'),
       'Dict': path.resolve(APP_PATH, './common/config/dict.js'),
-      'images': path.resolve(APP_PATH, './images'),
       'app': APP_PATH,
       "Manba": 'manba',
       'searchformat': 'query-string',
