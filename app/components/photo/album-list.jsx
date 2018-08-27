@@ -129,7 +129,7 @@ class AlbumListPage extends React.Component{
                   />
                 </div>
                 <Link to={
-                    {pathname: '/album/detail',
+                    {pathname: '/album/photolist',
                     search: searchformat.stringify({id: item._id})}
                   }>{item.name}</Link>
                 <div className="album-desc">{item.description}</div>

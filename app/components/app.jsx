@@ -9,7 +9,7 @@ import {Header} from './app/header'
 import {BlogPage} from './blog/blog-main'
 import {UsPage} from './us/us-main'
 import {AlbumListPage} from './photo/album-list'
-import {AlbumPage} from './photo/album'
+import {PhotoList} from './photo/photo-list'
 import {PhotoDetailPage} from './photo/photo-detail'
 import {TodoPage} from './todo/todo-main'
 import {OthersPage} from './others/others-main'
@@ -62,8 +62,8 @@ class App extends React.Component{
             <Route path="/young" component = {Young} />
             <Route path="/todo" component = {TodoPage} />
             <Route exact path="/album" component = {AlbumListPage} />
-            <Route path="/album/detail" component = {AlbumPage} />
-            {/* <Route path="/album/:id" component = {AlbumPage} /> */}
+            <Route path="/album/photolist" component = {PhotoList} />
+            {/* <Route path="/album/:id" component = {PhotoList} /> */}
             <Route path="/music" component = {Music} />
             <Route path="/blog" component = {BlogPage} />
             <Route exact path="/others" component = {OthersPage} />

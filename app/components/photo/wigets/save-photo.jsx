@@ -38,7 +38,7 @@ class SavePhoto extends React.Component{
   }
   savePhoto() {
     Request.Photo.savePhoto(this.state.photo).then(resp =>{ 
-      if (resp.ok) {
+      if (resp.ok) { 
         console.log('上传成功！')     
         this.refs.uploader.clear();
         let photo = this.state.photo
@@ -46,7 +46,7 @@ class SavePhoto extends React.Component{
         photo.img = null
         photo.description = ''
         this.setState({photo})
-        this.props.success();
+        this.props.events.success();
         store.dispatch(removePopup())
         // this.props.success();
       }
@@ -62,9 +62,9 @@ class SavePhoto extends React.Component{
         <div className="form">
           <Uploader onChange={this.fileChange} ref="uploader"  file={this.state.photo.img}></Uploader>
           图片名称
-          <input value={this.state.photo.name} name="name" onChange={this.handleInputChange} />
+          <input value={this.state.photo.name} onChange={this.handleInputChange} />
           图片描述
-          <input value={this.state.photo.description} name="description" onChange={this.handleInputChange} />
+          <input value={this.state.photo.description} onChange={this.handleInputChange} />
           所在相册：
           {this.state.photo.album.name}
           {/* // TODO: 标签 */}
