@@ -3,7 +3,7 @@ import './photo-main.less'
 import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
-import {SaveAlbum} from './wigets/save-album'
+import { SaveAlbum } from './wigets/save-album'
 import { addPopup } from 'actions';
 import { Button } from 'UI';
 import Lottie from 'lottie-web';

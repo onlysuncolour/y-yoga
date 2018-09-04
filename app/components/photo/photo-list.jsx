@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import Link from 'react-router-dom/Link';
 import { connect } from 'react-redux';
 import { addPopup } from 'actions';
-import {Button} from 'UI';
+import { Button } from 'UI';
+import { SavePhoto } from './wigets/save-photo'
 
 
 const Photo = styled.div`
