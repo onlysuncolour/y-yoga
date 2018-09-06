@@ -1,9 +1,11 @@
 {
   "presets": ["@babel/preset-react"],
+  "plugins": ["add-module-exports"],
   "env": {
     "development": {
       "presets": [
-        ["@babel/preset-react", { "development": true }]
+        ["@babel/preset-react", 
+          { "development": true }]
       ]
     }
   }
