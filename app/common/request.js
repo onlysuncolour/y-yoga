@@ -64,7 +64,10 @@ module.exports = {
     },
     addRemark(param) {
       return Ajax.post(`/blog/remark`, param)
-    }
+    },
+    removeRemark(id) {
+      return Ajax.post(`/blog/remark/remove/${id}`)
+    },
   },
   Keywords: {
     getUsInfo(keyword) {

@@ -12,7 +12,6 @@ class BlogReadRemark extends React.Component{
     this.getDatas = this.getDatas.bind(this)
     this.addRemark = this.addRemark.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
   }
   componentDidMount() {
     this.getDatas()
@@ -20,8 +19,9 @@ class BlogReadRemark extends React.Component{
   getDatas() {
     Request.Blog.getBlogRemark(this.props.blogId).then(resp => {
       if (resp.ok) {
+        let remarkList = resp.data
         this.setState({
-          remarkList: resp.data
+          remarkList: remarkList
         })
       }
     })
@@ -46,7 +46,7 @@ class BlogReadRemark extends React.Component{
     this.setState(newState);
   }
   render() {
-    return (
+      return (
       <div className="blog-read-remark">
         <hr/>
         <div className="add-remark">

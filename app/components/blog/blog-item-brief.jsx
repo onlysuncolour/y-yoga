@@ -36,7 +36,7 @@ class ItemBrief extends React.Component{
         <div className="info">
           <span className="author">{this.props.item.author.name}</span>
           <span className="date">{Utils.formatDate(this.props.item.updatedAt)}</span>
-          <Button text="clickMe"></Button>
+          <Button>click me</Button>
         </div>
         <div className="brief">
           {this.props.item.brief}

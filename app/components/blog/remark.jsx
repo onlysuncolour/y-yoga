@@ -1,15 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Button} from 'UI'
 class Remark extends React.Component{
   constructor(props) {
     super();
     this.state = {
-      remark: props.remark,
+      // remark: props.remark,
       myReply: "",
       showReply: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.submit = this.submit.bind(this)
+    this.remove = this.remove.bind(this)
   }
   handleChange(event) {
     let newState = {};
@@ -40,35 +42,42 @@ class Remark extends React.Component{
       }
     })
   }
+  remove() {
+    Request.Blog.removeRemark(this.props.remark._id).then(resp => {
+      if (resp.ok) {
+        this.props.getDatas()
+      }
+    })
+  }
   render() {
     return (
       <div className="remark">
         <div className="author">
-          {this.state.remark.author.name}
+          {this.props.remark.author.name}
         </div>
         <div className="content-panel">
           {
-            !!this.state.remark.replayRemark && (
+            !!this.props.remark.replayRemark && (
               <div className="reply">
                 <div className="reply-info">
                   回复：
                 </div>
                 <div className="reply-content">
-                  {this.state.remark.replayRemark.content}
+                  {this.props.remark.replayRemark.content}
                 </div>
                 <div className="reply-bottom">
                   <div className="reply-author">
-                    {this.state.remark.replayRemark.author.name}
+                    {this.props.remark.replayRemark.author.name}
                   </div>
                   <div className="reply-date">
-                    {new Date(this.state.remark.replayRemark.createdAt).toLocaleDateString()}
+                    {new Date(this.props.remark.replayRemark.createdAt).toLocaleDateString()}
                   </div>
                 </div>
               </div>
             )
           }
           <div className="content">
-            {this.state.remark.content}
+            {this.props.remark.content}
           </div>
           {
             this.state.showReply ? (
@@ -80,9 +89,12 @@ class Remark extends React.Component{
             ) : (
               <div className="remark-footer">
                 <div className="date">
-                  {new Date(this.state.remark.createdAt).toLocaleDateString()}
+                  {new Date(this.props.remark.createdAt).toLocaleDateString()}
                 </div>
                 <Button className="remark-btn" onClick={this.replay.bind(this, true)}>回复</Button>
+                {(this.props.remark.author._id == this.props.me._id || this.props.me.admin) && (
+                  <Button className="remark-btn" onClick={this.remove} >删除</Button>
+                )}
               </div>
             )
           }
@@ -91,4 +103,12 @@ class Remark extends React.Component{
     )
   }
 }
-module.exports = {Remark}
+
+const mapStateToProps = (store) => {
+  return {
+    me: store.me.me,
+    router: store.router,
+  }
+}
+
+module.exports = {Remark: connect(mapStateToProps)(Remark)}
