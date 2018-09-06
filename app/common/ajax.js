@@ -25,4 +25,4 @@ const Ajax = {
   }
 }
 
-export default Ajax
+module.exports = Ajax
