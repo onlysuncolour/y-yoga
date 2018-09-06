@@ -45,7 +45,8 @@ module.exports = {
         }, {
           loader: "css-loader"
         }, {
-          loader: "less-loader"
+          loader: "less-loader",
+          options: { javascriptEnabled: true }
         }]
       }, { test: /\.css$/,
         use: [{
@@ -68,11 +69,11 @@ module.exports = {
       'Dict': 'Dict',
       'actions': 'actions',
       'Socket': 'Socket',
-      'searchformat': 'searchformat',
       'Manba': 'Manba',
       'G': 'G',
       'browserHistory': 'browserHistory',
       'store': 'store',
+      'searchformat': 'searchformat',
     }),
     // new WebpackSshDeployPlugin({
     //   root: '/home/young/smbshare',
@@ -98,6 +99,9 @@ module.exports = {
       'G': path.resolve(APP_PATH, 'common/global-event.js'),
       'browserHistory': path.resolve(APP_PATH, 'common/history.js'),
       'store': path.resolve(APP_PATH, 'common/redux/store.js'),
+      'components': path.resolve(APP_PATH, './components'),
+      'UI': path.resolve(APP_PATH, './components/UI'),
+      'common': path.resolve(APP_PATH, './common'),
     }
   },
 
