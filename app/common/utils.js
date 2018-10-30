@@ -105,6 +105,54 @@ module.exports = {
       return Manba(input).format('YYYY-MM-DD')
     }
   },
+  isObjectEqual(a, b) {
+    let compare = (a, b) => {
+      var aProps = Object.getOwnPropertyNames(a);
+      var bProps = Object.getOwnPropertyNames(b);
+      if (aProps.length != bProps.length) {
+        return false;
+      }
+      for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+        if (typeof(a[propName]) == 'object' && a[propName] != null) {
+          if (typeof(b[propName]) != 'object') {
+            return false
+          }
+          if (!this.isObjectEqual(a[propName], b[propName])) {
+            return false
+          }
+        } else if (a[propName] !== b[propName]) {
+          return false;
+        }
+      }
+      return true;
+    }
+    if (a instanceof Array) {
+      if (!b instanceof Array || a.length != b.length) {
+        return false
+      }
+      if (a.some((_, i) => {
+        if (!compare(a[i], b[i])) {
+          return true
+        }
+      })) {
+        return false
+      }
+      return true;
+    } else if (typeof a == 'object') {
+      if (typeof b != 'object') {
+        return false
+      }
+      if (!compare(a, b)) {
+        return false
+      }
+      return true;
+    }
+    if (a == b) {
+      return true
+    }
+    return false
+  },
   getMinuteTime: function (input) {
     if(isNaN(input)) {
       return NaN
