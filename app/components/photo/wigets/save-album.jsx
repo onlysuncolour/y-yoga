@@ -49,7 +49,7 @@ class SaveAlbum extends React.Component{
     return (
       <div className="photo-save-page">
         <div>
-          <div className="title">相册名称</div>
+          <div className="title">相册名称</div> 
           <div className="input"><input  type="text" value={this.state.album.name} name="name" onChange={this.handleInputChange} placeholder="请输入标题" autoComplete="off" /></div>
         </div>
         <div>

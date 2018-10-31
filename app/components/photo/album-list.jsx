@@ -81,7 +81,9 @@ class AlbumListPage extends React.Component{
     let editAlbumPopup = {
       render: (data, events) => {
         return (
-          <SaveAlbum data={data} events={events}>
+          <SaveAlbum 
+            data={data} 
+            events={events}>
           </SaveAlbum>
         )
       },
