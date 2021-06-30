@@ -41,7 +41,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "dns-equal": "^1.0.0",
-    "dns-packet": "^4.2.0",
+    "dns-packet": "^5.2.2",
     "dns-txt": "^2.0.2",
     "file-loader": "^1.1.11",
     "fs": "0.0.1-security",
